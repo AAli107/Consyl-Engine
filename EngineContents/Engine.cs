@@ -10,7 +10,7 @@ namespace Consyl_Engine
     class Engine
     {
         // Essential Variables
-        public static bool gameRunning = true; // If False, the game ends
+        public static bool gameRunning = true; // Determines whether the game is running or not (Game will close when false)
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
         public static Vector2 resolution = new Vector2(80, 45); // Drawing Resolution in ASCII
         public static float framerate = 240.0f; // ASCII Rendering max framerate
@@ -28,7 +28,6 @@ namespace Consyl_Engine
             // Calls OnGameUpdate() from GameCode constantly as long as the gameRunning is true
             while (gameRunning)
             {
-
                 key = GameInput.Key(); // Detects Keyboard input and stores it in a variable
 
                 GameCode.OnGameUpdate();

@@ -9,9 +9,11 @@ namespace Consyl_Engine.EngineContents
 {
     class gfx
     {
+        // Resolution width and height of the ASCII screen
         public static int drawWidth = (int)Engine.resolution.X;
         public static int drawHeight = (int)Engine.resolution.Y;
 
+        // An Array that stores ASCII chars that can be used for shading
         public static char[] shadeCharArray = { ' ','.',',','-','^','*',':',';','I','l','!','i','>','<','~','+','_','?',']','[','}','{',')','(','|','/','t','f',
             'j','r','x','n','u','v','c','z','X','Y','U','J','C','L','Q','O','Z','m','w','q','p','d','b','k','h','a','o','#','M','W','&','%','B','@','$' };
 
