@@ -7,17 +7,16 @@ namespace Consyl_Engine.EngineContents
 {
     class Audio
     {
-        
-        string fileName;
-        static NAudio.Wave.BlockAlignReductionStream stream = null;
-        static NAudio.Wave.DirectSoundOut output = null;
+        string fileName; // Stores the Sound File's name
+        static NAudio.Wave.BlockAlignReductionStream stream = null; // Sound Data
+        static NAudio.Wave.DirectSoundOut output = null; // The Output Sound
 
-        public Audio(string _fileName)
+        public Audio(string _fileName) // constructor for inputting the sound file's name (Supports only mp3 and wav files)
         {
             fileName = _fileName;
         }
 
-        public void PlaySound()
+        public void PlaySound() // Plays sound from start
         {
             if (fileName.EndsWith(".mp3"))
             {
@@ -39,7 +38,7 @@ namespace Consyl_Engine.EngineContents
             output.Play();
         }
 
-        public void StopSound()
+        public void StopSound() // Stops the sound
         {
             if (output != null)
             {
@@ -47,14 +46,14 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public void PauseSound()
+        public void PauseSound() // Pauses the sound
         {
             if (output != null)
             {
                 output.Pause();
             }
         }
-        public void UnpauseSound()
+        public void UnpauseSound() // Un-pauses the sound
         {
             if (output != null)
             {
