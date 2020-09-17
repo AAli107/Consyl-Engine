@@ -22,7 +22,7 @@ namespace Consyl_Engine
         static void Main(string[] args)
         {
             Console.Title = gameTitle; // Set the Game's title
-
+            
             GameCode.OnGameStart(); // Calls OnGameStart() from GameCode when the game runs
             
             // Calls OnGameUpdate() from GameCode constantly as long as the gameRunning is true
@@ -34,6 +34,7 @@ namespace Consyl_Engine
                 
                 if (drawASCIIRender) // Also it updates the ASCII graphics if drawASCIIRender is equal to true
                 {
+                    Console.CursorVisible = false; // Hides cursor, I place it on every frame because refreshing the screen makes it visible again
                     gfx.DrawASCII();
                 }
 
