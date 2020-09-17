@@ -1,4 +1,8 @@
-﻿using System;
+﻿
+/* If you want to play the audio file, you need to place it in the same location as the game's executable file */
+/* Supports only mp3 and wav files */
+
+using System;
 
 namespace Consyl_Engine.EngineContents
 {
@@ -8,7 +12,7 @@ namespace Consyl_Engine.EngineContents
         static NAudio.Wave.BlockAlignReductionStream stream = null; // Sound Data
         static NAudio.Wave.DirectSoundOut output = null; // The Output Sound
 
-        public Audio(string _fileName) // constructor for inputting the sound file's name (Supports only mp3 and wav files)
+        public Audio(string _fileName) // constructor for inputting the sound file's name
         {
             fileName = _fileName;
         }
