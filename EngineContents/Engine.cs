@@ -1,9 +1,7 @@
 ﻿using Consyl_Engine.EngineContents;
 using System;
-using System.Diagnostics;
 using System.Numerics;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Consyl_Engine
 {
