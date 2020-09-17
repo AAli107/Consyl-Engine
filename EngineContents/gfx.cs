@@ -52,7 +52,7 @@ namespace Consyl_Engine.EngineContents
             // Clears the Image data from textImage
             for (int i = 0; i < textImage.Length; i++)
             {
-                textImage[i] = shadeCharArray[1];
+                textImage[i] = shadeCharArray[0];
                 ColorImage[i] = ConsoleColor.White;
             }
         }
