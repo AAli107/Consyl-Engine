@@ -23,7 +23,6 @@ namespace Consyl_Engine.EngineContents
         public static void DrawASCII()
         {
             // Draws ASCII Render on screen
-            //string renderedImage = "";
             for (int y = 0; y < drawHeight; y++)
             {
                 // Converts 1D array to 2D array
@@ -35,17 +34,13 @@ namespace Consyl_Engine.EngineContents
                     cArray.Add(ColorImage[drawWidth * y + x]);
                 }
 
-                //string renderLine = "";
                 for (int i = 0; i < xArray.Count; i++) // stores a line of the screen
                 {
                     Console.ForegroundColor = cArray[i];
-                    //renderLine = renderLine + xArray[i] + " ";
                     Console.Write(xArray[i] + " ");
                 }
                 Console.WriteLine("");
-                //renderedImage = renderedImage + renderLine + "\n";
             }
-            //Console.WriteLine(renderedImage);
         }
 
         public static void ClearScreen()
