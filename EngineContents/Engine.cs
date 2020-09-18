@@ -10,7 +10,7 @@ namespace Consyl_Engine
         // Essential Variables
         public static bool gameRunning = true; // Determines whether the game is running or not (Game will close when false)
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
-        public static Vector2 resolution = new Vector2(80, 45); // Drawing Resolution in ASCII
+        public static Vector2 resolution = new Vector2(115, 60); // Drawing Resolution in ASCII
         public static float framerate = 10000.0f; // ASCII Rendering max framerate
         public static string gameTitle = "Consyl Game"; // The title of the game
 
