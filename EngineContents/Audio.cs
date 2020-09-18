@@ -29,7 +29,7 @@ namespace Consyl_Engine.EngineContents
                 NAudio.Wave.WaveStream pcm = new NAudio.Wave.WaveChannel32(new NAudio.Wave.WaveFileReader(fileName));
                 stream = new NAudio.Wave.BlockAlignReductionStream(pcm);
             }
-            else throw new InvalidOperationException("Not a correct audio file type.");
+            else throw new InvalidOperationException("Not a correct audio file type. Supports mp3 and wav only!");
 
             if (output == null)
             {
