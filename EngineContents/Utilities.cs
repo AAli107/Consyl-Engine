@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 
 namespace Consyl_Engine.EngineContents
@@ -37,6 +38,14 @@ namespace Consyl_Engine.EngineContents
             {
                 return rng.Next(max + 1);
             }
-        } // class that stores functions that returns random values
+        } // class that stores functions that returns rng-related values
+
+        public class Vec2D
+        {
+            public static float Distance2D(Vector2 point1, Vector2 point2) // Calculates the 2D distance between two points/vectors
+            {
+                return MathF.Sqrt(MathF.Pow((point2.X - point1.X), 2) + MathF.Pow((point2.Y - point1.Y), 2));
+            }
+        } // class that stores functions that are related to Vector2
     }
 }
