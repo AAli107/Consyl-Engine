@@ -20,5 +20,10 @@ namespace Consyl_Engine
         {
 
         }
+
+        public static void OnGameEnd() // Gets Executed when Engine.gameRunning = false which is basically when the game ends
+        {
+            
+        }
     }
 }

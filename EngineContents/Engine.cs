@@ -41,9 +41,11 @@ namespace Consyl_Engine
                 gfx.ClearScreen();
             }
 
-            // Automatically turns off the rest of the program if gameRunning is false
-            if(gameRunning == false)
+            // Automatically turns off the rest of the program and executes GameCode.OnGameEnd() function if gameRunning = false
+            if(!gameRunning)
             {
+                GameCode.OnGameEnd();
+
                 Console.Clear();
                 drawASCIIRender = false;
             }
