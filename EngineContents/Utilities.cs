@@ -47,7 +47,7 @@ namespace Consyl_Engine.EngineContents
                 return MathF.Sqrt(MathF.Pow(point2.X - point1.X, 2) + MathF.Pow(point2.Y - point1.Y, 2));
             }
 
-            public static Vector2 Midpoint2D(Vector2 point1, Vector2 point2)
+            public static Vector2 Midpoint2D(Vector2 point1, Vector2 point2) // Returns the center between two vectors
             {
                 return (point1 + point2) / 2;
             }
