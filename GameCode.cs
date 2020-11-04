@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Consyl_Engine
 {
-    class GameCode
+    class GameCode // Here is where you make most of your game's code!
     {
          /* Insert Variables here! */
         /* \/\/\/\/\/\/\/\/\/\/\/\/ */
