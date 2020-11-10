@@ -7,19 +7,31 @@ namespace Consyl_Engine
 {
     class Engine
     {
-        // Essential Variables
+        // Essential Engine Variables
+        public static string gameTitle = "Consyl Game"; // The title of the game
         public static bool gameRunning = true; // Determines whether the game is running or not (Game will close when false)
+        
+        // ASCII Graphics-related variables
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
         public static Vector2 resolution = new Vector2(115, 60); // Drawing Resolution in ASCII
         public static float framerate = 10000.0f; // ASCII Rendering max framerate
-        public static string gameTitle = "Consyl Game"; // The title of the game
+        
+        // Variables that controls the Initial Colors of the Background and text
+        public static ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
+        public static ConsoleColor FgColor = ConsoleColor.White; // Initial Text Color
 
-        // Variables you shouldn't touch
+        // Variables you should never change or edit
         public static char key; // variable that stores the keyboard inputs as char
+
 
         static void Main(string[] args)
         {
             Console.Title = gameTitle; // Set the Game's title
+
+            // Sets the Colors of the background and refreshes the screen
+            Console.BackgroundColor = BgColor;
+            Console.ForegroundColor = FgColor;
+            Console.Clear();
             
             GameCode.OnGameStart(); // Calls OnGameStart() from GameCode when the game runs
             
