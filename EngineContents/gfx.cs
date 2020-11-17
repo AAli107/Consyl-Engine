@@ -10,7 +10,7 @@ namespace Consyl_Engine.EngineContents
         public static int drawHeight = (int)Engine.resolution.Y;
 
         // An Array that stores ASCII chars that can be used for shading
-        public static char[] shadeCharArray = { ' ','.',',','-','^','*',':',';','I','l','!','i','>','<','~','+','_','?',']','[','}','{',')','(','|','/','t','f',
+        public static readonly char[] shadeCharArray = { ' ','.',',','-','^','*',':',';','I','l','!','i','>','<','~','+','_','?',']','[','}','{',')','(','|','/','t','f',
             'j','r','x','n','u','v','c','z','X','Y','U','J','C','L','Q','O','Z','m','w','q','p','d','b','k','h','a','o','#','M','W','&','%','B','@','$' };
 
         static char[] textImage = new char[drawWidth * drawHeight]; // Stores the Data of the ASCII pixels

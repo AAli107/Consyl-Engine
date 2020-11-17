@@ -1,5 +1,5 @@
 ﻿
-// If you want to play the audio file, you need to place it in the same location as the game's executable file
+// If you want to play the audio file, you need to place it in the same directory as the game's executable file
 // Supports only mp3 and wav files!
 
 using System;
