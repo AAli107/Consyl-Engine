@@ -1,9 +1,6 @@
 ﻿// If you want to draw an image/texture on screen, you need to place it in the same directory as the game's executable file
 // Currently supports the following file formats: BMP, GIF, EXIF, JPG, PNG and TIFF
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Drawing;
 
 namespace Consyl_Engine.EngineContents
