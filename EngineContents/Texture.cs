@@ -44,7 +44,7 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public char[] GetData()
+        public char[] GetAllShadeColor() // Gets all the Consyl-Shaded Color from the loaded Bitmap
         {
             Bitmap img = new Bitmap(fileName);
             char[] Data = new char[img.Width * img.Height];
@@ -73,6 +73,49 @@ namespace Consyl_Engine.EngineContents
                 }
             }
             return Data;
+        }
+
+        public char GetShadeColorAtPixel(int x, int y) // Gets the Consyl-Shaded color from a chosen pixel based on x and y
+        {
+            Bitmap img = new Bitmap(fileName);
+            Color pixel = img.GetPixel(x, y); // saves the color value of the current pixel in a variable
+
+            float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
+
+            int shade = (int)(AvgColor / 4.047619047619047619047619047619f); // This weird number is used to squeeze the average color, which could range between 0-255 into a range between 0-62
+
+            // Locks the shade value to be between 0-62
+            if (shade < 0)
+            {
+                shade = 0;
+            }
+            else if (shade > 62)
+            {
+                shade = 62;
+            }
+
+            return gfx.shadeCharArray[shade];
+        }
+
+        public Color[] GetAllColor() // Gets the color of all pixels from the loaded Bitmap
+        {
+            Bitmap img = new Bitmap(fileName);
+            Color[] Data = new Color[img.Width * img.Height];
+
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    Data[img.Width * j + i] = img.GetPixel(i, j); // Returns an array of colors from the loaded Bitmap
+                }
+            }
+            return Data;
+        }
+
+        public Color GetColorAtPixel(int x, int y) // Gets the Color at a chosen pixel directly from the Bitmap
+        {
+            Bitmap img = new Bitmap(fileName);
+            return img.GetPixel(x, y);
         }
     }
 }
