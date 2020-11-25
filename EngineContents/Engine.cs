@@ -7,6 +7,7 @@ namespace Consyl_Engine
 {
     class Engine
     {
+        //--------------------------------------------------------------------------------------------------------------------------//
         // Essential Engine Variables
         public static string gameTitle = "Consyl Game"; // The title of the game
         public static bool gameRunning = true; // Determines whether the game is running or not (Game will close when false)
@@ -19,10 +20,7 @@ namespace Consyl_Engine
         // Variables that controls the Initial Colors of the Background and text
         public static ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
         public static ConsoleColor FgColor = ConsoleColor.White; // Initial Text Color
-
-        // Variables you should never change or edit
-        public static char key; // variable that stores the keyboard inputs as char
-
+        //--------------------------------------------------------------------------------------------------------------------------//
 
         static void Main(string[] args)
         {
@@ -38,9 +36,7 @@ namespace Consyl_Engine
             // Calls OnGameUpdate() from GameCode constantly as long as the gameRunning is true
             while (gameRunning)
             {
-                key = GameInput.Key(); // Detects Keyboard input and stores it in a variable
-
-                GameCode.OnGameUpdate();
+                GameCode.OnGameUpdate(); // Updates the game
                 
                 if (drawASCIIRender) // Also it updates the ASCII graphics if drawASCIIRender is equal to true
                 {
