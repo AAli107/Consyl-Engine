@@ -1,6 +1,7 @@
 ﻿using Consyl_Engine.EngineContents;
 using System;
 using System.Collections.Generic;
+using EZInput;
 
 namespace Consyl_Engine
 {
