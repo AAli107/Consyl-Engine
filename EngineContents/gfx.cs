@@ -15,7 +15,7 @@ namespace Consyl_Engine.EngineContents
 
         static char[] textImage = new char[drawWidth * drawHeight]; // Stores the Data of the ASCII pixels
 
-        public static void DrawASCII()
+        public static void DrawASCII() // Renders the Image on Screen
         {
             // Draws ASCII Render on screen
             string renderedImage = "";
