@@ -51,6 +51,11 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
+        public static char ReadPixelAt(int x, int y) // Give a pixel coordinate and it will return the pixel's char it has on screen
+        {
+            return textImage[drawWidth * y + x];
+        }
+
         public static void DrawPixel(int x, int y, char pixelLook) // Draws ASCII pixel on screen
         {
             if (x >= 0 && x < drawWidth && y >= 0 && y < drawHeight)
