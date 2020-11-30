@@ -18,8 +18,8 @@ namespace Consyl_Engine
         public static float framerate = 10000.0f; // ASCII Rendering max framerate
         
         // Variables that controls the Initial Colors of the Background and text
-        public static ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
-        public static ConsoleColor FgColor = ConsoleColor.White; // Initial Text Color
+        static readonly ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
+        static readonly ConsoleColor FgColor = ConsoleColor.White; // Initial Text Color
         //--------------------------------------------------------------------------------------------------------------------------//
 
         static void Main(string[] args)
