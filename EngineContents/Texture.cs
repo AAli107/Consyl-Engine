@@ -27,16 +27,16 @@ namespace Consyl_Engine.EngineContents
                     
                     float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
 
-                    int shade = (int)(AvgColor / 4.047619047619047619047619047619f); // This weird number is used to squeeze the average color, which could range between 0-255 into a range between 0-62
-                    
-                    // Locks the shade value to be between 0-62
+                    int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // This weird number is used to squeeze the average color, which could range between 0-255 into a range between 0-62
+
+                    // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
                     if (shade < 0)
                     {
                         shade = 0;
                     }
-                    else if (shade > 62)
+                    else if (shade > gfx.shadeCharArray.Length - 1)
                     {
-                        shade = 62;
+                        shade = gfx.shadeCharArray.Length - 1;
                     }
 
                     gfx.DrawPixel(i + x, j + y, gfx.shadeCharArray[shade]); // Draws the image
@@ -57,16 +57,16 @@ namespace Consyl_Engine.EngineContents
 
                     float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
 
-                    int shade = (int)(AvgColor / 4.047619047619047619047619047619f); // This weird number is used to squeeze the average color, which could range between 0-255 into a range between 0-62
+                    int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // This weird number is used to squeeze the average color, which could range between 0-255 into a range between 0-62
 
-                    // Locks the shade value to be between 0-62
+                    // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
                     if (shade < 0)
                     {
                         shade = 0;
                     }
-                    else if (shade > 62)
+                    else if (shade > gfx.shadeCharArray.Length - 1)
                     {
-                        shade = 62;
+                        shade = gfx.shadeCharArray.Length - 1;
                     }
 
                     Data[img.Width * j + i] = gfx.shadeCharArray[shade];
@@ -82,16 +82,16 @@ namespace Consyl_Engine.EngineContents
 
             float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
 
-            int shade = (int)(AvgColor / 4.047619047619047619047619047619f); // This weird number is used to squeeze the average color, which could range between 0-255 into a range between 0-62
+            int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // This weird number is used to squeeze the average color, which could range between 0-255 into a range between 0-62
 
-            // Locks the shade value to be between 0-62
+            // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
             if (shade < 0)
             {
                 shade = 0;
             }
-            else if (shade > 62)
+            else if (shade > gfx.shadeCharArray.Length - 1)
             {
-                shade = 62;
+                shade = gfx.shadeCharArray.Length - 1;
             }
 
             return gfx.shadeCharArray[shade];
