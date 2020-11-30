@@ -8,7 +8,7 @@ namespace Consyl_Engine.EngineContents
 {
     class Audio
     {
-        string fileName; // Stores the Sound File's name
+        readonly string fileName; // Stores the Sound File's name
         static NAudio.Wave.BlockAlignReductionStream stream = null; // Sound Data
         static NAudio.Wave.DirectSoundOut output = null; // The Output Sound
 

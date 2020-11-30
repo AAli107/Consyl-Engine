@@ -9,7 +9,7 @@ namespace Consyl_Engine.EngineContents
     {
         public class Rand
         {
-            static Random rng = new Random(); // Variable that stores the Random Class
+            static readonly Random rng = new Random(); // Variable that stores the Random Class
 
             public static int RangeInt(int min, int max) // Returns a random int in range (inclusive)
             {
