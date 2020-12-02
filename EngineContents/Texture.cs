@@ -7,7 +7,7 @@ namespace Consyl_Engine.EngineContents
 {
     class Texture
     {
-        static string fileName; // Stores the Texture's file name
+        private string fileName; // Stores the Texture's file name
 
         public Texture(string _fileName) // constructor for inputting the Texture's file name
         {
@@ -27,7 +27,7 @@ namespace Consyl_Engine.EngineContents
                     
                     float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
 
-                    int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // This weird number is used to squeeze the average color, which could range between 0-255 into a range between 0-62
+                    int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
 
                     // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
                     if (shade < 0)
@@ -57,7 +57,7 @@ namespace Consyl_Engine.EngineContents
 
                     float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
 
-                    int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // This weird number is used to squeeze the average color, which could range between 0-255 into a range between 0-62
+                    int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
 
                     // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
                     if (shade < 0)
@@ -82,7 +82,7 @@ namespace Consyl_Engine.EngineContents
 
             float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
 
-            int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // This weird number is used to squeeze the average color, which could range between 0-255 into a range between 0-62
+            int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
 
             // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
             if (shade < 0)
