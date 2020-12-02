@@ -76,12 +76,9 @@ namespace Consyl_Engine.EngineContents
         }
         public static void DrawText(int x, int y, string text) // Draws text in a position on screen
         {
-            char[] charArray = new char[text.Length];
-            charArray = text.ToCharArray();
-
-            for (int i = 0; i < text.Length; i++)
+	        for (int i = 0; i < text.Length; i++)
             {
-                DrawPixel(x + i, y, charArray[i]);
+                DrawPixel(x + i, y, text[i]);
             }
         }
 
