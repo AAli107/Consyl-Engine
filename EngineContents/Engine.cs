@@ -11,6 +11,7 @@ namespace Consyl_Engine
         // Essential Engine Variables
         public static string gameTitle = "Consyl Game"; // The title of the game
         public static bool gameRunning = true; // Determines whether the game is running or not (Game will close when false)
+        public static bool gamePaused = false; // If it's true the GameCode.OnGameUpdate() function will not execute until if it's false
         
         // ASCII Graphics-related variables
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
@@ -36,8 +37,10 @@ namespace Consyl_Engine
             // Calls OnGameUpdate() from GameCode constantly as long as the gameRunning is true
             while (gameRunning)
             {
-                GameCode.OnGameUpdate(); // Updates the game
-                
+                if (!gamePaused)
+                {
+                    GameCode.OnGameUpdate(); // Updates the game
+                }
                 if (drawASCIIRender) // Also it updates the ASCII graphics if drawASCIIRender is equal to true
                 {
                     Console.CursorVisible = false; // Hides cursor, I place it on every frame because refreshing the screen makes it visible again
