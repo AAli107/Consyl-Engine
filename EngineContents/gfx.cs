@@ -119,9 +119,9 @@ namespace Consyl_Engine.EngineContents
             {
                 for (int r = 0; r < radius; r++)
                 {
-                    double angle = i * System.Math.PI / 180;
-                    int x = (int)(r * System.Math.Cos(angle));
-                    int y = (int)(r * System.Math.Sin(angle));
+                    double angle = i * Math.PI / 180;
+                    int x = (int)(r * Math.Cos(angle));
+                    int y = (int)(r * Math.Sin(angle));
 
                     DrawPixel(x + centerX, y + centerY, pixelLook);
                 }
@@ -132,9 +132,9 @@ namespace Consyl_Engine.EngineContents
         {
             for (double i = 0.0; i < 360; i += 0.1)
             {
-                double angle = i * System.Math.PI / 180;
-                int x = (int)(radius * System.Math.Cos(angle));
-                int y = (int)(radius * System.Math.Sin(angle));
+                double angle = i * Math.PI / 180;
+                int x = (int)(radius * Math.Cos(angle));
+                int y = (int)(radius * Math.Sin(angle));
 
                 DrawPixel(x + centerX, y + centerY, pixelLook);
             }
