@@ -22,6 +22,11 @@ namespace Consyl_Engine
             
         }
 
+        public static void OnGraphicsUpdate() // Will be used to draw graphics related items per frame
+        {
+
+        }
+
         public static void OnGameEnd() // Gets Executed when Engine.gameRunning = false which is basically when the game ends
         {
             

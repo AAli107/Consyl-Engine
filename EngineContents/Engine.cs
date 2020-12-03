@@ -41,6 +41,7 @@ namespace Consyl_Engine
                 if (drawASCIIRender) // Also it updates the ASCII graphics if drawASCIIRender is equal to true
                 {
                     Console.CursorVisible = false; // Hides cursor, I place it on every frame because refreshing the screen makes it visible again
+                    GameCode.OnGraphicsUpdate();
                     gfx.DrawASCII();
                 }
 
