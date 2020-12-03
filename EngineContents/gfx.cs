@@ -117,7 +117,7 @@ namespace Consyl_Engine.EngineContents
         {
             for (double i = 0.0; i < 360; i += 0.1)
             {
-                for (int r = 0; r < radius; r++)
+                for (int r = 0; r < radius + 1; r++)
                 {
                     double angle = i * Math.PI / 180;
                     int x = (int)(r * Math.Cos(angle));
