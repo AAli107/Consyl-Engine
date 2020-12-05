@@ -56,5 +56,25 @@ namespace Consyl_Engine.EngineContents
                 return (point1 + point2) / 2;
             }
         } // class that stores functions that are related to Vector2
+
+        public class Numbers
+        {
+            public static float Distance1D(float num1, float num2) // calculates the distance between two single numbers
+            {
+                return MathF.Sqrt(MathF.Pow(num1 - num2, 2));
+            }
+
+            public static float AverageNum(float[] floatArray) // Will return the average of numbers inside an array
+            {
+                float value = 0.0f;
+                for (int i = 0; i < floatArray.Length; i++)
+                {
+                    value += floatArray[i];
+                }
+                value /= floatArray.Length;
+
+                return value / floatArray.Length;
+            }
+        } // class that stores functions that are related to numbers
     }
 }
