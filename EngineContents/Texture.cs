@@ -20,7 +20,7 @@ namespace Consyl_Engine.EngineContents
             imageResolution = new Vector2(img.Width, img.Height); // Saves the Resolution of the 
         }
 
-        public void DrawImage(int x, int y) // Will draw the loaded texture file 
+        public void DrawImage(int x, int y, bool blackTransparent = false) // Will draw the loaded texture file 
         {
             // Loops between pixels
             for (int i = 0; i < img.Width; i++)
@@ -28,7 +28,7 @@ namespace Consyl_Engine.EngineContents
                 for (int j = 0; j < img.Height; j++)
                 {
                     Color pixel = img.GetPixel(i, j); // saves the color value of the current pixel in a variable
-                    
+
                     float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
 
                     int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
@@ -42,8 +42,10 @@ namespace Consyl_Engine.EngineContents
                     {
                         shade = gfx.shadeCharArray.Length - 1;
                     }
-
-                    gfx.DrawPixel(i + x, j + y, gfx.shadeCharArray[shade]); // Draws the image
+                    if (!(blackTransparent && shade == 0))
+                    {
+                        gfx.DrawPixel(i + x, j + y, gfx.shadeCharArray[shade]); // Draws the image
+                    }
                 }
             }
         }
