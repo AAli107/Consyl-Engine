@@ -2,23 +2,22 @@
 // Currently supports the following file formats: BMP, GIF, EXIF, JPG, PNG and TIFF
 
 using System.Drawing;
+using System.Numerics;
 
 namespace Consyl_Engine.EngineContents
 {
     class Texture
     {
-        private string fileName; // Stores the Texture's file name
-        Bitmap img; // loads the image in a variable
+        private readonly string fileName; // Stores the Texture's file name
+        private readonly Bitmap img; // loads the image in a variable
+        public readonly Vector2 imageResolution;
 
-        public Texture(string _fileName) // constructor for inputting the Texture's file name
+        public Texture(string _fileName) // constructor for initializing the Texture class
         {
-            fileName = _fileName;
-            InitGraphics();
-        }
-        
-        private void InitGraphics() // Initializes the Bitmap class variable
-        {
-            img = new Bitmap(fileName);
+            fileName = _fileName; // Sets the file's name/path
+
+            img = new Bitmap(fileName); // Assigning the Bitmap class into a variable with the fileName
+            imageResolution = new Vector2(img.Width, img.Height); // Saves the Resolution of the 
         }
 
         public void DrawImage(int x, int y) // Will draw the loaded texture file 
