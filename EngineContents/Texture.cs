@@ -8,16 +8,21 @@ namespace Consyl_Engine.EngineContents
     class Texture
     {
         private string fileName; // Stores the Texture's file name
+        Bitmap img; // loads the image in a variable
 
         public Texture(string _fileName) // constructor for inputting the Texture's file name
         {
             fileName = _fileName;
-        }     
+            InitGraphics();
+        }
+        
+        private void InitGraphics() // Initializes the Bitmap class variable
+        {
+            img = new Bitmap(fileName);
+        }
 
         public void DrawImage(int x, int y) // Will draw the loaded texture file 
         {
-            Bitmap img = new Bitmap(fileName); // loads the image in a variable
-
             // Loops between pixels
             for (int i = 0; i < img.Width; i++)
             {
@@ -46,7 +51,6 @@ namespace Consyl_Engine.EngineContents
 
         public char[] GetAllShadeColor() // Gets all the Consyl-Shaded Color from the loaded Bitmap
         {
-            Bitmap img = new Bitmap(fileName);
             char[] Data = new char[img.Width * img.Height];
 
             for (int i = 0; i < img.Width; i++)
@@ -77,7 +81,6 @@ namespace Consyl_Engine.EngineContents
 
         public char GetShadeColorAtPixel(int x, int y) // Gets the Consyl-Shaded color from a chosen pixel based on x and y
         {
-            Bitmap img = new Bitmap(fileName);
             Color pixel = img.GetPixel(x, y); // saves the color value of the current pixel in a variable
 
             float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
@@ -99,7 +102,6 @@ namespace Consyl_Engine.EngineContents
 
         public Color[] GetAllColor() // Gets the color of all pixels from the loaded Bitmap
         {
-            Bitmap img = new Bitmap(fileName);
             Color[] Data = new Color[img.Width * img.Height];
 
             for (int i = 0; i < img.Width; i++)
@@ -114,7 +116,6 @@ namespace Consyl_Engine.EngineContents
 
         public Color GetColorAtPixel(int x, int y) // Gets the Color at a chosen pixel directly from the Bitmap
         {
-            Bitmap img = new Bitmap(fileName);
             return img.GetPixel(x, y);
         }
     }
