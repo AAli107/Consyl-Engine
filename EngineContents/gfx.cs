@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace Consyl_Engine.EngineContents
 {
@@ -148,11 +149,11 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawPolygon(int x1, int y1, int x2, int y2, int x3, int y3, char pixelLook) // Draws a polygon on screen
+        public static void DrawPolygon(Vector2 p1, Vector2 p2, Vector2 p3, char pixelLook) // Draws a polygon on screen
         {
-            DrawLine(x1, y1, x2, y2, pixelLook);
-            DrawLine(x2, y2, x3, y3, pixelLook);
-            DrawLine(x3, y3, x1, y1, pixelLook);
+            DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook);
+            DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook);
+            DrawLine((int)p3.X, (int)p3.Y, (int)p1.X, (int)p1.Y, pixelLook);
         }
     }
 }
