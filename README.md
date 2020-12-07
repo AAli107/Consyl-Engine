@@ -180,7 +180,7 @@ Then in OnGraphicsUpdate() Function you type this between the curly brackets:
 
 Note that `(int)` is a way to convert from float to integer. This piece of code will draw the image at whatever the playerX and playerY was at. You can set the values to whatever you like, which would change where the player is on the screen.
 
-<img align="left" src="images\picture_006.png" alt="picture_006" style="zoom:80%;" />
+<img align="left" src="images\picture_006.png" alt="picture_006"  />
 
 **Image F:** Shows the how code looks like. (`gfx.DrawPixel()` function is in OnGameUpdate() so that the image would fit)
 
