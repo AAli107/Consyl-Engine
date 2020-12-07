@@ -76,7 +76,7 @@ namespace Consyl_Engine.EngineContents
         }
         public static void DrawText(int x, int y, string text) // Draws text in a position on screen
         {
-	        for (int i = 0; i < text.Length; i++)
+            for (int i = 0; i < text.Length; i++)
             {
                 DrawPixel(x + i, y, text[i]);
             }
@@ -148,7 +148,7 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawPolygon(int x1, int y1, int x2, int y2, int x3, int y3, char pixelLook)
+        public static void DrawPolygon(int x1, int y1, int x2, int y2, int x3, int y3, char pixelLook) // Draws a polygon on screen
         {
             DrawLine(x1, y1, x2, y2, pixelLook);
             DrawLine(x2, y2, x3, y3, pixelLook);
