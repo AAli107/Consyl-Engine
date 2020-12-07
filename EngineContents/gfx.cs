@@ -149,11 +149,19 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawPolygon(Vector2 p1, Vector2 p2, Vector2 p3, char pixelLook) // Draws a polygon on screen
+        public static void DrawPolygon(Vector2 p1, Vector2 p2, Vector2 p3, char pixelLook) // Draws a polygon outline on screen
         {
             DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook);
             DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook);
             DrawLine((int)p3.X, (int)p3.Y, (int)p1.X, (int)p1.Y, pixelLook);
+        }
+
+        public static void DrawQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, char pixelLook) // Draws a quadrilateral outine on screen
+        {
+            DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook);
+            DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook);
+            DrawLine((int)p3.X, (int)p3.Y, (int)p4.X, (int)p4.Y, pixelLook);
+            DrawLine((int)p4.X, (int)p4.Y, (int)p1.X, (int)p1.Y, pixelLook);
         }
     }
 }
