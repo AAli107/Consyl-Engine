@@ -27,8 +27,6 @@ namespace Consyl_Engine
         {
             Console.Title = gameTitle; // Set the Game's title
 
-            Console.SetWindowSize((int)resolution.X * 2, (int)resolution.Y); // Scales the Window size based on the resolution
-
             // Sets the Colors of the background and refreshes the screen
             Console.BackgroundColor = BgColor;
             Console.ForegroundColor = FgColor;
