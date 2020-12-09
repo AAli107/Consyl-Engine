@@ -146,6 +146,8 @@ All the way at the top of the “GameCode.cs” script, you’ll see `using` cod
 
 **Image D:** Shows EZInput
 
+<br>
+
 
 
 #### How to Add Player Input?
@@ -190,7 +192,7 @@ Then in OnGraphicsUpdate() Function you type this between the curly brackets:
 
 Note that `(int)` is a way to convert from float to integer. This piece of code will draw the image at whatever the playerX and playerY was at. You can set the values to whatever you like, which would change where the player is on the screen.
 
-<img align="left" src="images\picture_006.png" alt="picture_006" style="zoom:150%;" />
+<img src="images\picture_006.png" alt="picture_006" style="zoom:150%;" /> <br>
 
 **Image F:** Shows the how code looks like. (`gfx.DrawPixel()` function is in OnGameUpdate() so that the image would fit)
 
@@ -208,7 +210,7 @@ Drawing Lines can be done by using gfx.DrawLine() function. You add the first po
 
 This will draw a line from point (10, 24) and point (80, 30) as exactly shown in Image G.
 
-<img align="left" src="images\picture_007.png" style="zoom: 50%;" />
+<img  src="images\picture_007.png" style="zoom: 100%;" />
 
 **Image G:** Shows a single line of ASCII Pixels being drawn on screen.
 
