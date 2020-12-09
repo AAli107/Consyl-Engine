@@ -132,7 +132,7 @@ To Draw an ASCII Pixel, you’ll need to write down in between the curly bracket
 
 **Image C:** This Image shows what happens if you code in `gfx.DrawPixel(1, 5, ‘O’);`
 
-
+<br>
 
 
 
