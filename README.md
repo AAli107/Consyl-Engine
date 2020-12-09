@@ -20,7 +20,7 @@ This is an ASCII Console Game Engine! Go to [Releases](https://github.com/AAli10
 
 3. GPU: Not needed (pc at least needs graphics display on screen)
 
-4. Storage: Consyl takes up around 7 MB of storage, so you don’t need to worry about it
+4. Storage: Consyl takes up around 5 MB of storage, so you don’t need to worry about it
 
    
 
@@ -54,7 +54,7 @@ This is an ASCII Console Game Engine! Go to [Releases](https://github.com/AAli10
 
 To code your first game, you need to open “Consyl Engine.sln” and from the Solution Explorer, choose “GameCode.cs” which is the part where you put all of your code in for your game. (“Image A” shows how the code is supposed to look like)
 
-<img align="left" src="images/picture_001.png">
+<img src="images/picture_001.png">
 
 **Image A:** This image shows the place where you code your game.
 
@@ -128,7 +128,7 @@ When you press “F5” key you’ll start to load the game, and it’ll open a 
 
 To Draw an ASCII Pixel, you’ll need to write down in between the curly brackets below “OnGraphicsUpdate” function “gfx.DrawPixel();”. Right now, it will not draw anything, and it will display an error, because you need to tell it where on the screen you want the pixel to appear and how it looks like. For example, you want your pixel to be placed at a coordinate of x = 1 and y = 5 and the ASCII pixel you want to draw looks like this “O”. So, you want instead to type `gfx.DrawPixel(1, 5, ‘O’);`, and when you run your code, you’ll see the output as shown in Image C. You can add more pixels by creating a new line with the same code with different coordinates and ASCII symbol. (Make sure when running your game, you maximize your window to show your result properly)
 
-<img align="left" src="images/picture_003.png" style="zoom:300%;" >
+<img src="images/picture_003.png" style="zoom:300%;" >
 
 **Image C:** This Image shows what happens if you code in `gfx.DrawPixel(1, 5, ‘O’);`
 
