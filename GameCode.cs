@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using EZInput;
+// Added extra "usings" so that developers will not need to add them when programming
 
 namespace Consyl_Engine
 {
