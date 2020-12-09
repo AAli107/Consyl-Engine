@@ -46,6 +46,8 @@ This is an ASCII Console Game Engine! Go to [Releases](https://github.com/AAli10
 
 
 
+
+
 ## Game Code Basics
 
 ### Navigating to the Main Scripting File
@@ -82,6 +84,8 @@ Is a place where the code you inserted there gets executed when the game closes 
 
 
 
+
+
 ### **What are Variables?**
 
 Variables are pieces of information gets created when the program runs, it is stored inside your computer until you decide to close your program/game. Variables can be manipulated and read by the code to do many fancy instructions.
@@ -114,6 +118,8 @@ It is important to make your variable names easy to read and understand, so you 
 
 
 
+
+
 ### **An ASCII Pixel**
 
 When you press “F5” key you’ll start to load the game, and it’ll open a window on screen with nothing but black screen in it. We’ll start from the very basic level of drawing an image on screen by drawing a single “ASCII” pixel. “ASCII” is a format of displaying letters/symbols on a computer, but in Consyl Engine we don’t have true pixels, but we do have something named an “ASCII Pixel” which is a pixel made of an ASCII Symbol, which is not a real pixel but will resemble one. 
@@ -122,9 +128,11 @@ When you press “F5” key you’ll start to load the game, and it’ll open a 
 
 To Draw an ASCII Pixel, you’ll need to write down in between the curly brackets below “OnGraphicsUpdate” function “gfx.DrawPixel();”. Right now, it will not draw anything, and it will display an error, because you need to tell it where on the screen you want the pixel to appear and how it looks like. For example, you want your pixel to be placed at a coordinate of x = 1 and y = 5 and the ASCII pixel you want to draw looks like this “O”. So, you want instead to type `gfx.DrawPixel(1, 5, ‘O’);`, and when you run your code, you’ll see the output as shown in Image C. You can add more pixels by creating a new line with the same code with different coordinates and ASCII symbol. (Make sure when running your game, you maximize your window to show your result properly)
 
-<img align="left" src="images/picture_003.png" style="zoom:150%;" >
+<img align="left" src="images/picture_003.png" style="zoom:200%;" >
 
 **Image C:** This Image shows what happens if you code in `gfx.DrawPixel(1, 5, ‘O’);`
+
+
 
 
 
@@ -164,6 +172,8 @@ This will check if you have pressed the A key. if you did the code will execute.
 
 
 
+
+
 #### **Creating a Controllable Player**
 
 Before, we drew a pixel on the screen and made it only show when you press “A” key. Now remove all of that and let’s make a way to make a controllable player as a pixel.
@@ -180,9 +190,11 @@ Then in OnGraphicsUpdate() Function you type this between the curly brackets:
 
 Note that `(int)` is a way to convert from float to integer. This piece of code will draw the image at whatever the playerX and playerY was at. You can set the values to whatever you like, which would change where the player is on the screen.
 
-<img align="left" src="images\picture_006.png" alt="picture_006"  />
+<img align="left" src="images\picture_006.png" alt="picture_006" style="zoom:150%;" />
 
 **Image F:** Shows the how code looks like. (`gfx.DrawPixel()` function is in OnGameUpdate() so that the image would fit)
+
+
 
 
 
@@ -209,6 +221,8 @@ Every other shape requires coordinates and only this one which requires more tha
 #### Drawing a Circle
 
 There are two functions to draw a circle, one which draw a circle outline and the other draw a filled circle. Two of those require the same values and numbers, which are the x and y coordinates, the radius and how the ASCII pixels should look like. It should be easy to understand this once you messed around with the functions.
+
+
 
 
 
@@ -248,6 +262,8 @@ Keep in note that textures currently don’t fully support transparency, but it 
 
 
 
+
+
 ## Audio.cs
 
 Games would seem silent and filled with void without Audio. So, sound is essential to give players feedback. You’re not going to use Console.Beep() which comes with the .NET Core 3.1. There is another special variable like the texture variable which would load the audio file and plays it whenever the programmer likes.
@@ -273,6 +289,8 @@ Then, create an if statement that contains the play where you press any letter y
 
 
 Note that the Audio system only supports **MP3** and **WAV** file types only. The Audio System also supports Stopping, Pausing and unpausing of the audio. All are found in the Audio Class Variable that you created as functions.
+
+
 
 
 
@@ -319,6 +337,8 @@ These variables can be used to make your games better and most can be controlled
 `Engine.gameRunning = false;` This will cause the game to quit.
 
 `Engine.gamePaused = true;` This will cause the game to pause by blocking the execution of OnGameUpdate() function.
+
+
 
 
 
