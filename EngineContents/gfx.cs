@@ -140,11 +140,11 @@ namespace Consyl_Engine.EngineContents
 
         public static void DrawTri(int x, int y, int size, char pixelLook) // Draws a right angle triangle
         {
-            for (int i = x; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < i; j++)
                 {
-                    DrawPixel(x + j, y + i, pixelLook);
+                    DrawPixel(x + j, y + i - 1, pixelLook);
                 }
             }
         }
