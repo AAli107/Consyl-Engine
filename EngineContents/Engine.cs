@@ -11,7 +11,7 @@ namespace Consyl_Engine
         // Essential Engine Variables
         public static string gameTitle = "Consyl Game"; // The title of the game
         public static bool gameRunning = true; // Determines whether the game is running or not (Game will close when false)
-        public static bool gamePaused = false; // If it's true the GameCode.OnGameUpdate() function will not execute until if it's false
+        public static bool gamePaused = false; // The GameCode.OnGameUpdate() function will not execute until if it's false
 
         // ASCII Graphics-related variables
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
