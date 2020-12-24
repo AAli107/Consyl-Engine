@@ -1,6 +1,7 @@
 ﻿
 // If you want to play the audio file, you need to place it in the same directory as the game's executable file
 // Supports only mp3 and wav files!
+// In order to play multiple Audios at once, the audio class variable must not be static
 
 using System;
 
@@ -9,8 +10,8 @@ namespace Consyl_Engine.EngineContents
     class Audio
     {
         private string fileName; // Stores the Sound File's name
-        static NAudio.Wave.BlockAlignReductionStream stream = null; // Sound Data
-        static NAudio.Wave.DirectSoundOut output = null; // The Output Sound
+        NAudio.Wave.BlockAlignReductionStream stream = null; // Sound Data
+        NAudio.Wave.DirectSoundOut output = null; // The Output Sound
 
         public Audio(string _fileName) // constructor for inputting the sound file's name
         {
