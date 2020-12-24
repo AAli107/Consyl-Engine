@@ -16,7 +16,7 @@ namespace Consyl_Engine
         // ASCII Graphics-related variables
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
         public static Vector2 resolution = new Vector2(115, 60); // Drawing Resolution in ASCII
-        public static float framerate = 10000.0f; // ASCII Rendering max framerate
+        public static float framerate = 60.0f; // ASCII Rendering max framerate
 
         // Variables that controls the Initial Colors of the Background and text
         static readonly ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
