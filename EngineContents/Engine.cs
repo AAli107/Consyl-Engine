@@ -55,13 +55,9 @@ namespace Consyl_Engine
             }
 
             // Automatically turns off the rest of the program and executes GameCode.OnGameEnd() function if gameRunning = false
-            if (!gameRunning)
-            {
-                GameCode.OnGameEnd();
-
-                Console.Clear();
-                drawASCIIRender = false;
-            }
+            GameCode.OnGameEnd();
+            Console.Clear();
+            drawASCIIRender = false;
         }
         #endregion
     }
