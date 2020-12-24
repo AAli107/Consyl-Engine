@@ -7,22 +7,23 @@ namespace Consyl_Engine
 {
     class Engine
     {
-        //--------------------------------------------------------------------------------------------------------------------------//
+        #region Variables
         // Essential Engine Variables
         public static string gameTitle = "Consyl Game"; // The title of the game
         public static bool gameRunning = true; // Determines whether the game is running or not (Game will close when false)
         public static bool gamePaused = false; // If it's true the GameCode.OnGameUpdate() function will not execute until if it's false
-        
+
         // ASCII Graphics-related variables
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
         public static Vector2 resolution = new Vector2(115, 60); // Drawing Resolution in ASCII
         public static float framerate = 10000.0f; // ASCII Rendering max framerate
-        
+
         // Variables that controls the Initial Colors of the Background and text
         static readonly ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
         static readonly ConsoleColor FgColor = ConsoleColor.White; // Initial Text Color
-        //--------------------------------------------------------------------------------------------------------------------------//
+        #endregion
 
+        #region EngineCode
         static void Main(string[] args)
         {
             Console.Title = gameTitle; // Set the Game's title
@@ -31,9 +32,9 @@ namespace Consyl_Engine
             Console.BackgroundColor = BgColor;
             Console.ForegroundColor = FgColor;
             Console.Clear();
-            
+
             GameCode.OnGameStart(); // Calls OnGameStart() from GameCode when the game runs
-            
+
             // Calls OnGameUpdate() from GameCode constantly as long as the gameRunning is true
             while (gameRunning)
             {
@@ -54,7 +55,7 @@ namespace Consyl_Engine
             }
 
             // Automatically turns off the rest of the program and executes GameCode.OnGameEnd() function if gameRunning = false
-            if(!gameRunning)
+            if (!gameRunning)
             {
                 GameCode.OnGameEnd();
 
@@ -62,5 +63,6 @@ namespace Consyl_Engine
                 drawASCIIRender = false;
             }
         }
+        #endregion
     }
 }
