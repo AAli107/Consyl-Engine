@@ -1,5 +1,6 @@
 ﻿using Consyl_Engine.EngineContents;
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 using System.Threading;
 
@@ -21,6 +22,9 @@ namespace Consyl_Engine
         // Variables that controls the Initial Colors of the Background and text
         static readonly ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
         static readonly ConsoleColor FgColor = ConsoleColor.White; // Initial Text Color
+
+        // Variables that you shouldn't modify or change
+        public static List<GameObject> gameObjects = new List<GameObject>();
         #endregion
 
         #region EngineCode
@@ -41,6 +45,7 @@ namespace Consyl_Engine
                 if (!gamePaused)
                 {
                     GameCode.OnGameUpdate(); // Updates the game
+                    GameObjectCollisionUpdate();
                 }
                 if (drawASCIIRender) // Also it updates the ASCII graphics if drawASCIIRender is equal to true
                 {
@@ -60,5 +65,30 @@ namespace Consyl_Engine
             drawASCIIRender = false;
         }
         #endregion
+
+        static void GameObjectCollisionUpdate()
+        {
+            if (gameObjects.Count > 1)
+            {
+                foreach (GameObject obj in gameObjects)
+                {
+                    foreach (GameObject obj2 in gameObjects)
+                    {
+                        if (obj != obj2)
+                        {
+                            if (obj.collisionEnabled && obj2.collisionEnabled)
+                            {
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        static public void CreateGameObject(int _x, int _y, bool _CollisionEnabled, float _collisionWidth, float _collisionHeight, bool _detectOverlap, Texture _image, float _colOffsetX = 0, float _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        {
+            gameObjects.Add(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
+        }
     }
 }
