@@ -190,6 +190,34 @@ namespace Consyl_Engine.EngineContents
                     DrawRectangle(x, y - (int)(height * percent) + height, width, (int)(height * percent), fillLook);
                 }
             }
+
+            public static void DrawCircularProgressBar(int centerX, int centerY, float radius, char fillLook, char emptyLook, float percent) // Draws a Filled Circle
+            {
+                gfx.DrawFilledCircle(centerX, centerY, radius, emptyLook); // Draws the Progress bar background
+
+                // Limits the percentage fill between 0 to 1 so that the filled part of the progress bar doesn't get bigger than the background
+                if (percent > 1.0f)
+                {
+                    percent = 1.0f;
+                }
+                if (percent < 0.0f)
+                {
+                    percent = 0.0f;
+                }
+
+                // Draws the fill background
+                for (double i = 0.0; i > (int)(-360 * percent); i -= 0.1)
+                {
+                    for (int r = 0; r < radius + 1; r++)
+                    {
+                        double angle = (i * Math.PI / 180);
+                        int x = (int)(r * Math.Cos(angle - 1.5708));
+                        int y = (int)(r * Math.Sin(angle - 1.5708));
+
+                        DrawPixel(x + centerX, y + centerY, fillLook);
+                    }
+                }
+            }
         }
     }
 }
