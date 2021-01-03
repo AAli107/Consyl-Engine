@@ -166,6 +166,11 @@ namespace Consyl_Engine.EngineContents
                     DrawPixel(x + i, y, text[i]);
                 }
             }
+
+            public static void DrawProgressBar(int x, int y, int width, int height, char fillLook, char emptyLook, float percent)
+            {
+                
+            }
         }
     }
 }
