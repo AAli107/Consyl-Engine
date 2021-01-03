@@ -167,21 +167,21 @@ namespace Consyl_Engine.EngineContents
                 }
             }
 
-            public static void DrawProgressBar(int x, int y, int width, int height, char fillLook, char emptyLook, float percent, bool horizontal = true)
+            public static void DrawProgressBar(int x, int y, int width, int height, char fillLook, char emptyLook, float percent, bool horizontal = true) // Draws a progress bar on the screen
             {
-                DrawRectangle(x, y, width, height, emptyLook);
+                DrawRectangle(x, y, width, height, emptyLook); // Draws the Progress bar background
 
+                // Limits the percentage fill between 0 to 1 so that the filled part of the progress bar doesn't get bigger than the background
                 if (percent > 1.0f)
                 {
                     percent = 1.0f;
                 }
-                
                 if (percent < 0.0f)
                 {
                     percent = 0.0f;
                 }
 
-                if (horizontal)
+                if (horizontal) // Draws the fill background based on if the user wants vertical or horizontal bars
                 {
                     DrawRectangle(x, y, (int)(width * percent), height, fillLook);
                 }
