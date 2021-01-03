@@ -76,6 +76,20 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
+        public static void DrawRectangleOutline(int x, int y, int width, int height, char pixelLook) // Draws an ASCII rectangle outline on screen
+        {
+            for (int y0 = y; y0 < height + y; y0++)
+            {
+                for (int x0 = x; x0 < width + x; x0++)
+                {
+                    if (y0 == y || y0 == height + (y - 1) || x0 == x || x0 == width + (x - 1))
+                    {
+                        DrawPixel(x0, y0, pixelLook);
+                    }
+                }
+            }
+        }
+
         public static void DrawLine(int x0, int y0, int x1, int y1, char pixelLook) // Draw lines between two points
         {
             int dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
