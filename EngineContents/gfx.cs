@@ -75,13 +75,6 @@ namespace Consyl_Engine.EngineContents
                 }
             }
         }
-        public static void DrawText(int x, int y, string text) // Draws text in a position on screen
-        {
-            for (int i = 0; i < text.Length; i++)
-            {
-                DrawPixel(x + i, y, text[i]);
-            }
-        }
 
         public static void DrawLine(int x0, int y0, int x1, int y1, char pixelLook) // Draw lines between two points
         {
@@ -162,6 +155,17 @@ namespace Consyl_Engine.EngineContents
             DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook);
             DrawLine((int)p3.X, (int)p3.Y, (int)p4.X, (int)p4.Y, pixelLook);
             DrawLine((int)p4.X, (int)p4.Y, (int)p1.X, (int)p1.Y, pixelLook);
+        }
+
+        class GameUI
+        {
+            public static void DrawText(int x, int y, string text) // Draws text in a position on screen
+            {
+                for (int i = 0; i < text.Length; i++)
+                {
+                    DrawPixel(x + i, y, text[i]);
+                }
+            }
         }
     }
 }
