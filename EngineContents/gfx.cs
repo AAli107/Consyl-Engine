@@ -157,7 +157,7 @@ namespace Consyl_Engine.EngineContents
             DrawLine((int)p4.X, (int)p4.Y, (int)p1.X, (int)p1.Y, pixelLook);
         }
 
-        class GameUI
+        public class GameUI
         {
             public static void DrawText(int x, int y, string text) // Draws text in a position on screen
             {
@@ -167,9 +167,28 @@ namespace Consyl_Engine.EngineContents
                 }
             }
 
-            public static void DrawProgressBar(int x, int y, int width, int height, char fillLook, char emptyLook, float percent)
+            public static void DrawProgressBar(int x, int y, int width, int height, char fillLook, char emptyLook, float percent, bool horizontal = true)
             {
+                DrawRectangle(x, y, width, height, emptyLook);
+
+                if (percent > 1.0f)
+                {
+                    percent = 1.0f;
+                }
                 
+                if (percent < 0.0f)
+                {
+                    percent = 0.0f;
+                }
+
+                if (horizontal)
+                {
+                    DrawRectangle(x, y, (int)(width * percent), height, fillLook);
+                }
+                else
+                {
+                    DrawRectangle(x, y - (int)(height * percent) + height, width, (int)(height * percent), fillLook);
+                }
             }
         }
     }
