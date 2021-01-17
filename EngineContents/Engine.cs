@@ -78,7 +78,58 @@ namespace Consyl_Engine
                         {
                             if (obj.collisionEnabled && obj2.collisionEnabled)
                             {
-                                
+                                int objTopLoc = (int)(obj.location.Y + obj.collisionOffset.Y);
+                                int objLeftLoc = (int)(obj.location.X + obj.collisionOffset.X);
+                                int objBottomLoc = (int)(obj.location.Y + obj.collisionOffset.Y + obj.height);
+                                int objRightLoc = (int)(obj.location.X + obj.collisionOffset.X + obj.width);
+
+                                int obj2TopLoc = (int)(obj2.location.Y + obj2.collisionOffset.Y);
+                                int obj2LeftLoc = (int)(obj2.location.X + obj2.collisionOffset.X);
+                                int obj2BottomLoc = (int)(obj2.location.Y + obj2.collisionOffset.Y + obj2.height);
+                                int obj2RightLoc = (int)(obj2.location.X + obj2.collisionOffset.X + obj2.width);
+
+                                Vector2 objCenter = Utilities.Vec2D.Midpoint2D(obj.location + obj.collisionOffset, obj.location + obj.collisionOffset + new Vector2(obj.width, obj.height));
+
+                                Vector2 obj2Center = Utilities.Vec2D.Midpoint2D(obj2.location + obj2.collisionOffset, obj2.location + obj2.collisionOffset + new Vector2(obj2.width, obj2.height));
+
+                                Vector2 normal = Vector2.Normalize(obj2Center - objCenter);
+
+                                if (objRightLoc > obj2LeftLoc && objLeftLoc < obj2RightLoc && objTopLoc < obj2BottomLoc && obj2TopLoc < objBottomLoc)
+                                {
+                                    if (obj.isPushable)
+                                    {
+                                        obj.location -= normal;
+                                        obj.speed = new Vector2(0, 0);
+                                    }
+                                    else
+                                    {
+                                        if (obj.detectOverlap)
+                                        {
+                                            obj.isOverlapping = true;
+                                        }
+                                        else
+                                        {
+                                            obj.isOverlapping = false;
+                                        }
+                                    }
+
+                                    if (obj2.isPushable)
+                                    {
+                                        obj2.location += normal;
+                                        obj2.speed = new Vector2(0, 0);
+                                    }
+                                    else
+                                    {
+                                        if (obj2.detectOverlap)
+                                        {
+                                            obj2.isOverlapping = true;
+                                        }
+                                        else
+                                        {
+                                            obj2.isOverlapping = false;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -86,9 +137,9 @@ namespace Consyl_Engine
             }
         }
 
-        static public void CreateGameObject(int _x, int _y, bool _CollisionEnabled, float _collisionWidth, float _collisionHeight, bool _detectOverlap, Texture _image, float _colOffsetX = 0, float _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        static public void CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
-            gameObjects.Add(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
+            gameObjects.Add(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
         }
     }
 }

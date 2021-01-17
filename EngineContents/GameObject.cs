@@ -6,8 +6,9 @@ namespace Consyl_Engine.EngineContents
 {
     class GameObject
     {
-        public float width;
-        public float height;
+        public int width;
+        public int height;
+
         public float friction = 0.1f;
         public float gravityStrength = 1.0f;
 
@@ -16,7 +17,8 @@ namespace Consyl_Engine.EngineContents
         public bool collideWithBounds;
         public bool drawDebugCollision;
         public bool hasGravity = false;
-        bool isOverlapping = false;
+        public bool isPushable = false;
+        public bool isOverlapping = false;
 
         public Texture objectSprite;
 
@@ -24,7 +26,7 @@ namespace Consyl_Engine.EngineContents
         public Vector2 location;
         public Vector2 speed = new Vector2(0.0f, 0.0f);
 
-        public GameObject(int _x, int _y, bool _CollisionEnabled, float _collisionWidth, float _collisionHeight, bool _detectOverlap, Texture _image, float _colOffsetX = 0, float _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
             location = new Vector2(_x, _y);
             collisionEnabled = _CollisionEnabled;
@@ -32,6 +34,7 @@ namespace Consyl_Engine.EngineContents
             height = _collisionHeight;
             detectOverlap = _detectOverlap;
             objectSprite = _image;
+            isPushable = _isPushable;
             collisionOffset = new Vector2(_colOffsetX, _colOffsetY);
             collideWithBounds = _collideWithBounds;
             drawDebugCollision = _drawDebugCollision;
@@ -94,7 +97,7 @@ namespace Consyl_Engine.EngineContents
                 speed.Y += gravityStrength * 0.98f;
             }
 
-            if (collideWithBounds) // Checks if the object is colliding with bounds
+            if (collideWithBounds) // Checks if the object is colliding with screen bounds
             {
                 if (location.X + collisionOffset.X + width >= gfx.drawWidth)
                 {
