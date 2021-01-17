@@ -379,3 +379,63 @@ Numbers is a class under the Utilities class which contains some useful function
 Right now, there are only two functions, one that calculates the average number from a float array you input in.
 
 The other function calculates the distance between two numbers in 1D space. You can use it for calculating how far an object is from another object or ground.
+
+
+
+
+
+
+
+## GameObject.cs
+
+GameObject is an advanced tool that will help you make game quicker and easier. It will allow you to create objects like walls, players, enemies, props and more with ease. In order to make an Object, you need to type in OnGameStart() the following code:
+
+```csharp
+public static void OnGameStart() // Gets Executed when game starts running/when the game begins
+{
+    Engine.CreateGameObject(); // It will ask you to input parameters, add whatever values you see fit.
+}
+```
+
+
+
+You need to add parameters first when you create a GameObject, here is the list of parameters you need to include when creating a GameObject:
+
+1. **x** - It's the x coordinate of the object.
+2. **y** - it's the y coordinate of the object.
+3. **collisionEnabled** - Set to true, if you want your object to collide with other objects.
+4. **collisionWidth** - It's the Width of the collision box.
+5. **collisionHeight** - It's the height of the collision box.
+6. **detectOverlap** - Set to true, if you want your object to detect overlapping.
+7. **image** - The texture/sprite of the GameObject.
+8. **isPushable** - If true and collision is enabled, the object will be pushed back if it collides. (can be used for creating players)
+9. **colOffsetX [OPTIONAL]** - It offsets the collision box in the x-axis relative to the location of the object.
+10. **colOffsetY [OPTIONAL]** - It offsets the collision box in the y-axis relative to the location of the object.
+11. **collideWithBounds [OPTIONAL]** - If true, the object cannot leave the screen bounds.
+12. **drawDebugCollision [OPTIONAL]** - If true, it will show the outline of the collision box. (useful for debugging your game)
+
+
+
+There are more variables you can change, like enabling gravity by doing this: `Engine.gameObjects[0].hasGravity = true`
+
+Once you create the object, it will not show anything on screen, you need to do `Engine.gameObjects[0].Update()` under OnGameUpdate()  so that it functions properly and `Engine.gameObjects[0].DrawUpdate()` under OnGraphicsUpdate() to draw on screen.
+
+Note that the index 0 in the examples is different based on which GameObject you want to change. Meaning that if you want to do something like changing friction strength with the second GameObject you created, you do: `Engine.gameObjects[1].friction = 0.5f;`
+
+
+
+Here are the list of variables that is not placed when creating your GameObject:
+
+1. **friction** - It will slow down the Object from it's velocity. The higher the number, the faster the GameObject would decelerate.
+2. **gravityStrength** - It will determine how strong is the gravity for the GameObject.
+3. **speed** - This is the velocity of the GameObject which is stored as a Vector2 variable.
+4. **isOverlapping** - A variable you shouldn't change or set it to anything, because that will become true if the GameObject overlaps with other GameObject's collision box. It will only work if detectOverlap variable is true.
+
+
+
+There are some methods inside GameObjects you use to control them which are listed below:
+
+1. **AddVelocity(Vector2 addedVelocity)** - Will add more speed to the GameObject's velocity.
+2. **AddLocation(Vector2 addedLocation)** - Will add values to the coordinates of the GameObject.
+3. **Teleport(Vector2 newLoc, bool resetSpeed)** - Will move the GameObject to a desired location, while asking you if you want to reset the velocity or not.
+4. **IsObjectOverlapping()** - It will return the `isOverlapping` variable.
