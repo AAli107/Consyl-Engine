@@ -45,7 +45,7 @@ namespace Consyl_Engine
                 if (!gamePaused)
                 {
                     GameCode.OnGameUpdate(); // Updates the game
-                    GameObjectCollisionUpdate();
+                    GameObjectCollisionUpdate(); // Does collision updates
                 }
                 if (drawASCIIRender) // Also it updates the ASCII graphics if drawASCIIRender is equal to true
                 {
@@ -66,69 +66,75 @@ namespace Consyl_Engine
         }
         #endregion
 
+        // This method is called right after the OnGameUpdate code is executed
         static void GameObjectCollisionUpdate()
         {
-            if (gameObjects.Count > 1)
+            if (gameObjects.Count > 1) // Will test for collision  only if the amount of GameObjects are 2 or greater
             {
                 foreach (GameObject obj in gameObjects)
                 {
                     foreach (GameObject obj2 in gameObjects)
                     {
-                        if (obj != obj2)
+                        if (obj != obj2) // Checks if the GameObject is not itself, so that it won't test collision with itself
                         {
-                            if (obj.collisionEnabled && obj2.collisionEnabled)
+                            if (obj.collisionEnabled && obj2.collisionEnabled) // Checks if the collision is enabled in both GameObjects
                             {
+                                // Stores the collision box sides of obj in variables
                                 int objTopLoc = (int)(obj.location.Y + obj.collisionOffset.Y);
                                 int objLeftLoc = (int)(obj.location.X + obj.collisionOffset.X);
                                 int objBottomLoc = (int)(obj.location.Y + obj.collisionOffset.Y + obj.height);
                                 int objRightLoc = (int)(obj.location.X + obj.collisionOffset.X + obj.width);
 
+                                // Stores the collision box sides of obj2 in variables
                                 int obj2TopLoc = (int)(obj2.location.Y + obj2.collisionOffset.Y);
                                 int obj2LeftLoc = (int)(obj2.location.X + obj2.collisionOffset.X);
                                 int obj2BottomLoc = (int)(obj2.location.Y + obj2.collisionOffset.Y + obj2.height);
                                 int obj2RightLoc = (int)(obj2.location.X + obj2.collisionOffset.X + obj2.width);
 
+                                // Finds out the center point of obj's hitbox
                                 Vector2 objCenter = Utilities.Vec2D.Midpoint2D(obj.location + obj.collisionOffset, obj.location + obj.collisionOffset + new Vector2(obj.width, obj.height));
 
+                                // Finds out the center point of obj2's hitbox
                                 Vector2 obj2Center = Utilities.Vec2D.Midpoint2D(obj2.location + obj2.collisionOffset, obj2.location + obj2.collisionOffset + new Vector2(obj2.width, obj2.height));
 
+                                // Calculates the normal between the two GameObjects
                                 Vector2 normal = Vector2.Normalize(obj2Center - objCenter);
 
+                                // Collision test
                                 if (objRightLoc > obj2LeftLoc && objLeftLoc < obj2RightLoc && objTopLoc < obj2BottomLoc && obj2TopLoc < objBottomLoc)
                                 {
-                                    if (obj.isPushable)
+                                    if (obj.isPushable) // Pushes GameObject if isPushable is true
                                     {
                                         obj.location -= normal;
                                         obj.speed = new Vector2(0, 0);
                                     }
                                     else
                                     {
+                                        // Will detect overlap if detectOverlap is true
                                         if (obj.detectOverlap)
                                         {
                                             obj.isOverlapping = true;
                                         }
-                                        else
-                                        {
-                                            obj.isOverlapping = false;
-                                        }
                                     }
 
-                                    if (obj2.isPushable)
+                                    if (obj2.isPushable) // Pushes GameObject if isPushable is true
                                     {
                                         obj2.location += normal;
                                         obj2.speed = new Vector2(0, 0);
                                     }
                                     else
                                     {
+                                        // Will detect overlap if detectOverlap is true
                                         if (obj2.detectOverlap)
                                         {
                                             obj2.isOverlapping = true;
                                         }
-                                        else
-                                        {
-                                            obj2.isOverlapping = false;
-                                        }
                                     }
+                                }
+                                else // If not colliding, the GameObjects' isOverlapping variable will be false
+                                {
+                                    obj.isOverlapping = false;
+                                    obj2.isOverlapping = false;
                                 }
                             }
                         }
@@ -137,6 +143,7 @@ namespace Consyl_Engine
             }
         }
 
+        // A method to create a GameObject
         static public void CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
             gameObjects.Add(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
