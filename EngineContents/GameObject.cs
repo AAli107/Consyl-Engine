@@ -6,26 +6,28 @@ namespace Consyl_Engine.EngineContents
 {
     class GameObject
     {
+        // Collision Width and Height
         public int width;
         public int height;
 
-        public float friction = 0.1f;
-        public float gravityStrength = 1.0f;
+        public float friction = 0.1f; // Movement Friction for velocity
+        public float gravityStrength = 1.0f; // Gravity strength
 
-        public bool collisionEnabled;
-        public bool detectOverlap;
-        public bool collideWithBounds;
-        public bool drawDebugCollision;
-        public bool hasGravity = false;
-        public bool isPushable = false;
-        public bool isOverlapping = false;
+        public bool collisionEnabled; // If true, it's going to collide with other GameObjects
+        public bool detectOverlap; // If true, it's going to check if the object is overlapping an object or not
+        public bool collideWithBounds; // If true, it's not going to allow the GameObject to leave the screen bounds
+        public bool drawDebugCollision; // If true, it will draw the hit-box of the GameObject, it's useful for debugging
+        public bool hasGravity = false; // If true, gravity will be enabled for the GameObject
+        public bool isPushable = false; // If true, collisions with other GameObjects will cause this object to be pushed or moved
+        public bool isOverlapping = false; // a boolean that will tell if a GameObject is overlapping with this one. Will work only if detectOverlap is true
 
-        public Texture objectSprite;
+        public Texture objectSprite; // Object texture
 
-        public Vector2 collisionOffset;
-        public Vector2 location;
-        public Vector2 speed = new Vector2(0.0f, 0.0f);
+        public Vector2 collisionOffset; // The offsets the collision box relative to the location
+        public Vector2 location; // The location of the GameObject
+        public Vector2 speed = new Vector2(0.0f, 0.0f); // The Velocity of the GameObject
 
+        // constructor, which would initialize the GameObject
         public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
             location = new Vector2(_x, _y);
@@ -40,7 +42,7 @@ namespace Consyl_Engine.EngineContents
             drawDebugCollision = _drawDebugCollision;
         }
 
-        public void Update()
+        public void Update() // Executed every frame to update it
         {
             location += speed; // Moves Object based on speed
 
@@ -135,27 +137,28 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public void DrawUpdate(bool areBlackPixelsTransparent = true)
+        public void DrawUpdate(bool areBlackPixelsTransparent = true) // Updates the graphics
         {
-            objectSprite.DrawImage((int)location.X, (int)location.Y, areBlackPixelsTransparent);
+            objectSprite.DrawImage((int)location.X, (int)location.Y, areBlackPixelsTransparent); // Draws the texture sprite
 
+            // This will draw a rectangle that will show the collision box only if drawDebugCollision is true
             if (drawDebugCollision)
             {
                 gfx.DrawRectangleOutline((int)(location.X + collisionOffset.X), (int)(location.Y + collisionOffset.Y), (int)width, (int)height, '.');
             }
         }
 
-        public void AddVelocity(Vector2 addedVelocity)
+        public void AddVelocity(Vector2 addedVelocity) // A method that will allow adding velocity into the speed
         {
             speed += addedVelocity;
         }
 
-        public void AddLocation(Vector2 addedLoc)
+        public void AddLocation(Vector2 addedLoc) // A method that will allow adding the coordinates into the location which will make it move
         {
             location += addedLoc;
         }
 
-        public void Teleport(Vector2 newLoc, bool resetSpeed)
+        public void Teleport(Vector2 newLoc, bool resetSpeed) // A method for teleporting the GameObject
         {
             location = newLoc;
 
@@ -165,7 +168,7 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public bool IsObjectOverlapping()
+        public bool IsObjectOverlapping() // A method that will return true if isOverlapping is true and vice versa
         {
             return isOverlapping;
         }
