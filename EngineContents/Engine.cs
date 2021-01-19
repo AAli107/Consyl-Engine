@@ -142,6 +142,42 @@ namespace Consyl_Engine
                             }
                         }
                     }
+                    if (obj.collideWithBounds) // Checks if the object is colliding with screen bounds
+                    {
+                        if (obj.location.X + obj.collisionOffset.X + obj.width >= gfx.drawWidth)
+                        {
+                            obj.location.X = gfx.drawWidth - (obj.collisionOffset.X + obj.width);
+                            if (obj.speed.X > 0.0f)
+                            {
+                                obj.speed.X = 0.0f;
+                            }
+                        }
+                        else if (obj.location.X + obj.collisionOffset.X < 0.0f)
+                        {
+                            obj.location.X = -obj.collisionOffset.X;
+                            if (obj.speed.X < 0.0f)
+                            {
+                                obj.speed.X = 0.0f;
+                            }
+                        }
+
+                        if (obj.location.Y + obj.collisionOffset.Y + obj.height >= gfx.drawHeight)
+                        {
+                            obj.location.Y = gfx.drawHeight - (obj.collisionOffset.Y + obj.height);
+                            if (obj.speed.Y > 0.0f)
+                            {
+                                obj.speed.Y = 0.0f;
+                            }
+                        }
+                        else if (obj.location.Y + obj.collisionOffset.Y < 0.0f)
+                        {
+                            obj.location.Y = -obj.collisionOffset.Y;
+                            if (obj.speed.Y < 0.0f)
+                            {
+                                obj.speed.Y = 0.0f;
+                            }
+                        }
+                    }
                 }
             }
         }
