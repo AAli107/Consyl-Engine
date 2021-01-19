@@ -100,13 +100,16 @@ namespace Consyl_Engine
                                 // Calculates the normal between the two GameObjects
                                 Vector2 normal = Vector2.Normalize(obj2Center - objCenter);
 
+                                // Rounds the normal so that collision works properly
+                                normal.X = MathF.Round(normal.X);
+                                normal.Y = MathF.Round(normal.Y);
+
                                 // Collision test
                                 if (objRightLoc > obj2LeftLoc && objLeftLoc < obj2RightLoc && objTopLoc < obj2BottomLoc && obj2TopLoc < objBottomLoc)
                                 {
                                     if (obj.isPushable) // Pushes GameObject if isPushable is true
                                     {
                                         obj.location -= normal;
-                                        obj.speed = new Vector2(0, 0);
                                     }
                                     else
                                     {
@@ -120,7 +123,7 @@ namespace Consyl_Engine
                                     if (obj2.isPushable) // Pushes GameObject if isPushable is true
                                     {
                                         obj2.location += normal;
-                                        obj2.speed = new Vector2(0, 0);
+                                        obj2.speed = obj.speed / 2;
                                     }
                                     else
                                     {
