@@ -98,43 +98,6 @@ namespace Consyl_Engine.EngineContents
             {
                 speed.Y += gravityStrength * 0.98f;
             }
-
-            if (collideWithBounds) // Checks if the object is colliding with screen bounds
-            {
-                if (location.X + collisionOffset.X + width >= gfx.drawWidth)
-                {
-                    location.X = gfx.drawWidth - (collisionOffset.X + width);
-                    if (speed.X > 0.0f)
-                    {
-                        speed.X = 0.0f;
-                    }
-                }
-                else if (location.X + collisionOffset.X < 0.0f)
-                {
-                    location.X = -collisionOffset.X;
-                    if (speed.X < 0.0f)
-                    {
-                        speed.X = 0.0f;
-                    }
-                }
-
-                if (location.Y + collisionOffset.Y + height >= gfx.drawHeight)
-                {
-                    location.Y = gfx.drawHeight - (collisionOffset.Y + height);
-                    if (speed.Y > 0.0f)
-                    {
-                        speed.Y = 0.0f;
-                    }
-                }
-                else if (location.Y + collisionOffset.Y < 0.0f)
-                {
-                    location.Y = -collisionOffset.Y;
-                    if (speed.Y < 0.0f)
-                    {
-                        speed.Y = 0.0f;
-                    }
-                }
-            }
         }
 
         public void DrawUpdate(bool areBlackPixelsTransparent = true) // Updates the graphics
