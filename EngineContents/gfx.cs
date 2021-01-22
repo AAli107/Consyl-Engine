@@ -221,10 +221,8 @@ namespace Consyl_Engine.EngineContents
                     for (int r = 0; r < radius + 1; r++)
                     {
                         double angle = (i * Math.PI / 180);
-                        int x = (int)(r * Math.Cos(angle - 1.5708));
-                        int y = (int)(r * Math.Sin(angle - 1.5708));
 
-                        DrawPixel(x + centerX, y + centerY, fillLook);
+                        DrawPixel((int)(r * Math.Cos(angle - 1.5708)) + centerX, (int)(r * Math.Sin(angle - 1.5708)) + centerY, fillLook);
                     }
                 }
             }
