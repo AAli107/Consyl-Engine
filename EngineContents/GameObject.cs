@@ -1,6 +1,4 @@
-﻿using Consyl_Engine.EngineContents;
-using System;
-using System.Numerics;
+﻿using System.Numerics;
 
 namespace Consyl_Engine.EngineContents
 {
