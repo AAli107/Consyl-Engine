@@ -23,7 +23,7 @@ namespace Consyl_Engine
         static readonly ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
         static readonly ConsoleColor FgColor = ConsoleColor.White; // Initial Text Color
 
-        // Variables that you shouldn't modify or change
+        // Variables that you shouldn't modify or change directly
         public static List<GameObject> gameObjects = new List<GameObject>();
         #endregion
 
