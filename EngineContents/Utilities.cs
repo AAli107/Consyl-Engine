@@ -31,8 +31,7 @@ namespace Consyl_Engine.EngineContents
 
             public static bool RandBoolByChance(float chance = 0.5f)
             {
-                float randNum = RangeFloat(0.0f, 1.0f);
-                return chance >= randNum;
+                return chance >= RangeFloat(0.0f, 1.0f);
             }
 
             public static int RandInt(int max) // Returns a random int between 0 to max
