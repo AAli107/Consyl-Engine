@@ -21,8 +21,7 @@ namespace Consyl_Engine.EngineContents
 
             public static bool RandBool() // Returns a random bool, true or false
             {
-                int n = rng.Next(0, 2);
-                if (n == 1)
+                if (rng.Next(0, 2) == 1)
                 {
                     return true;
                 }
