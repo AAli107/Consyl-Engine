@@ -29,9 +29,7 @@ namespace Consyl_Engine.EngineContents
                 {
                     Color pixel = img.GetPixel(i, j); // saves the color value of the current pixel in a variable
 
-                    float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
-
-                    int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
+                    int shade = (int)(((pixel.R + pixel.G + pixel.B) / 3) / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
 
                     // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
                     if (shade < 0)
@@ -60,9 +58,7 @@ namespace Consyl_Engine.EngineContents
                 {
                     Color pixel = img.GetPixel(i, j); // saves the color value of the current pixel in a variable
 
-                    float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
-
-                    int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
+                    int shade = (int)(((pixel.R + pixel.G + pixel.B) / 3) / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
 
                     // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
                     if (shade < 0)
@@ -84,9 +80,7 @@ namespace Consyl_Engine.EngineContents
         {
             Color pixel = img.GetPixel(x, y); // saves the color value of the current pixel in a variable
 
-            float AvgColor = (pixel.R + pixel.G + pixel.B) / 3; // Takes all the color data Red, green and blue to be a single average number
-
-            int shade = (int)(AvgColor / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
+            int shade = (int)(((pixel.R + pixel.G + pixel.B) / 3) / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
 
             // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
             if (shade < 0)
