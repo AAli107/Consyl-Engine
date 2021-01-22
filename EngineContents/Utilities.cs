@@ -26,10 +26,7 @@ namespace Consyl_Engine.EngineContents
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
 
             public static bool RandBoolByChance(float chance = 0.5f)
