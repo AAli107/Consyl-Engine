@@ -66,7 +66,6 @@ namespace Consyl_Engine.EngineContents
                 {
                     value += floatArray[i];
                 }
-                value /= floatArray.Length;
 
                 return value / floatArray.Length;
             }
