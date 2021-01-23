@@ -9,7 +9,7 @@ namespace Consyl_Engine.EngineContents
         public int height;
 
         public float friction = 0.1f; // Movement Friction for velocity
-        public float gravityStrength = 1.0f; // Gravity strength
+        public float gravityStrength = 0.5f; // Gravity strength
 
         public bool collisionEnabled; // If true, it's going to collide with other GameObjects
         public bool detectOverlap; // If true, it's going to check if the object is overlapping an object or not
