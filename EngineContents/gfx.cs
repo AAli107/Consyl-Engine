@@ -32,9 +32,9 @@ namespace Consyl_Engine.EngineContents
                 string renderLine = "";
                 for (int i = 0; i < xArray.Count; i++) // stores a line of the screen
                 {
-                    renderLine = renderLine + xArray[i] + " ";
+                    renderLine += xArray[i] + " ";
                 }
-                renderedImage = renderedImage + renderLine + "\n";
+                renderedImage += renderLine + "\n";
             }
             Console.WriteLine(renderedImage);
         }
@@ -107,7 +107,8 @@ namespace Consyl_Engine.EngineContents
 
                 if (e2 > -dx)
                 {
-                    err -= dy; x0 += sx;
+                    err -= dy;
+                    x0 += sx;
                 }
 
                 if (e2 < dy)

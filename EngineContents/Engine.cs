@@ -69,7 +69,6 @@ namespace Consyl_Engine
         // This method is called right after the OnGameUpdate code is executed
         static void GameObjectCollisionUpdate()
         {
-            
             foreach (GameObject obj in gameObjects)
             {
                 foreach (GameObject obj2 in gameObjects)
