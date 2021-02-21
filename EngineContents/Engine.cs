@@ -191,11 +191,11 @@ namespace Consyl_Engine
             gameObjects.Add(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
         }
 
-        static public ConsoleColor GetBgColor()
+        static public ConsoleColor GetBgColor() // Allows you to get the background color
         {
             return BgColor;
         }
-        static public ConsoleColor GetFgColor()
+        static public ConsoleColor GetFgColor() // Allows you to get the foreground color
         {
             return FgColor;
         }
