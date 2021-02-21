@@ -190,6 +190,15 @@ namespace Consyl_Engine
         {
             gameObjects.Add(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
         }
+
+        static public ConsoleColor GetBgColor()
+        {
+            return BgColor;
+        }
+        static public ConsoleColor GetFgColor()
+        {
+            return FgColor;
+        }
         #endregion
     }
 }
