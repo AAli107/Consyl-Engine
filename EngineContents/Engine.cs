@@ -66,6 +66,7 @@ namespace Consyl_Engine
         }
         #endregion
 
+        #region GameObjectCollisionUpdate
         // This method is called right after the OnGameUpdate code is executed
         static void GameObjectCollisionUpdate()
         {
@@ -181,11 +182,14 @@ namespace Consyl_Engine
                 }
             }
         }
+        #endregion
 
+        #region EngineMethods
         // A method to create a GameObject
         static public void CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
             gameObjects.Add(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
         }
+        #endregion
     }
 }
