@@ -44,7 +44,6 @@ namespace Consyl_Engine
             {
                 if (!gamePaused)
                 {
-                    GameCode.OnGameUpdate(); // Updates the game
                     foreach (var gameObject in gameObjects) // Updates all the existing Game Objects
                     {
                         if (gameObject != null)
@@ -52,12 +51,12 @@ namespace Consyl_Engine
                             gameObject.Update();
                         }
                     }
+                    GameCode.OnGameUpdate(); // Updates the game
                     GameObjectCollisionUpdate(); // Does collision updates
                 }
                 if (drawASCIIRender) // Also it updates the ASCII graphics if drawASCIIRender is equal to true
                 {
                     Console.CursorVisible = false; // Hides cursor, I place it on every frame because refreshing the screen makes it visible again
-                    GameCode.OnGraphicsUpdate();
                     foreach (var gameObject in gameObjects) // Renders the graphics of all the existing Game Objects
                     {
                         if (gameObject != null)
@@ -65,6 +64,7 @@ namespace Consyl_Engine
                             gameObject.DrawUpdate();
                         }
                     }
+                    GameCode.OnGraphicsUpdate();
                     gfx.DrawASCII();
                 }
 
