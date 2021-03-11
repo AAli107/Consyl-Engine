@@ -144,39 +144,43 @@ namespace Consyl_Engine
                         }
                     }
                 }
-                if (obj.collideWithBounds) // Checks if the object is colliding with screen bounds
+                if (obj != null)
                 {
-                    if (obj.location.X + obj.collisionOffset.X + obj.width >= gfx.drawWidth)
-                    {
-                        obj.location.X = gfx.drawWidth - (obj.collisionOffset.X + obj.width);
-                        if (obj.speed.X > 0.0f)
-                        {
-                            obj.speed.X = 0.0f;
-                        }
-                    }
-                    else if (obj.location.X + obj.collisionOffset.X < 0.0f)
-                    {
-                        obj.location.X = -obj.collisionOffset.X;
-                        if (obj.speed.X < 0.0f)
-                        {
-                            obj.speed.X = 0.0f;
-                        }
-                    }
 
-                    if (obj.location.Y + obj.collisionOffset.Y + obj.height >= gfx.drawHeight)
+                    if (obj.collideWithBounds) // Checks if the object is colliding with screen bounds
                     {
-                        obj.location.Y = gfx.drawHeight - (obj.collisionOffset.Y + obj.height);
-                        if (obj.speed.Y > 0.0f)
+                        if (obj.location.X + obj.collisionOffset.X + obj.width >= gfx.drawWidth)
                         {
-                            obj.speed.Y = 0.0f;
+                            obj.location.X = gfx.drawWidth - (obj.collisionOffset.X + obj.width);
+                            if (obj.speed.X > 0.0f)
+                            {
+                                obj.speed.X = 0.0f;
+                            }
                         }
-                    }
-                    else if (obj.location.Y + obj.collisionOffset.Y < 0.0f)
-                    {
-                        obj.location.Y = -obj.collisionOffset.Y;
-                        if (obj.speed.Y < 0.0f)
+                        else if (obj.location.X + obj.collisionOffset.X < 0.0f)
                         {
-                            obj.speed.Y = 0.0f;
+                            obj.location.X = -obj.collisionOffset.X;
+                            if (obj.speed.X < 0.0f)
+                            {
+                                obj.speed.X = 0.0f;
+                            }
+                        }
+
+                        if (obj.location.Y + obj.collisionOffset.Y + obj.height >= gfx.drawHeight)
+                        {
+                            obj.location.Y = gfx.drawHeight - (obj.collisionOffset.Y + obj.height);
+                            if (obj.speed.Y > 0.0f)
+                            {
+                                obj.speed.Y = 0.0f;
+                            }
+                        }
+                        else if (obj.location.Y + obj.collisionOffset.Y < 0.0f)
+                        {
+                            obj.location.Y = -obj.collisionOffset.Y;
+                            if (obj.speed.Y < 0.0f)
+                            {
+                                obj.speed.Y = 0.0f;
+                            }
                         }
                     }
                 }
@@ -186,9 +190,12 @@ namespace Consyl_Engine
 
         #region EngineMethods
         // A method to create a GameObject
-        static public void CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
-            gameObjects.Add(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
+            GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision);
+            gameObjects.Add(gameObject);
+
+            return gameObjects.IndexOf(gameObject);
         }
 
         static public ConsoleColor GetBgColor() // Allows you to get the background color
