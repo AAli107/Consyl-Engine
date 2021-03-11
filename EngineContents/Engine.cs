@@ -45,12 +45,26 @@ namespace Consyl_Engine
                 if (!gamePaused)
                 {
                     GameCode.OnGameUpdate(); // Updates the game
+                    foreach (var gameObject in gameObjects) // Updates all the existing Game Objects
+                    {
+                        if (gameObject != null)
+                        {
+                            gameObject.Update();
+                        }
+                    }
                     GameObjectCollisionUpdate(); // Does collision updates
                 }
                 if (drawASCIIRender) // Also it updates the ASCII graphics if drawASCIIRender is equal to true
                 {
                     Console.CursorVisible = false; // Hides cursor, I place it on every frame because refreshing the screen makes it visible again
                     GameCode.OnGraphicsUpdate();
+                    foreach (var gameObject in gameObjects) // Renders the graphics of all the existing Game Objects
+                    {
+                        if (gameObject != null)
+                        {
+                            gameObject.DrawUpdate();
+                        }
+                    }
                     gfx.DrawASCII();
                 }
 
@@ -198,7 +212,7 @@ namespace Consyl_Engine
         }
 
         // Another method to create a GameObject without applying the textures
-        static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        static public int CreateGameObjectNoTex(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
             GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision);
             gameObjects.Add(gameObject);
