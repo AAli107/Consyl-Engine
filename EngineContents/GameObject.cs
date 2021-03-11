@@ -40,6 +40,19 @@ namespace Consyl_Engine.EngineContents
             drawDebugCollision = _drawDebugCollision;
         }
 
+        public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        {
+            location = new Vector2(_x, _y);
+            collisionEnabled = _CollisionEnabled;
+            width = _collisionWidth;
+            height = _collisionHeight;
+            detectOverlap = _detectOverlap;
+            isPushable = _isPushable;
+            collisionOffset = new Vector2(_colOffsetX, _colOffsetY);
+            collideWithBounds = _collideWithBounds;
+            drawDebugCollision = _drawDebugCollision;
+        }
+
         public void Update() // Executed every frame to update it
         {
             location += speed; // Moves Object based on speed
@@ -100,7 +113,10 @@ namespace Consyl_Engine.EngineContents
 
         public void DrawUpdate(bool areBlackPixelsTransparent = true) // Updates the graphics
         {
-            objectSprite.DrawImage((int)location.X, (int)location.Y, areBlackPixelsTransparent); // Draws the texture sprite
+            if (objectSprite != null)
+            {
+                objectSprite.DrawImage((int)location.X, (int)location.Y, areBlackPixelsTransparent); // Draws the texture sprite
+            }
 
             // This will draw a rectangle that will show the collision box only if drawDebugCollision is true
             if (drawDebugCollision)
