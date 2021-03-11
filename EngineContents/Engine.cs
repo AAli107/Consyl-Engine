@@ -197,6 +197,15 @@ namespace Consyl_Engine
             return gameObjects.IndexOf(gameObject);
         }
 
+        // Another method to create a GameObject without applying the textures
+        static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        {
+            GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision);
+            gameObjects.Add(gameObject);
+
+            return gameObjects.IndexOf(gameObject);
+        }
+
         // A method that deletes a spawned
         static public void DestroyGameObject(int index)
         {
