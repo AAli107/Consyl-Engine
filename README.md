@@ -22,6 +22,8 @@ This is an ASCII Console Game Engine! Go to [Releases](https://github.com/AAli10
 
 4. Storage: Consyl takes up around 5 MB of storage, so you don’t need to worry about it
 
+   - As long as your computer can run command prompt, you should be fine.
+
    
 
 ### Recommended Software Requirements
@@ -268,8 +270,6 @@ Keep in note that textures currently don’t fully support transparency, but it 
 
 
 
-
-
 ## Audio.cs
 
 Games would seem silent and filled with void without Audio. So, sound is essential to give players feedback. You’re not going to use Console.Beep() which comes with the .NET Core 3.1. There is another special variable like the texture variable which would load the audio file and plays it whenever the programmer likes.
@@ -397,6 +397,10 @@ public static void OnGameStart() // Gets Executed when game starts running/when 
 }
 ```
 
+There is also `Engine.CreateGameObjectNoTex()` which is the same thing, but is added so that if you don't want to add any texture into your object.
+
+Here's an important method under Engine class, which is `Engine.DestroyGameObject()`, it destroys a gameObject by inputting it's index. When creating your GameObject the method returns the index of the created object.
+
 
 
 You need to add parameters first when you create a GameObject, here is the list of parameters you need to include when creating a GameObject:
@@ -418,9 +422,24 @@ You need to add parameters first when you create a GameObject, here is the list 
 
 There are more variables you can change, like enabling gravity by doing this: `Engine.gameObjects[0].hasGravity = true`
 
-Once you create the object, it will not show anything on screen, you need to do `Engine.gameObjects[0].Update()` under OnGameUpdate()  so that it functions properly and `Engine.gameObjects[0].DrawUpdate()` under OnGraphicsUpdate() to draw on screen.
 
-Note that the index 0 in the examples is different based on which GameObject you want to change. Meaning that if you want to do something like changing friction strength with the second GameObject you created, you do: `Engine.gameObjects[1].friction = 0.5f;`
+
+Note that the index 0 in the examples is different based on which GameObject you want to change. Meaning that if you want to do something like changing friction strength with the second GameObject you created, you do: `Engine.gameObjects[1].friction = 0.5f;` or you could do this when creating your object:
+
+```c#
+		 // Insert Variables here! \\
+        // \/\/\/\/\/\/\/\/\/\/\/\/ \\
+		int objIndex;
+        // /\/\/\/\/\/\/\/\/\/\/\/\ \\
+
+        public static void OnGameStart() // Gets Executed when game starts running/when the game begins
+        {
+			objIndex = Engine.CreateGameObject(); // Be sure to fill in the parameters
+            Engine.gameObjects[objIndex].friction = 0.5f; 
+        }
+```
+
+Careful when deleting objects because any objects that was created after the deleted object will have their actual index 1 less than before.
 
 
 
@@ -430,6 +449,7 @@ Here are the list of variables that is not placed when creating your GameObject:
 2. **gravityStrength** - It will determine how strong is the gravity for the GameObject.
 3. **speed** - This is the velocity of the GameObject which is stored as a Vector2 variable.
 4. **isOverlapping** - A variable you shouldn't change or set it to anything, because that will become true if the GameObject overlaps with other GameObject's collision box. It will only work if detectOverlap variable is true.
+5. **isVisible** - This variable allows you to change whether the player can see your Game Object texture or not.
 
 
 
@@ -439,3 +459,33 @@ There are some methods inside GameObjects you use to control them which are list
 2. **AddLocation(Vector2 addedLocation)** - Will add values to the coordinates of the GameObject.
 3. **Teleport(Vector2 newLoc, bool resetSpeed)** - Will move the GameObject to a desired location, while asking you if you want to reset the velocity or not.
 4. **IsObjectOverlapping()** - It will return the `isOverlapping` variable.
+
+
+
+
+
+
+
+## Raycast2D.cs
+
+It's a small but useful tool that is used in a lot of game which fires an invisible line from a location and returns true if it hits a Game Object.
+
+When creating a Raycast2D object, you need to type the parameters for it's constructor (it has two constructors):
+
+1. **start** - The start location of the Raycast.
+2. **end** - The end location of the Raycast.
+3. **ignoredObjects [Only in one of the constructors]** - It's the Array of Game Objects that the Raycast would ignore and not hit it.
+4. **drawDebug [OPTIONAL]** - Whether you want the Raycast to be visible or not.
+
+
+
+When it hits an object it stores information in these variables stored inside:
+
+1. **hitLoc** - The impact location of the Raycast.
+2. **hitObject** - It's the GameObject that got hit.
+3. **hit** - A boolean variable that tells whether the raycast hits something or not.
+
+
+
+In order to create 2D Raycasts, you must first to create a Raycast2D variable like this, `Raycast2D ray = new Raycast2D();`  make sure to fill in all the parameters. Then if you want to cast the ray you must type this, `ray.CastLine();` which would cast the ray and the method will return the "hit" variable. If you set drawDebug variable to true, you can visualize the Line on screen.
+
