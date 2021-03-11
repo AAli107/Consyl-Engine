@@ -18,6 +18,7 @@ namespace Consyl_Engine.EngineContents
         public bool hasGravity = false; // If true, gravity will be enabled for the GameObject
         public bool isPushable = false; // If true, collisions with other GameObjects will cause this object to be pushed or moved
         public bool isOverlapping = false; // a boolean that will tell if a GameObject is overlapping with this one. Will work only if detectOverlap is true
+        public bool isVisible = true; // GameObject will be invisible if set to false
 
         public Texture objectSprite; // Object texture
 
@@ -115,7 +116,10 @@ namespace Consyl_Engine.EngineContents
         {
             if (objectSprite != null)
             {
-                objectSprite.DrawImage((int)location.X, (int)location.Y, areBlackPixelsTransparent); // Draws the texture sprite
+                if (isVisible) // Will only render the texture sprite if isVisible is true
+                {
+                    objectSprite.DrawImage((int)location.X, (int)location.Y, areBlackPixelsTransparent); // Draws the texture sprite
+                }
             }
 
             // This will draw a rectangle that will show the collision box only if drawDebugCollision is true
