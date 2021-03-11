@@ -146,7 +146,6 @@ namespace Consyl_Engine
                 }
                 if (obj != null)
                 {
-
                     if (obj.collideWithBounds) // Checks if the object is colliding with screen bounds
                     {
                         if (obj.location.X + obj.collisionOffset.X + obj.width >= gfx.drawWidth)
@@ -196,6 +195,15 @@ namespace Consyl_Engine
             gameObjects.Add(gameObject);
 
             return gameObjects.IndexOf(gameObject);
+        }
+
+        // A method that deletes a spawned
+        static public void DestroyGameObject(int index)
+        {
+            if (index < gameObjects.Count && index >= 0)
+            {
+                gameObjects.RemoveAt(index);
+            }
         }
 
         static public ConsoleColor GetBgColor() // Allows you to get the background color
