@@ -46,7 +46,7 @@ namespace Consyl_Engine.EngineContents
             {
                 if (drawDebug)
                 {
-                    gfx.DrawPixel(x0, y0, 'X');
+                    gfx.DrawPixel(x0, y0, '.');
                 }
 
                 if (x0 == x1 && y0 == y1)
