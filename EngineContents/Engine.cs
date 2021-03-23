@@ -319,6 +319,18 @@ namespace Consyl_Engine
             }
         }
 
+        static public bool DoesGameObjectExist(int objectID)
+        {
+            for (int i = 0; i < gameObjects.Count; i++)
+            {
+                if (gameObjects[i].objID == objectID)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         static public ConsoleColor GetBgColor() // Allows you to get the background color
         {
             return BgColor;
