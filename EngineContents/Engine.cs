@@ -1,6 +1,7 @@
 ﻿using Consyl_Engine.EngineContents;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Threading;
 
@@ -205,27 +206,116 @@ namespace Consyl_Engine
         // A method to create a GameObject
         static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
-            GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision);
-            gameObjects.Add(gameObject);
+            int newObjID = -1;
 
-            return gameObjects.IndexOf(gameObject);
+            bool set = false;
+            bool stillEqual = false;
+
+            while (!set)
+            {
+                int num = Utilities.Rand.RandInt(2000000000);
+                if (gameObjects.Count > 0)
+                {
+                    for (int i = 0; i < gameObjects.Count; i++)
+                    {
+                        if (gameObjects[i].objID != num)
+                        {
+                            set = true;
+                        }
+                    }
+                }
+                else
+                {
+                    set = true;
+                }
+
+                newObjID = num;
+            }
+
+            for (int i = 0; i < gameObjects.Count; i++)
+            {
+                if (gameObjects[i].objID == newObjID)
+                {
+                    stillEqual = true;
+                    break;
+                }
+                else
+                {
+                    stillEqual = false;
+                }
+            }
+            if (!stillEqual)
+            {
+                GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision, newObjID);
+                gameObjects.Add(gameObject);
+
+                return newObjID;
+            }
+            return -1;
         }
 
         // Another method to create a GameObject without applying the textures
         static public int CreateGameObjectNoTex(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
-            GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision);
-            gameObjects.Add(gameObject);
+            int newObjID = -1;
 
-            return gameObjects.IndexOf(gameObject);
+            bool set = false;
+            bool stillEqual = false;
+
+            while (!set)
+            {
+                int num = Utilities.Rand.RandInt(2000000000);
+                if (gameObjects.Count > 0)
+                {
+                    for (int i = 0; i < gameObjects.Count; i++)
+                    {
+                        if (gameObjects[i].objID != num)
+                        {
+                            set = true;
+                        }
+                    }
+                }
+                else
+                {
+                    set = true;
+                }
+
+                newObjID = num;
+            }
+
+            for (int i = 0; i < gameObjects.Count; i++)
+            {
+                if (gameObjects[i].objID == newObjID)
+                {
+                    stillEqual = true;
+                    break;
+                }
+                else
+                {
+                    stillEqual = false;
+                }
+            }
+            if (!stillEqual)
+            {
+                GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision, newObjID);
+                gameObjects.Add(gameObject);
+
+                return newObjID;
+            }
+            return -1;
+        }
+
+        static public GameObject GetGameObjectByID(int objectID)
+        {
+            return gameObjects.FirstOrDefault(obj => obj.objID == objectID);
         }
 
         // A method that deletes a spawned
-        static public void DestroyGameObject(int index)
+        static public void DestroyGameObject(int objectID)
         {
-            if (index < gameObjects.Count && index >= 0)
+            if (objectID >= 0)
             {
-                gameObjects.RemoveAt(index);
+                gameObjects.Remove(GetGameObjectByID(objectID));
             }
         }
 

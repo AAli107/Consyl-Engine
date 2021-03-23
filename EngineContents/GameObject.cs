@@ -7,6 +7,7 @@ namespace Consyl_Engine.EngineContents
         // Collision Width and Height
         public int width;
         public int height;
+        public int objID = -1;
 
         public float friction = 0.1f; // Movement Friction for velocity
         public float gravityStrength = 0.5f; // Gravity strength
@@ -27,7 +28,7 @@ namespace Consyl_Engine.EngineContents
         public Vector2 speed = new Vector2(0.0f, 0.0f); // The Velocity of the GameObject
 
         // constructor, which would initialize the GameObject
-        public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false, int objID = -1)
         {
             location = new Vector2(_x, _y);
             collisionEnabled = _CollisionEnabled;
@@ -39,9 +40,10 @@ namespace Consyl_Engine.EngineContents
             collisionOffset = new Vector2(_colOffsetX, _colOffsetY);
             collideWithBounds = _collideWithBounds;
             drawDebugCollision = _drawDebugCollision;
+            this.objID = objID;
         }
 
-        public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false, int objID = -1)
         {
             location = new Vector2(_x, _y);
             collisionEnabled = _CollisionEnabled;
@@ -52,6 +54,7 @@ namespace Consyl_Engine.EngineContents
             collisionOffset = new Vector2(_colOffsetX, _colOffsetY);
             collideWithBounds = _collideWithBounds;
             drawDebugCollision = _drawDebugCollision;
+            this.objID = objID;
         }
 
         public void Update() // Executed every frame to update it
