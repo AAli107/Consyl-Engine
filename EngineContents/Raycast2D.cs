@@ -33,33 +33,27 @@ namespace Consyl_Engine.EngineContents
 
         public bool CastLine() // Cast a Line ray that will hit game objects
         {
-            int x0 = (int)start.X;
-            int y0 = (int)start.Y;
-            int x1 = (int)end.X;
-            int y1 = (int)end.Y;
-
-            int dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
-            int dy = Math.Abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
-            int err = (dx > dy ? dx : -dy) / 2, e2;
+            float x0 = start.X;
+            float y0 = start.Y;
+            float x1 = end.X;
+            float y1 = end.Y;
+            
+            float dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
+            float dy = Math.Abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
+            float err = (dx > dy ? dx : -dy) / 2, e2;
 
             for (; ; )
             {
-                if (drawDebug)
-                {
-                    gfx.DrawPixel(x0, y0, '.');
-                }
+                if (drawDebug) gfx.DrawPixel((int)x0, (int)y0, '.');
 
-                if (x0 == x1 && y0 == y1)
-                    break;
+                if (x0 == x1 && y0 == y1) break;
 
                 e2 = err;
-
                 if (e2 > -dx)
                 {
                     err -= dy;
                     x0 += sx;
                 }
-
                 if (e2 < dy)
                 {
                     err += dx;
@@ -72,10 +66,10 @@ namespace Consyl_Engine.EngineContents
                     {
                         if (ignoredObjects.Length <= 0)
                         {
-                            int objTopLoc = (int)(obj.location.Y + obj.collisionOffset.Y);
-                            int objLeftLoc = (int)(obj.location.X + obj.collisionOffset.X);
-                            int objBottomLoc = (int)(obj.location.Y + obj.collisionOffset.Y + obj.height);
-                            int objRightLoc = (int)(obj.location.X + obj.collisionOffset.X + obj.width);
+                            float objTopLoc = obj.location.Y + obj.collisionOffset.Y;
+                            float objLeftLoc = obj.location.X + obj.collisionOffset.X;
+                            float objBottomLoc = obj.location.Y + obj.collisionOffset.Y + obj.height;
+                            float objRightLoc = obj.location.X + obj.collisionOffset.X + obj.width;
 
                             if (x0 > objLeftLoc && x0 < objRightLoc && y0 > objTopLoc && y0 < objBottomLoc)
                             {
@@ -89,10 +83,10 @@ namespace Consyl_Engine.EngineContents
                         {
                             foreach (GameObject ignoredObject in ignoredObjects)
                             {
-                                int objTopLoc = (int)(obj.location.Y + obj.collisionOffset.Y);
-                                int objLeftLoc = (int)(obj.location.X + obj.collisionOffset.X);
-                                int objBottomLoc = (int)(obj.location.Y + obj.collisionOffset.Y + obj.height);
-                                int objRightLoc = (int)(obj.location.X + obj.collisionOffset.X + obj.width);
+                                float objTopLoc = obj.location.Y + obj.collisionOffset.Y;
+                                float objLeftLoc = obj.location.X + obj.collisionOffset.X;
+                                float objBottomLoc = obj.location.Y + obj.collisionOffset.Y + obj.height;
+                                float objRightLoc = obj.location.X + obj.collisionOffset.X + obj.width;
 
                                 if (x0 > objLeftLoc && x0 < objRightLoc && y0 > objTopLoc && y0 < objBottomLoc)
                                 {
