@@ -305,12 +305,13 @@ namespace Consyl_Engine
             return -1;
         }
 
+        // A method that returns the GameObject when you input it's ID
         static public GameObject GetGameObjectByID(int objectID)
         {
             return gameObjects.FirstOrDefault(obj => obj.objID == objectID);
         }
 
-        // A method that deletes a spawned
+        // A method that deletes a spawned GameObject
         static public void DestroyGameObject(int objectID)
         {
             if (objectID >= 0)
@@ -319,6 +320,7 @@ namespace Consyl_Engine
             }
         }
 
+        // A method that checks whether a GameObject with specified ID exists.
         static public bool DoesGameObjectExist(int objectID)
         {
             for (int i = 0; i < gameObjects.Count; i++)
