@@ -9,6 +9,8 @@ namespace Consyl_Engine.EngineContents
         public Vector2 end = new Vector2(0, 0); // Ray End Location
         public Vector2 hitLoc = new Vector2(0, 0); // Ray impact location
 
+        public float distance = 0.0f; // Distance between start and hitLoc
+
         public GameObject hitObject; // GameObject that got hit
         public GameObject[] ignoredObjects = new GameObject[0]; // GameObjects the Raycast should ignore
 
@@ -113,6 +115,9 @@ namespace Consyl_Engine.EngineContents
                 hitObject = null;
             }
             LoopEnd:;
+
+            // Get the distance between start and hitLoc
+            distance = Utilities.Vec2D.Distance2D(start, hitLoc);
 
             return hit;
         }
