@@ -69,6 +69,16 @@ namespace Consyl_Engine.EngineContents
 
                 return value / floatArray.Length;
             }
+
+            public static float DegreeToRad(float degree) // Converts degrees to radians
+            {
+                return (degree * MathF.PI) / 180.0f;
+            }
+
+            public static float RadToDegree(float radian) // Converts radian to degrees
+            {
+                return (radian * 180.0f) / MathF.PI;
+            }
         } // class that stores functions that are related to numbers
     }
 }
