@@ -156,5 +156,10 @@ namespace Consyl_Engine.EngineContents
         {
             return isOverlapping;
         }
+        
+        public Vector2 GetObjectCollisionCenter() // Returns the center of the collision box
+        {
+            return Utilities.Vec2D.Midpoint2D(location + collisionOffset, location + new Vector2(width, height));
+        }
     }
 }
