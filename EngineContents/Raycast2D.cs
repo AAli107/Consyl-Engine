@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Remember that Raycasts can only collide with GameObjects.
+// You also need to use the CastLine() method to cast the ray.
+
+using System;
 using System.Numerics;
 
 namespace Consyl_Engine.EngineContents
