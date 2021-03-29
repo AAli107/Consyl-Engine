@@ -1,4 +1,8 @@
-﻿using System.Numerics;
+﻿// You are not suppose to create a GameObject the same way as how you create objects, new GameObject(...);
+// You need to create it like this, Engine.CreateGameObject(...); Mainly because it will not do anything, and it won't render at all.
+// Go to Engine.cs file and look into the methods that are related to GameObjects which will help you utilize the GameObjects.
+
+using System.Numerics;
 
 namespace Consyl_Engine.EngineContents
 {
