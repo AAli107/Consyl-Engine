@@ -47,6 +47,33 @@ namespace Consyl_Engine.EngineContents
                 }
             }
         }
+        public void DrawCroppedImage(Vector2 imageLoc, Vector2 offset, Vector2 size, bool blackTransparent = false) // Will draw the loaded texture file cropped based on the offset and size Vectors.
+        {
+            // Loops between pixels
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    Color pixel = img.GetPixel(i, j); // saves the color value of the current pixel in a variable
+
+                    int shade = (int)(((pixel.R + pixel.G + pixel.B) / 3) / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
+
+                    // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
+                    if (shade < 0)
+                    {
+                        shade = 0;
+                    }
+                    else if (shade > gfx.shadeCharArray.Length - 1)
+                    {
+                        shade = gfx.shadeCharArray.Length - 1;
+                    }
+                    if (!(blackTransparent && shade == 0) && (i > offset.X && i < size.X + offset.X) && (j > offset.Y && j < size.Y + offset.Y))
+                    {
+                        gfx.DrawPixel((i - (int)offset.X) + (int)imageLoc.X, (j - (int)offset.Y) + (int)imageLoc.Y, gfx.shadeCharArray[shade]); // Draws the image
+                    }
+                }
+            }
+        }
 
         public char[] GetAllShadeColor() // Gets all the Consyl-Shaded Color from the loaded Bitmap
         {
