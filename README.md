@@ -32,6 +32,8 @@ This is an ASCII Console Game Engine! Go to [Releases](https://github.com/AAli10
 
 2. Microsoft Visual Studio that can run C# .NET Core 3.1 [(You can download it here)](https://visualstudio.microsoft.com/vs/community/)
 
+3. Microsoft's C# .NET Core 3.1 [(Download it here)](https://dotnet.microsoft.com/download)
+
    
 
 ### Recommended User Knowledge
@@ -399,7 +401,9 @@ public static void OnGameStart() // Gets Executed when game starts running/when 
 
 There is also `Engine.CreateGameObjectNoTex()` which is the same thing, but is added so that if you don't want to add any texture into your object.
 
-Here's an important method under Engine class, which is `Engine.DestroyGameObject()`, it destroys a gameObject by inputting it's index. When creating your GameObject the method returns the index of the created object.
+Here's an important method under Engine class, which is `Engine.DestroyGameObject()`, it destroys a gameObject by inputting it's unique ID.
+
+Creating GameObjects with the methods used above, will return it's unique ID which is selected at random. You need to store it in a int variable so you w can reference the GameObject later.
 
 
 
@@ -420,26 +424,24 @@ You need to add parameters first when you create a GameObject, here is the list 
 
 
 
-There are more variables you can change, like enabling gravity by doing this: `Engine.gameObjects[0].hasGravity = true`
+There are more variables you can change, like enabling gravity by doing this: `Engine.GetGameObjectByID(2314145).hasGravity = true`
 
 
 
-Note that the index 0 in the examples is different based on which GameObject you want to change. Meaning that if you want to do something like changing friction strength with the second GameObject you created, you do: `Engine.gameObjects[1].friction = 0.5f;` or you could do this when creating your object:
+Note that the ID 2314145 in the examples is different based on which GameObject you want to change. Meaning that if you want to do something like changing friction strength with another GameObject you created, you need to get it's ID, when creating it, let's assume its ID is 1340487, you need to do this: `Engine.GetGameObjectByID(1340487).friction = 0.5f;` or you could do this when creating your object, so that things are easier:
 
 ```c#
 		 // Insert Variables here! \\
         // \/\/\/\/\/\/\/\/\/\/\/\/ \\
-		int objIndex;
+		int objID;
         // /\/\/\/\/\/\/\/\/\/\/\/\ \\
 
         public static void OnGameStart() // Gets Executed when game starts running/when the game begins
         {
-			objIndex = Engine.CreateGameObject(); // Be sure to fill in the parameters
-            Engine.gameObjects[objIndex].friction = 0.5f; 
+			objID = Engine.CreateGameObject(); // Be sure to fill in the parameters
+            Engine.GetGameObjectByID(objID).friction = 0.5f; 
         }
 ```
-
-Careful when deleting objects because any objects that was created after the deleted object will have their actual index 1 less than before.
 
 
 
@@ -483,7 +485,8 @@ When it hits an object it stores information in these variables stored inside:
 
 1. **hitLoc** - The impact location of the Raycast.
 2. **hitObject** - It's the GameObject that got hit.
-3. **hit** - A boolean variable that tells whether the raycast hits something or not.
+3. **hit** - A boolean variable that tells whether the raycast hits a GameObject or not.
+4. **distance** - it's the distance between the starting and hit points.
 
 
 
