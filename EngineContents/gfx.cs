@@ -132,24 +132,13 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawCircle(int centerX, int centerY, float radius, char pixelLook) // Draws a Circle
+        public static void DrawCircle(int centerX, int centerY, float radius, char pixelLook) // Draws an outline of a Circle
         {
             for (double i = 0.0; i < 360; i += 0.1)
             {
                 double angle = i * Math.PI / 180;
 
                 DrawPixel((int)(radius * Math.Cos(angle)) + centerX, (int)(radius * Math.Sin(angle)) + centerY, pixelLook);
-            }
-        }
-
-        public static void DrawTri(int x, int y, int size, char pixelLook) // Draws a right angle triangle
-        {
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 0; j < i; j++)
-                {
-                    DrawPixel(x + j, y + i - 1, pixelLook);
-                }
             }
         }
 
@@ -183,6 +172,7 @@ namespace Consyl_Engine.EngineContents
                 }
             }
         }
+
         public static void DrawQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, char pixelLook, bool outline = false) // Draws a quadrilateral on screen, shape is based on the coordinates given.
         {
             if (outline)
