@@ -183,12 +183,38 @@ namespace Consyl_Engine.EngineContents
                 }
             }
         }
-        public static void DrawQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, char pixelLook) // Draws a quadrilateral outine on screen
+        public static void DrawQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, char pixelLook, bool outline = false) // Draws a quadrilateral on screen, shape is based on the coordinates given.
         {
-            DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook);
-            DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook);
-            DrawLine((int)p3.X, (int)p3.Y, (int)p4.X, (int)p4.Y, pixelLook);
-            DrawLine((int)p4.X, (int)p4.Y, (int)p1.X, (int)p1.Y, pixelLook);
+            if (outline)
+            {   // Draws the Quadrilateral as outline
+                DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook);
+                DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook);
+                DrawLine((int)p3.X, (int)p3.Y, (int)p4.X, (int)p4.Y, pixelLook);
+                DrawLine((int)p4.X, (int)p4.Y, (int)p1.X, (int)p1.Y, pixelLook);
+            }
+            else
+            {
+                // Draws the Quadrilateral with fillings (tasty)
+                List<Vector2> p = new List<Vector2>();
+                p.Add(p1);
+                p.Add(p2);
+                p.Add(p3);
+                p.Add(p4);
+
+                for (int y = 0; y < drawHeight; y++)
+                {
+                    for (int x = 0; x < drawWidth; x++)
+                    {
+                        int j = p.Count - 1;
+                        bool c = false;
+                        for (int i = 0; i < p.Count; j = i++)
+                            c ^= p[i].Y > y ^ p[j].Y > y && x < (p[j].X - p[i].X) * (y - p[i].Y) / (p[j].Y - p[i].Y) + p[i].X;
+
+                        if (c)
+                            DrawPixel(x, y, pixelLook); // Will draw pixel only if the coordinates given from the xy for loop is inside the Quadrilateral bounds
+                    }
+                }
+            }
         }
 
         public class GameUI
