@@ -249,13 +249,9 @@ namespace Consyl_Engine.EngineContents
 
                 // Limits the percentage fill between 0 to 1 so that the filled part of the progress bar doesn't get bigger than the background
                 if (percent > 1.0f)
-                {
                     percent = 1.0f;
-                }
                 if (percent < 0.0f)
-                {
                     percent = 0.0f;
-                }
 
                 // Draws the fill background
                 for (double i = 0.0; i > (int)(-360 * percent); i -= 0.1)
