@@ -33,9 +33,8 @@ namespace Consyl_Engine.EngineContents
             else throw new InvalidOperationException("Not a correct audio file type. Supports mp3 and wav only!");
 
             if (output == null)
-            {
                 output = new NAudio.Wave.DirectSoundOut();
-            }
+
             output.Init(stream);
             output.Play();
         }
@@ -43,24 +42,18 @@ namespace Consyl_Engine.EngineContents
         public void StopSound() // Stops the sound
         {
             if (output != null)
-            {
                 output.Stop();
-            }
         }
 
         public void PauseSound() // Pauses the sound
         {
             if (output != null)
-            {
                 output.Pause();
-            }
         }
         public void UnpauseSound() // Un-pauses the sound
         {
             if (output != null)
-            {
                 output.Play();
-            }
         }
     }
 }
