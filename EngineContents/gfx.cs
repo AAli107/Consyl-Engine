@@ -153,16 +153,16 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawPolygon(Vector2 p1, Vector2 p2, Vector2 p3, char pixelLook, bool outline = false) // Draws a polygon outline on screen
+        public static void DrawPolygon(Vector2 p1, Vector2 p2, Vector2 p3, char pixelLook, bool outline = false) // Draws a polygon on screen, shape is based on the coordinates given.
         {
             if (outline)
-            {
+            {   // Draws the polygon as outline
                 DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook);
                 DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook);
                 DrawLine((int)p3.X, (int)p3.Y, (int)p1.X, (int)p1.Y, pixelLook);
             }
             else
-            {
+            {   // Draws the polygon with fillings (tasty)
                 List<Vector2> p = new List<Vector2>();
                 p.Add(p1);
                 p.Add(p2);
@@ -178,7 +178,7 @@ namespace Consyl_Engine.EngineContents
                             c ^= p[i].Y > y ^ p[j].Y > y && x < (p[j].X - p[i].X) * (y - p[i].Y) / (p[j].Y - p[i].Y) + p[i].X;
 
                         if (c)
-                            DrawPixel(x, y, pixelLook);
+                            DrawPixel(x, y, pixelLook); // Will draw pixel only if the coordinates given from the xy for loop is inside the polygon bounds
                     }
                 }
             }
