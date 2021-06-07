@@ -16,7 +16,7 @@ namespace Consyl_Engine.EngineContents
 
         static char[] textImage = new char[drawWidth * drawHeight]; // Stores the Data of the ASCII pixels
 
-        public static void DrawASCII() // Renders the Image on Screen
+        public static void DrawASCII() // Renders the Image on Screen (do not use in GameCode.cs, this shall only be used for Engine.cs to render the graphics)
         {
             // Draws ASCII Render on screen
             string renderedImage = "";
@@ -25,15 +25,12 @@ namespace Consyl_Engine.EngineContents
                 // Converts 1D array to 2D array
                 List<char> xArray = new List<char>(drawWidth);
                 for (int x = 0; x < drawWidth; x++)
-                {
                     xArray.Add(textImage[drawWidth * y + x]);
-                }
 
                 string renderLine = "";
                 for (int i = 0; i < xArray.Count; i++) // stores a line of the screen
-                {
                     renderLine += xArray[i] + " ";
-                }
+
                 renderedImage += renderLine + "\n";
             }
             Console.WriteLine(renderedImage);
