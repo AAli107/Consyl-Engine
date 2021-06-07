@@ -46,25 +46,20 @@ namespace Consyl_Engine
                 if (!gamePaused)
                 {
                     foreach (var gameObject in gameObjects) // Updates all the existing Game Objects
-                    {
                         if (gameObject != null)
-                        {
                             gameObject.Update();
-                        }
-                    }
+
                     GameCode.OnGameUpdate(); // Updates the game
                     GameObjectCollisionUpdate(); // Does collision updates
                 }
                 if (drawASCIIRender) // Also it updates the ASCII graphics if drawASCIIRender is equal to true
                 {
                     Console.CursorVisible = false; // Hides cursor, I place it on every frame because refreshing the screen makes it visible again
+
                     foreach (var gameObject in gameObjects) // Renders the graphics of all the existing Game Objects
-                    {
                         if (gameObject != null)
-                        {
                             gameObject.DrawUpdate();
-                        }
-                    }
+
                     GameCode.OnGraphicsUpdate();
                     gfx.DrawASCII();
                 }
@@ -124,31 +119,17 @@ namespace Consyl_Engine
                                 if (objRightLoc > obj2LeftLoc && objLeftLoc < obj2RightLoc && objTopLoc < obj2BottomLoc && obj2TopLoc < objBottomLoc)
                                 {
                                     if (obj.isPushable) // Pushes GameObject if isPushable is true
-                                    {
                                         obj.location -= normal;
-                                    }
-                                    else
-                                    {
-                                        // Will detect overlap if detectOverlap is true
-                                        if (obj.detectOverlap)
-                                        {
-                                            obj.isOverlapping = true;
-                                        }
-                                    }
+                                    else if (obj.detectOverlap) // Will detect overlap if detectOverlap is true
+                                        obj.isOverlapping = true;
 
                                     if (obj2.isPushable) // Pushes GameObject if isPushable is true
                                     {
                                         obj2.location += normal;
                                         obj2.speed = obj.speed / 2;
                                     }
-                                    else
-                                    {
-                                        // Will detect overlap if detectOverlap is true
-                                        if (obj2.detectOverlap)
-                                        {
-                                            obj2.isOverlapping = true;
-                                        }
-                                    }
+                                    else if (obj2.detectOverlap) // Will detect overlap if detectOverlap is true
+                                        obj2.isOverlapping = true;
                                 }
                                 else // If not colliding, the GameObjects' isOverlapping variable will be false
                                 {
@@ -167,34 +148,26 @@ namespace Consyl_Engine
                         {
                             obj.location.X = gfx.drawWidth - (obj.collisionOffset.X + obj.width);
                             if (obj.speed.X > 0.0f)
-                            {
                                 obj.speed.X = 0.0f;
-                            }
                         }
                         else if (obj.location.X + obj.collisionOffset.X < 0.0f)
                         {
                             obj.location.X = -obj.collisionOffset.X;
                             if (obj.speed.X < 0.0f)
-                            {
                                 obj.speed.X = 0.0f;
-                            }
                         }
 
                         if (obj.location.Y + obj.collisionOffset.Y + obj.height >= gfx.drawHeight)
                         {
                             obj.location.Y = gfx.drawHeight - (obj.collisionOffset.Y + obj.height);
                             if (obj.speed.Y > 0.0f)
-                            {
                                 obj.speed.Y = 0.0f;
-                            }
                         }
                         else if (obj.location.Y + obj.collisionOffset.Y < 0.0f)
                         {
                             obj.location.Y = -obj.collisionOffset.Y;
                             if (obj.speed.Y < 0.0f)
-                            {
                                 obj.speed.Y = 0.0f;
-                            }
                         }
                     }
                 }
@@ -217,17 +190,11 @@ namespace Consyl_Engine
                 if (gameObjects.Count > 0)
                 {
                     for (int i = 0; i < gameObjects.Count; i++)
-                    {
                         if (gameObjects[i].objID != num)
-                        {
                             set = true;
-                        }
-                    }
                 }
                 else
-                {
                     set = true;
-                }
 
                 newObjID = num;
             }
@@ -240,9 +207,7 @@ namespace Consyl_Engine
                     break;
                 }
                 else
-                {
                     stillEqual = false;
-                }
             }
             if (!stillEqual)
             {
@@ -268,33 +233,24 @@ namespace Consyl_Engine
                 if (gameObjects.Count > 0)
                 {
                     for (int i = 0; i < gameObjects.Count; i++)
-                    {
                         if (gameObjects[i].objID != num)
-                        {
                             set = true;
-                        }
-                    }
                 }
                 else
-                {
                     set = true;
-                }
 
                 newObjID = num;
             }
 
             for (int i = 0; i < gameObjects.Count; i++)
-            {
                 if (gameObjects[i].objID == newObjID)
                 {
                     stillEqual = true;
                     break;
                 }
                 else
-                {
                     stillEqual = false;
-                }
-            }
+
             if (!stillEqual)
             {
                 GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision, newObjID);
@@ -315,21 +271,16 @@ namespace Consyl_Engine
         static public void DestroyGameObject(int objectID)
         {
             if (objectID >= 0)
-            {
                 gameObjects.Remove(GetGameObjectByID(objectID));
-            }
         }
 
         // A method that checks whether a GameObject with specified ID exists.
         static public bool DoesGameObjectExist(int objectID)
         {
             for (int i = 0; i < gameObjects.Count; i++)
-            {
                 if (gameObjects[i].objID == objectID)
-                {
                     return true;
-                }
-            }
+
             return false;
         }
 
