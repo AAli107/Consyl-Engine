@@ -119,26 +119,28 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawFilledCircle(int centerX, int centerY, float radius, char pixelLook) // Draws a Filled Circle
+        public static void DrawCircle(int centerX, int centerY, float radius, char pixelLook, bool outline = false) // Draws a Circle on screen
         {
-            for (double i = 0.0; i < 360; i += 0.1)
-            {
-                for (int r = 0; r < radius + 1; r++)
+            if (outline)
+            {   // Draws the outline version of the circle
+                for (double i = 0.0; i < 360; i += 0.1)
                 {
                     double angle = i * Math.PI / 180;
 
-                    DrawPixel((int)(r * Math.Cos(angle)) + centerX, (int)(r * Math.Sin(angle)) + centerY, pixelLook);
+                    DrawPixel((int)(radius * Math.Cos(angle)) + centerX, (int)(radius * Math.Sin(angle)) + centerY, pixelLook);
                 }
             }
-        }
+            else
+            {   // Draws the filled version of the circle
+                for (double i = 0.0; i < 360; i += 0.1)
+                {
+                    for (int r = 0; r < radius + 1; r++)
+                    {
+                        double angle = i * Math.PI / 180;
 
-        public static void DrawCircle(int centerX, int centerY, float radius, char pixelLook) // Draws an outline of a Circle
-        {
-            for (double i = 0.0; i < 360; i += 0.1)
-            {
-                double angle = i * Math.PI / 180;
-
-                DrawPixel((int)(radius * Math.Cos(angle)) + centerX, (int)(radius * Math.Sin(angle)) + centerY, pixelLook);
+                        DrawPixel((int)(r * Math.Cos(angle)) + centerX, (int)(r * Math.Sin(angle)) + centerY, pixelLook);
+                    }
+                }
             }
         }
 
@@ -243,7 +245,7 @@ namespace Consyl_Engine.EngineContents
 
             public static void DrawCircularProgressBar(int centerX, int centerY, float radius, char fillLook, char emptyLook, float percent) // Draws a Filled Circle
             {
-                gfx.DrawFilledCircle(centerX, centerY, radius, emptyLook); // Draws the Progress bar background
+                DrawCircle(centerX, centerY, radius, emptyLook); // Draws the Progress bar background
 
                 // Limits the percentage fill between 0 to 1 so that the filled part of the progress bar doesn't get bigger than the background
                 if (percent > 1.0f)
