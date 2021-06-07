@@ -211,12 +211,10 @@ namespace Consyl_Engine.EngineContents
 
         public class GameUI
         {
-            public static void DrawText(int x, int y, string text) // Draws text in a position on screen
+            public static void DrawText(int x, int y, string text) // Draws text on screen based on the xy coordinates given
             {
                 for (int i = 0; i < text.Length; i++)
-                {
                     DrawPixel(x + i, y, text[i]);
-                }
             }
 
             public static void DrawProgressBar(int x, int y, int width, int height, char fillLook, char emptyLook, float percent, bool horizontal = true) // Draws a progress bar on the screen
@@ -225,22 +223,14 @@ namespace Consyl_Engine.EngineContents
 
                 // Limits the percentage fill between 0 to 1 so that the filled part of the progress bar doesn't get bigger than the background
                 if (percent > 1.0f)
-                {
                     percent = 1.0f;
-                }
                 if (percent < 0.0f)
-                {
                     percent = 0.0f;
-                }
 
                 if (horizontal) // Draws the fill background based on if the user wants vertical or horizontal bars
-                {
                     DrawRectangle(x, y, (int)(width * percent), height, fillLook);
-                }
                 else
-                {
                     DrawRectangle(x, y - (int)(height * percent) + height, width, (int)(height * percent), fillLook);
-                }
             }
 
             public static void DrawCircularProgressBar(int centerX, int centerY, float radius, char fillLook, char emptyLook, float percent) // Draws a Filled Circle
