@@ -69,71 +69,47 @@ namespace Consyl_Engine.EngineContents
             if (speed.X > 0.0f)
             {
                 if (speed.X > friction)
-                {
                     speed.X -= friction;
-                }
                 else
-                {
                     speed.X -= speed.X;
-                }
             }
             if (speed.X < 0.0f)
             {
                 if (speed.X < -friction)
-                {
                     speed.X += friction;
-                }
                 else
-                {
                     speed.X += -speed.X;
-                }
             }
 
             // Friction to reduce speed on the Y axis
             if (speed.Y > 0.0f)
             {
                 if (speed.Y > friction)
-                {
                     speed.Y -= friction;
-                }
                 else
-                {
                     speed.Y -= speed.Y;
-                }
             }
             if (speed.Y < 0.0f)
             {
                 if (speed.Y < -friction)
-                {
                     speed.Y += friction;
-                }
                 else
-                {
                     speed.Y += -speed.Y;
-                }
             }
 
             if (hasGravity) // if gravity is enabled, a constant force will be pulling down on the object
-            {
                 speed.Y += gravityStrength * 0.98f;
-            }
         }
 
         public void DrawUpdate(bool areBlackPixelsTransparent = true) // Updates the graphics
         {
             if (objectSprite != null)
-            {
                 if (isVisible) // Will only render the texture sprite if isVisible is true
-                {
                     objectSprite.DrawImage((int)location.X, (int)location.Y, areBlackPixelsTransparent); // Draws the texture sprite
-                }
-            }
 
             // This will draw a rectangle that will show the collision box only if drawDebugCollision is true
             if (drawDebugCollision)
-            {
                 gfx.DrawRectangle((int)(location.X + collisionOffset.X), (int)(location.Y + collisionOffset.Y), (int)width, (int)height, '.', true);
-            }
         }
 
         public void AddVelocity(Vector2 addedVelocity) // A method that will allow adding velocity into the speed
@@ -151,9 +127,7 @@ namespace Consyl_Engine.EngineContents
             location = newLoc;
 
             if (resetSpeed)
-            {
                 speed = new Vector2(0.0f, 0.0f);
-            }
         }
 
         public bool IsObjectOverlapping() // A method that will return true if isOverlapping is true and vice versa
