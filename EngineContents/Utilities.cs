@@ -22,9 +22,8 @@ namespace Consyl_Engine.EngineContents
             public static bool RandBool() // Returns a random bool, true or false
             {
                 if (rng.Next(0, 2) == 1)
-                {
                     return true;
-                }
+
                 return false;
             }
 
@@ -63,9 +62,7 @@ namespace Consyl_Engine.EngineContents
             {
                 float value = 0.0f;
                 for (int i = 0; i < floatArray.Length; i++)
-                {
                     value += floatArray[i];
-                }
 
                 return value / floatArray.Length;
             }
