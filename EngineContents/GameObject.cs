@@ -132,7 +132,7 @@ namespace Consyl_Engine.EngineContents
             // This will draw a rectangle that will show the collision box only if drawDebugCollision is true
             if (drawDebugCollision)
             {
-                gfx.DrawRectangleOutline((int)(location.X + collisionOffset.X), (int)(location.Y + collisionOffset.Y), (int)width, (int)height, '.');
+                gfx.DrawRectangle((int)(location.X + collisionOffset.X), (int)(location.Y + collisionOffset.Y), (int)width, (int)height, '.', true);
             }
         }
 
