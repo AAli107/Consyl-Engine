@@ -33,17 +33,12 @@ namespace Consyl_Engine.EngineContents
 
                     // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
                     if (shade < 0)
-                    {
                         shade = 0;
-                    }
                     else if (shade > gfx.shadeCharArray.Length - 1)
-                    {
                         shade = gfx.shadeCharArray.Length - 1;
-                    }
+
                     if (!(blackTransparent && shade == 0))
-                    {
                         gfx.DrawPixel(i + x, j + y, gfx.shadeCharArray[shade]); // Draws the image
-                    }
                 }
             }
         }
@@ -60,17 +55,12 @@ namespace Consyl_Engine.EngineContents
 
                     // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
                     if (shade < 0)
-                    {
                         shade = 0;
-                    }
                     else if (shade > gfx.shadeCharArray.Length - 1)
-                    {
                         shade = gfx.shadeCharArray.Length - 1;
-                    }
+
                     if (!(blackTransparent && shade == 0) && (i > offset.X && i < size.X + offset.X) && (j > offset.Y && j < size.Y + offset.Y))
-                    {
                         gfx.DrawPixel((i - (int)offset.X) + (int)imageLoc.X, (j - (int)offset.Y) + (int)imageLoc.Y, gfx.shadeCharArray[shade]); // Draws the image
-                    }
                 }
             }
         }
@@ -89,13 +79,9 @@ namespace Consyl_Engine.EngineContents
 
                     // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
                     if (shade < 0)
-                    {
                         shade = 0;
-                    }
                     else if (shade > gfx.shadeCharArray.Length - 1)
-                    {
                         shade = gfx.shadeCharArray.Length - 1;
-                    }
 
                     Data[img.Width * j + i] = gfx.shadeCharArray[shade];
                 }
@@ -111,13 +97,9 @@ namespace Consyl_Engine.EngineContents
 
             // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
             if (shade < 0)
-            {
                 shade = 0;
-            }
             else if (shade > gfx.shadeCharArray.Length - 1)
-            {
                 shade = gfx.shadeCharArray.Length - 1;
-            }
 
             return gfx.shadeCharArray[shade];
         }
@@ -127,12 +109,9 @@ namespace Consyl_Engine.EngineContents
             Color[] Data = new Color[img.Width * img.Height];
 
             for (int i = 0; i < img.Width; i++)
-            {
                 for (int j = 0; j < img.Height; j++)
-                {
                     Data[img.Width * j + i] = img.GetPixel(i, j); // Returns an array of colors from the loaded Bitmap
-                }
-            }
+
             return Data;
         }
 
