@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Consyl_Engine
 {
@@ -19,6 +20,14 @@ namespace Consyl_Engine
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
         public static Vector2 resolution = new Vector2(115, 60); // Drawing Resolution in ASCII
         public static float framerate = 60.0f; // ASCII Rendering max framerate
+        public static float deltaTime // The amount in seconds it takes to render a frame (Forced to be read only)
+        {
+            get {return deltaT;}
+        }
+        public static float currentFPS // stores the frames per second the game is running at (Forced to be read only)
+        {
+            get {return 1 / deltaT;}
+        }
 
         // Variables that controls the Initial Colors of the Background and text
         private static readonly ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
@@ -26,6 +35,10 @@ namespace Consyl_Engine
 
         // Variables that you shouldn't modify or change directly
         public static List<GameObject> gameObjects = new List<GameObject>();
+        #endregion
+
+        #region ReadOnlyVariables
+        private static float deltaT; // The amount in seconds it takes to render a frame
         #endregion
 
         #region EngineCode
@@ -40,9 +53,13 @@ namespace Consyl_Engine
 
             GameCode.OnGameStart(); // Calls OnGameStart() from GameCode when the game runs
 
+            Stopwatch time = new Stopwatch();
+
             // Calls OnGameUpdate() from GameCode constantly as long as the gameRunning is true
             while (gameRunning)
             {
+                time.Start(); // starts a timer to measure the delta time of the current frame
+
                 if (!gamePaused)
                 {
                     foreach (var gameObject in gameObjects) // Updates all the existing Game Objects
@@ -65,8 +82,13 @@ namespace Consyl_Engine
                 }
 
                 // Wait for amount of milliseconds and refresh the screen
-                Thread.Sleep((int)((1.0f / framerate) * 1000.0f));
+                Thread.Sleep((int)((1 / framerate) * 1000));
                 gfx.ClearScreen();
+
+                // Stops timer and sets deltaT to the time it took to render a frame
+                time.Stop();
+                deltaT = (float)time.Elapsed.TotalSeconds;
+                time.Reset();
             }
 
             // Automatically turns off the rest of the program and executes GameCode.OnGameEnd() function if gameRunning = false
