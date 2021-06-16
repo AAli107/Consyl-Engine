@@ -16,13 +16,9 @@ namespace Consyl_Engine
         public static bool gameRunning = true; // Determines whether the game is running or not (Game will close when false)
         public static bool gamePaused = false; // The GameCode.OnGameUpdate() function and other updates will not execute only if it's false
         public static float deltaTime // stores the amount in seconds it took to render the last frame (Forced to be read only)
-        {
-            get { return deltaT; }
-        }
+        {get { return deltaT; }}
         public static float currentFPS // stores the frames per second the game is running at (Forced to be read only)
-        {
-            get { return 1 / deltaT; }
-        }
+        {get { return 1 / deltaT; }}
 
         // ASCII Graphics-related variables
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
