@@ -27,7 +27,7 @@ namespace Consyl_Engine.EngineContents
                 return false;
             }
 
-            public static bool RandBoolByChance(float chance = 0.5f)
+            public static bool RandBoolByChance(float chance = 0.5f) // returns true randomly based on the decimal chance it would do it
             {
                 return chance >= RangeFloat(0.0f, 1.0f);
             }
