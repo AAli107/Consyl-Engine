@@ -20,7 +20,7 @@ namespace Consyl_Engine
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
         public static Vector2 resolution = new Vector2(115, 60); // Drawing Resolution in ASCII
         public static float maxFramerate = 60.0f; // ASCII Rendering max framerate
-        public static float deltaTime // The amount in seconds it takes to render a frame (Forced to be read only)
+        public static float deltaTime // stores the amount in seconds it took to render the last frame (Forced to be read only)
         {
             get {return deltaT;}
         }
