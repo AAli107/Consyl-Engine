@@ -19,7 +19,7 @@ namespace Consyl_Engine
         // ASCII Graphics-related variables
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
         public static Vector2 resolution = new Vector2(115, 60); // Drawing Resolution in ASCII
-        public static float framerate = 60.0f; // ASCII Rendering max framerate
+        public static float maxFramerate = 60.0f; // ASCII Rendering max framerate
         public static float deltaTime // The amount in seconds it takes to render a frame (Forced to be read only)
         {
             get {return deltaT;}
@@ -82,7 +82,7 @@ namespace Consyl_Engine
                 }
 
                 // Wait for amount of milliseconds and refresh the screen
-                Thread.Sleep((int)((1 / framerate) * 1000));
+                Thread.Sleep((int)((1 / maxFramerate) * 1000));
                 gfx.ClearScreen();
 
                 // Stops timer and sets deltaT to the time it took to render a frame
