@@ -63,9 +63,9 @@ namespace Consyl_Engine.EngineContents
                 return (point1 + point2) / 2;
             }
 
-            public static Vector2 Vec3DToVec2D(Vector3 vec3D, float depth = 300) // Converts 3D Vectors into 2D vectors (Can be used to render simple 3D graphics)
+            public static Vector2 Vec3DToVec2D(Vector3 vec3D, float depth = 100) // Converts 3D Vectors into 2D vectors (Can be used to render simple 3D graphics)
             {
-                return new Vector2(vec3D.X * (depth / vec3D.Z), vec3D.Y * (depth / vec3D.Z));
+                return new Vector2((vec3D.X * (depth / vec3D.Z)) + (gfx.drawWidth / 2), (vec3D.Y * (depth / vec3D.Z)) + (gfx.drawHeight / 2));
             }
         } // class that stores functions that are related to Vector3
 
