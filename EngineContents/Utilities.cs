@@ -45,11 +45,29 @@ namespace Consyl_Engine.EngineContents
                 return MathF.Sqrt(MathF.Pow(point2.X - point1.X, 2) + MathF.Pow(point2.Y - point1.Y, 2));
             }
 
-            public static Vector2 Midpoint2D(Vector2 point1, Vector2 point2) // Returns the center between two vectors
+            public static Vector2 Midpoint2D(Vector2 point1, Vector2 point2) // Returns the center between two 2D vectors
             {
                 return (point1 + point2) / 2;
             }
         } // class that stores functions that are related to Vector2
+
+        public class Vec3D
+        {
+            public static float Distance3D(Vector3 point1, Vector3 point2) // Calculates the 3D distance between two points/vectors
+            {
+                return MathF.Sqrt(MathF.Pow(point2.X - point1.X, 2) + MathF.Pow(point2.Y - point1.Y, 2) + MathF.Pow(point2.Z - point1.Z, 2));
+            }
+
+            public static Vector3 Midpoint3D(Vector3 point1, Vector3 point2) // Returns the center between two 3D vectors
+            {
+                return (point1 + point2) / 2;
+            }
+
+            public static Vector2 Vec3DToVec2D(Vector3 vec3D, float depth = 300) // Converts 3D Vectors into 2D vectors (Can be used to render simple 3D graphics)
+            {
+                return new Vector2(vec3D.X * (depth / vec3D.Z), vec3D.Y * (depth / vec3D.Z));
+            }
+        } // class that stores functions that are related to Vector3
 
         public class Numbers
         {
