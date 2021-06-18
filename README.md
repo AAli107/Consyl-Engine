@@ -230,7 +230,7 @@ Every other shape requires coordinates and only this one which requires more tha
 
 #### Drawing a Circle
 
-There are two functions to draw a circle, one which draw a circle outline and the other draw a filled circle. Two of those require the same values and numbers, which are the x and y coordinates, the radius and how the ASCII pixels should look like. It should be easy to understand this once you messed around with the functions.
+The function for drawing a circle requires the x and y coordinates, the radius and how the ASCII pixels should look like. It should be easy to understand this once you messed around with the functions, also you can choose whether you want the circle to be an outline or a solid circle.
 
 
 
@@ -264,7 +264,9 @@ When you play the game, it will show up something like in Image I or whatever te
 
  
 
-Keep in note that textures currently don’t fully support transparency, but it will make the color black the same color as the background. Also, Consyl Engine currently supports the following file formats: **BMP**, **GIF**, **EXIF**, **JPG**, **PNG**, and **TIFF**.
+Keep note that textures currently don’t fully support transparency, but there is a parameter in drawing images that controls whether you want the blank ASCII character to count as black color or transparent.
+
+Consyl Engine currently supports the following file formats: **BMP**, **GIF**, **EXIF**, **JPG**, **PNG**, and **TIFF**.
 
 
 
@@ -274,7 +276,7 @@ Keep in note that textures currently don’t fully support transparency, but it 
 
 ## Audio.cs
 
-Games would seem silent and filled with void without Audio. So, sound is essential to give players feedback. You’re not going to use Console.Beep() which comes with the .NET Core 3.1. There is another special variable like the texture variable which would load the audio file and plays it whenever the programmer likes.
+Games would seem silent and filled with void without Audio. So, sound is essential to give players feedback. You’re not going to use `Console.Beep()` which comes with the .NET Core 3.1. There is an object like the texture object which would load the audio file and plays it whenever the play function is called.
 
  
 
@@ -323,20 +325,15 @@ Open “Engine.cs”, then you’ll see only 63 lines of code, most of them you 
 Here is a list of all the variables and what they do:
 
 1. **gameTitle:** Allows the modification of the Game’s title.
-
 2. **gameRunning:** Can be set to false in “GameCode.cs” to close the game.
-
-3. **gamePaused:** If true, it will pause the execution of OnGameUpdate().
-
-4. **drawASCIIRender:** Enables and Disables the ASCII graphics. (If you don’t want to use it)
-
-5. **resolution:** Drawing Resolution for the ASCII Graphics.
-
-6. **framerate:** The maximum framerate the game can run at.
-
-7. **BgColor:** The Background Color of the game. (can only be set through code)
-
-8. **FgColor:** The Color of the texts and characters. (can only be set through code)
+3. **gamePaused:** If true, it will pause the execution of `OnGameUpdate()`.
+4. **deltaTime:** Read only variable that stores the amount of time it took to render the last frame.
+5. **currentFPS:** Read only variable that store the Frames per Second the game is running at.
+6. **drawASCIIRender:** Enables and Disables the ASCII graphics. (If you don’t want to use it)
+7. **resolution:** Drawing Resolution for the ASCII Graphics.
+8. **framerate:** The maximum framerate the game can run at.
+9. **BgColor:** The Background Color of the game. (can only be set through code)
+10. **FgColor:** The Color of the texts and characters. (can only be set through code)
 
 
 
@@ -368,19 +365,37 @@ Rand is a class inside the Utilities class which contain many functions that hel
 
 Vec2D is another class inside the Utilities class which contains some useful functions for 2D vectors.
 
-So far there are two functions, one calculates with two 2D vector points which returns a float as distance.
+So far there are three functions, one calculates the distance between two vector2s.
 
-The other function will get two 2D vector points and calculates the midpoint of those two points.
+The 2nd function will get two 2D vector points and calculates the midpoint of those two points.
 
- 
+The last function will rotate your Vector2 around a specified place on screen with the specified angles in degrees.
+
+
+
+#### Vec3D
+
+Vec3D is a class inside the Utilities class which contains some useful functions for 3D vectors.
+
+So far there are three functions, one calculates the distance between two vector3s.
+
+The 2nd function will get two 3D vector points and calculates the midpoint of those two points.
+
+ The 3rd function will convert 3D Vectors into 2D vectors, which is useful for rendering 3D graphics.
+
+
 
 #### Numbers
 
 Numbers is a class under the Utilities class which contains some useful functions for anything related to numbers like floats and integers.
 
-Right now, there are only two functions, one that calculates the average number from a float array you input in.
+Right now, there are four functions, one that calculates the average number from a float array you input in.
 
-The other function calculates the distance between two numbers in 1D space. You can use it for calculating how far an object is from another object or ground.
+The 2nd function calculates the distance between two numbers in 1D space. You can use it for calculating how far an object is from another object or ground.
+
+The 3rd function converts Degrees to Radian values.
+
+The 4th function does converts backward of the 3rd function which converts Radian into Degrees.
 
 
 
@@ -403,7 +418,7 @@ There is also `Engine.CreateGameObjectNoTex()` which is the same thing, but is a
 
 Here's an important method under Engine class, which is `Engine.DestroyGameObject()`, it destroys a gameObject by inputting it's unique ID.
 
-Creating GameObjects with the methods used above, will return it's unique ID which is selected at random. You need to store it in a int variable so you w can reference the GameObject later.
+Creating GameObjects with the methods used above, will return it's unique ID which is selected at random. You need to store it in a int variable so you can reference the GameObject later.
 
 
 
