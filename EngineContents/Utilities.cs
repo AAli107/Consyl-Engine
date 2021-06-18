@@ -49,6 +49,15 @@ namespace Consyl_Engine.EngineContents
             {
                 return (point1 + point2) / 2;
             }
+
+            public static Vector2 RotateAroundPoint(Vector2 pointToRotate, Vector2 centerPoint, float degreesAngle) // Returns the position of a point after being rotated by a given degrees around a given point
+            {   
+                float radianAngle = Numbers.DegreeToRad(degreesAngle); // Converts Degrees angle to Radian angle
+                float cosTheta = MathF.Cos(radianAngle);
+                float sinTheta = MathF.Sin(radianAngle);
+
+                return new Vector2((cosTheta * (pointToRotate.X - centerPoint.X) - sinTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.X), (sinTheta * (pointToRotate.X - centerPoint.X) + cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y));
+            }
         } // class that stores functions that are related to Vector2
 
         public class Vec3D
