@@ -22,7 +22,7 @@ namespace Consyl_Engine.EngineContents
             string renderedImage = "";
             for (int y = 0; y < drawHeight; y++)
             {
-                // Converts 1D array to 2D array
+                // Takes a horizonal line of pixels based on the y value of the for loop
                 List<char> xArray = new List<char>(drawWidth);
                 for (int x = 0; x < drawWidth; x++)
                     xArray.Add(textImage[drawWidth * y + x]);
@@ -31,9 +31,9 @@ namespace Consyl_Engine.EngineContents
                 for (int i = 0; i < xArray.Count; i++) // stores a line of the screen
                     renderLine += xArray[i] + " ";
 
-                renderedImage += renderLine + "\n";
+                renderedImage += renderLine + "\n"; // Assembles the ASCII lines into one big string that covers the screen
             }
-            Console.WriteLine(renderedImage);
+            Console.WriteLine(renderedImage); // Displays the final image
         }
 
         public static void ClearScreen()
@@ -44,9 +44,8 @@ namespace Consyl_Engine.EngineContents
 
             // Clears the Image data from textImage
             for (int i = 0; i < textImage.Length; i++)
-            {
-                textImage[i] = shadeCharArray[0];
-            }
+                if (textImage[i] != shadeCharArray[0])
+                    textImage[i] = shadeCharArray[0];
         }
 
         public static char ReadPixelAt(int x, int y) // Give a pixel coordinate and it will return the pixel's char it has on screen
