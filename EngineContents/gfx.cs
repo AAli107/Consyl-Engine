@@ -10,13 +10,18 @@ namespace Consyl_Engine.EngineContents
         public static int drawWidth = (int)Engine.resolution.X;
         public static int drawHeight = (int)Engine.resolution.Y;
 
-        // An Array that stores ASCII chars that can be used for shading
+        /// <summary>
+        /// An Array that stores ASCII chars that can be used for shading
+        /// </summary>
         public static readonly char[] shadeCharArray = { ' ','.',',','-','^','*',':',';','I','l','!','i','>','<','~','+','_','?',']','[','}','{',')','(','|','/','t','f',
             'j','r','x','n','u','v','c','z','X','Y','U','J','C','L','Q','O','Z','m','w','q','p','d','b','k','h','a','o','#','M','W','&','%','B','@','$' };
 
         static char[] textImage = new char[drawWidth * drawHeight]; // Stores the Data of the ASCII pixels
 
-        public static void DrawASCII() // Renders the Image on Screen (do not use in GameCode.cs, this shall only be used for Engine.cs to render the graphics)
+        /// <summary>
+        /// Renders the Image on Screen (do not use in GameCode.cs, this shall only be used for Engine.cs to render the graphics)
+        /// </summary>
+        public static void DrawASCII()
         {
             // Draws ASCII Render on screen
             string renderedImage = "";
@@ -36,6 +41,9 @@ namespace Consyl_Engine.EngineContents
             Console.WriteLine(renderedImage); // Displays the final image
         }
 
+        /// <summary>
+        /// Clears the screen
+        /// </summary>
         public static void ClearScreen()
         {
             // Resets the Cursor position to redraw the next frame
@@ -48,12 +56,24 @@ namespace Consyl_Engine.EngineContents
                     textImage[i] = shadeCharArray[0];
         }
 
-        public static char ReadPixelAt(int x, int y) // Give a pixel coordinate and it will return the pixel's char it has on screen
+        /// <summary>
+        /// Give a pixel coordinate and it will return the pixel's char it has on screen
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public static char ReadPixelAt(int x, int y)
         {
             return textImage[drawWidth * y + x];
         }
 
-        public static void DrawPixel(int x, int y, char pixelLook) // Draws ASCII pixel on screen
+        /// <summary>
+        /// Draws ASCII pixel on screen
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="pixelLook"></param>
+        public static void DrawPixel(int x, int y, char pixelLook)
         {
             if (x >= 0 && x < drawWidth && y >= 0 && y < drawHeight)
             {
@@ -61,7 +81,15 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawLine(int x0, int y0, int x1, int y1, char pixelLook) // Draw lines between two points
+        /// <summary>
+        /// Draw lines between two points
+        /// </summary>
+        /// <param name="x0"></param>
+        /// <param name="y0"></param>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="pixelLook"></param>
+        public static void DrawLine(int x0, int y0, int x1, int y1, char pixelLook)
         {
             int dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
             int dy = Math.Abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
@@ -90,7 +118,16 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawRectangle(int x, int y, int width, int height, char pixelLook, bool outline = false) // Draws a rectangle on screen
+        /// <summary>
+        /// Draws a rectangle on screen
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="pixelLook"></param>
+        /// <param name="outline"></param>
+        public static void DrawRectangle(int x, int y, int width, int height, char pixelLook, bool outline = false)
         {
             if (outline)
             {   // Draws the outline of the rectangle
@@ -107,7 +144,15 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawCircle(int centerX, int centerY, float radius, char pixelLook, bool outline = false) // Draws a Circle on screen
+        /// <summary>
+        /// Draws a Circle on screen
+        /// </summary>
+        /// <param name="centerX"></param>
+        /// <param name="centerY"></param>
+        /// <param name="radius"></param>
+        /// <param name="pixelLook"></param>
+        /// <param name="outline"></param>
+        public static void DrawCircle(int centerX, int centerY, float radius, char pixelLook, bool outline = false)
         {
             if (outline)
             {   // Draws the outline version of the circle
@@ -132,7 +177,15 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawPolygon(Vector2 p1, Vector2 p2, Vector2 p3, char pixelLook, bool outline = false) // Draws a polygon on screen, shape is based on the coordinates given.
+        /// <summary>
+        /// Draws a polygon on screen, shape is based on the coordinates given.
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <param name="p3"></param>
+        /// <param name="pixelLook"></param>
+        /// <param name="outline"></param>
+        public static void DrawPolygon(Vector2 p1, Vector2 p2, Vector2 p3, char pixelLook, bool outline = false)
         {
             if (outline)
             {   // Draws the polygon as outline
@@ -163,7 +216,16 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public static void DrawQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, char pixelLook, bool outline = false) // Draws a quadrilateral on screen, shape is based on the coordinates given.
+        /// <summary>
+        /// Draws a quadrilateral on screen, shape is based on the coordinates given.
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <param name="p3"></param>
+        /// <param name="p4"></param>
+        /// <param name="pixelLook"></param>
+        /// <param name="outline"></param>
+        public static void DrawQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, char pixelLook, bool outline = false)
         {
             if (outline)
             {   // Draws the Quadrilateral as outline
@@ -199,13 +261,30 @@ namespace Consyl_Engine.EngineContents
 
         public class GameUI
         {
-            public static void DrawText(int x, int y, string text) // Draws text on screen based on the xy coordinates given
+            /// <summary>
+            /// Draws text on screen based on the xy coordinates given
+            /// </summary>
+            /// <param name="x"></param>
+            /// <param name="y"></param>
+            /// <param name="text"></param>
+            public static void DrawText(int x, int y, string text)
             {
                 for (int i = 0; i < text.Length; i++)
                     DrawPixel(x + i, y, text[i]);
             }
 
-            public static void DrawProgressBar(int x, int y, int width, int height, char fillLook, char emptyLook, float percent, bool horizontal = true) // Draws a progress bar on the screen
+            /// <summary>
+            /// Draws a progress bar on the screen
+            /// </summary>
+            /// <param name="x"></param>
+            /// <param name="y"></param>
+            /// <param name="width"></param>
+            /// <param name="height"></param>
+            /// <param name="fillLook"></param>
+            /// <param name="emptyLook"></param>
+            /// <param name="percent"></param>
+            /// <param name="horizontal"></param>
+            public static void DrawProgressBar(int x, int y, int width, int height, char fillLook, char emptyLook, float percent, bool horizontal = true)
             {
                 DrawRectangle(x, y, width, height, emptyLook); // Draws the Progress bar background
 
@@ -221,7 +300,16 @@ namespace Consyl_Engine.EngineContents
                     DrawRectangle(x, y - (int)(height * percent) + height, width, (int)(height * percent), fillLook);
             }
 
-            public static void DrawCircularProgressBar(int centerX, int centerY, float radius, char fillLook, char emptyLook, float percent) // Draws a Filled Circle
+            /// <summary>
+            /// Draws a circular progress bar on the screen
+            /// </summary>
+            /// <param name="centerX"></param>
+            /// <param name="centerY"></param>
+            /// <param name="radius"></param>
+            /// <param name="fillLook"></param>
+            /// <param name="emptyLook"></param>
+            /// <param name="percent"></param>
+            public static void DrawCircularProgressBar(int centerX, int centerY, float radius, char fillLook, char emptyLook, float percent)
             {
                 DrawCircle(centerX, centerY, radius, emptyLook); // Draws the Progress bar background
 
