@@ -61,7 +61,10 @@ namespace Consyl_Engine.EngineContents
             this.objID = objID;
         }
 
-        public void Update() // Executed every frame to update it
+        /// <summary>
+        /// Updates the GameObject
+        /// </summary>
+        public void Update()
         {
             location += speed; // Moves Object based on speed
 
@@ -101,7 +104,11 @@ namespace Consyl_Engine.EngineContents
                 speed.Y += gravityStrength * 0.98f;
         }
 
-        public void DrawUpdate(bool areBlackPixelsTransparent = true) // Updates the graphics
+        /// <summary>
+        /// Draws the GameObject
+        /// </summary>
+        /// <param name="areBlackPixelsTransparent"></param>
+        public void DrawUpdate(bool areBlackPixelsTransparent = true)
         {
             if (objectSprite != null)
                 if (isVisible) // Will only render the texture sprite if isVisible is true
@@ -112,17 +119,30 @@ namespace Consyl_Engine.EngineContents
                 gfx.DrawRectangle((int)(location.X + collisionOffset.X), (int)(location.Y + collisionOffset.Y), (int)width, (int)height, '.', true);
         }
 
-        public void AddVelocity(Vector2 addedVelocity) // A method that will allow adding velocity into the speed
+        /// <summary>
+        /// A method that will allow adding velocity into the speed
+        /// </summary>
+        /// <param name="addedVelocity"></param>
+        public void AddVelocity(Vector2 addedVelocity)
         {
             speed += addedVelocity;
         }
 
-        public void AddLocation(Vector2 addedLoc) // A method that will allow adding the coordinates into the location which will make it move
+        /// <summary>
+        /// A method that will allow adding the coordinates into the location which will make it move
+        /// </summary>
+        /// <param name="addedLoc"></param>
+        public void AddLocation(Vector2 addedLoc)
         {
             location += addedLoc;
         }
 
-        public void Teleport(Vector2 newLoc, bool resetSpeed) // A method for teleporting the GameObject
+        /// <summary>
+        /// A method for teleporting the GameObject
+        /// </summary>
+        /// <param name="newLoc"></param>
+        /// <param name="resetSpeed"></param>
+        public void Teleport(Vector2 newLoc, bool resetSpeed)
         {
             location = newLoc;
 
@@ -130,12 +150,20 @@ namespace Consyl_Engine.EngineContents
                 speed = new Vector2(0.0f, 0.0f);
         }
 
-        public bool IsObjectOverlapping() // A method that will return true if isOverlapping is true and vice versa
+        /// <summary>
+        /// A method that will return true if isOverlapping is true and vice versa
+        /// </summary>
+        /// <returns></returns>
+        public bool IsObjectOverlapping()
         {
             return isOverlapping;
         }
-        
-        public Vector2 GetObjectCollisionCenter() // Returns the center of the collision box
+
+        /// <summary>
+        /// Returns the center of the collision box
+        /// </summary>
+        /// <returns></returns>
+        public Vector2 GetObjectCollisionCenter()
         {
             return Utilities.Vec2D.Midpoint2D(location + collisionOffset, location + new Vector2(width, height));
         }
