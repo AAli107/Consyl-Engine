@@ -15,9 +15,17 @@ namespace Consyl_Engine
         public static string gameTitle = "Consyl Game"; // The title of the game
         public static bool gameRunning = true; // Determines whether the game is running or not (Game will close when false)
         public static bool gamePaused = false; // The GameCode.OnGameUpdate() function and other updates will not execute only if it's false
-        public static float deltaTime // stores the amount in seconds it took to render the last frame (Forced to be read only)
+
+        /// <summary>
+        /// The amount in seconds it took to render the last frame (read only)
+        /// </summary>
+        public static float deltaTime
         {get { return deltaT; }}
-        public static float currentFPS // stores the frames per second the game is running at (Forced to be read only)
+
+        /// <summary>
+        /// The frames per second the game is running at
+        /// </summary>
+        public static float currentFPS
         {get { return 1 / deltaT; }}
 
         // ASCII Graphics-related variables
@@ -95,7 +103,9 @@ namespace Consyl_Engine
         #endregion
 
         #region GameObjectCollisionUpdate
-        // This method is called right after the OnGameUpdate code is executed
+        /// <summary>
+        /// This method is called right after the OnGameUpdate code is executed
+        /// </summary>
         static void GameObjectCollisionUpdate()
         {
             foreach (GameObject obj in gameObjects)
@@ -194,7 +204,22 @@ namespace Consyl_Engine
         #endregion
 
         #region EngineMethods
-        // A method to create a GameObject
+        /// <summary>
+        /// A method to create a GameObject
+        /// </summary>
+        /// <param name="_x"></param>
+        /// <param name="_y"></param>
+        /// <param name="_CollisionEnabled"></param>
+        /// <param name="_collisionWidth"></param>
+        /// <param name="_collisionHeight"></param>
+        /// <param name="_detectOverlap"></param>
+        /// <param name="_image"></param>
+        /// <param name="_isPushable"></param>
+        /// <param name="_colOffsetX"></param>
+        /// <param name="_colOffsetY"></param>
+        /// <param name="_collideWithBounds"></param>
+        /// <param name="_drawDebugCollision"></param>
+        /// <returns></returns>
         static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
             int newObjID = -1;
@@ -237,7 +262,21 @@ namespace Consyl_Engine
             return -1;
         }
 
-        // Another method to create a GameObject without applying the textures
+        /// <summary>
+        /// A method to create a GameObject without applying the textures
+        /// </summary>
+        /// <param name="_x"></param>
+        /// <param name="_y"></param>
+        /// <param name="_CollisionEnabled"></param>
+        /// <param name="_collisionWidth"></param>
+        /// <param name="_collisionHeight"></param>
+        /// <param name="_detectOverlap"></param>
+        /// <param name="_isPushable"></param>
+        /// <param name="_colOffsetX"></param>
+        /// <param name="_colOffsetY"></param>
+        /// <param name="_collideWithBounds"></param>
+        /// <param name="_drawDebugCollision"></param>
+        /// <returns></returns>
         static public int CreateGameObjectNoTex(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
             int newObjID = -1;
@@ -279,20 +318,31 @@ namespace Consyl_Engine
             return -1;
         }
 
-        // A method that returns the GameObject when you input it's ID
+        /// <summary>
+        /// A method that returns the GameObject when you input it's ID
+        /// </summary>
+        /// <param name="objectID"></param>
+        /// <returns></returns>
         static public GameObject GetGameObjectByID(int objectID)
         {
             return gameObjects.FirstOrDefault(obj => obj.objID == objectID);
         }
 
-        // A method that deletes a spawned GameObject
+        /// <summary>
+        /// A method that deletes a spawned GameObject
+        /// </summary>
+        /// <param name="objectID"></param>
         static public void DestroyGameObject(int objectID)
         {
             if (objectID >= 0)
                 gameObjects.Remove(GetGameObjectByID(objectID));
         }
 
-        // A method that checks whether a GameObject with specified ID exists.
+        /// <summary>
+        /// A method that checks whether a GameObject with specified ID exists.
+        /// </summary>
+        /// <param name="objectID"></param>
+        /// <returns></returns>
         static public bool DoesGameObjectExist(int objectID)
         {
             for (int i = 0; i < gameObjects.Count; i++)
@@ -302,11 +352,20 @@ namespace Consyl_Engine
             return false;
         }
 
-        static public ConsoleColor GetBgColor() // Allows you to get the background color
+        /// <summary>
+        /// Allows you to get the background color
+        /// </summary>
+        /// <returns></returns>
+        static public ConsoleColor GetBgColor()
         {
             return BgColor;
         }
-        static public ConsoleColor GetFgColor() // Allows you to get the foreground color
+
+        /// <summary>
+        /// Allows you to get the foreground color
+        /// </summary>
+        /// <returns></returns>
+        static public ConsoleColor GetFgColor()
         {
             return FgColor;
         }
