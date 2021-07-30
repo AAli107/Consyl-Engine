@@ -34,7 +34,11 @@ namespace Consyl_Engine.EngineContents
             this.drawDebug = drawDebug;
         }
 
-        public bool CastLine() // Cast a Line ray that will hit game objects
+        /// <summary>
+        /// Cast a Line ray that will hit game objects
+        /// </summary>
+        /// <returns></returns>
+        public bool CastLine()
         {
             float x0 = start.X;
             float y0 = start.Y;
