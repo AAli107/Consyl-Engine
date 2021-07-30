@@ -21,7 +21,14 @@ namespace Consyl_Engine.EngineContents
             imageResolution = new Vector2(img.Width, img.Height); // Saves the Resolution of the 
         }
 
-        public void DrawImage(int x, int y, bool blackTransparent = false, float scale = 1) // Will draw the loaded texture file 
+        /// <summary>
+        /// Will draw the loaded texture file
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="blackTransparent"></param>
+        /// <param name="scale"></param>
+        public void DrawImage(int x, int y, bool blackTransparent = false, float scale = 1)
         {
             // Loops between pixels
             for (int i = 0; i < img.Width; i++)
@@ -44,7 +51,16 @@ namespace Consyl_Engine.EngineContents
                 
             }
         }
-        public void DrawCroppedImage(Vector2 imageLoc, Vector2 offset, Vector2 size, bool blackTransparent = false, float scale = 1) // Will draw the loaded texture file cropped based on the offset and size Vectors.
+
+        /// <summary>
+        /// Will draw the loaded texture file cropped based on the offset and size Vectors.
+        /// </summary>
+        /// <param name="imageLoc"></param>
+        /// <param name="offset"></param>
+        /// <param name="size"></param>
+        /// <param name="blackTransparent"></param>
+        /// <param name="scale"></param>
+        public void DrawCroppedImage(Vector2 imageLoc, Vector2 offset, Vector2 size, bool blackTransparent = false, float scale = 1)
         {
             // Loops between pixels
             for (int i = 0; i < img.Width; i++)
@@ -67,7 +83,11 @@ namespace Consyl_Engine.EngineContents
             }
         }
 
-        public char[] GetAllShadeColor() // Gets all the Consyl-Shaded Color from the loaded Bitmap
+        /// <summary>
+        /// Gets all the Consyl-Shaded Color from the loaded Bitmap
+        /// </summary>
+        /// <returns></returns>
+        public char[] GetAllShadeColor()
         {
             char[] Data = new char[img.Width * img.Height];
 
@@ -91,7 +111,13 @@ namespace Consyl_Engine.EngineContents
             return Data;
         }
 
-        public char GetShadeColorAtPixel(int x, int y) // Gets the Consyl-Shaded color from a chosen pixel based on x and y
+        /// <summary>
+        /// Gets the Consyl-Shaded color from a chosen pixel based on x and y
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public char GetShadeColorAtPixel(int x, int y)
         {
             Color pixel = img.GetPixel(x, y); // saves the color value of the current pixel in a variable
 
@@ -106,7 +132,11 @@ namespace Consyl_Engine.EngineContents
             return gfx.shadeCharArray[shade];
         }
 
-        public Color[] GetAllColor() // Gets the color of all pixels from the loaded Bitmap
+        /// <summary>
+        /// Gets the color of all pixels from the loaded Bitmap
+        /// </summary>
+        /// <returns></returns>
+        public Color[] GetAllColor()
         {
             Color[] Data = new Color[img.Width * img.Height];
 
@@ -117,7 +147,13 @@ namespace Consyl_Engine.EngineContents
             return Data;
         }
 
-        public Color GetColorAtPixel(int x, int y) // Gets the Color at a chosen pixel directly from the Bitmap
+        /// <summary>
+        /// Gets the Color at a chosen pixel directly from the Bitmap
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public Color GetColorAtPixel(int x, int y)
         {
             return img.GetPixel(x, y);
         }
