@@ -18,7 +18,10 @@ namespace Consyl_Engine.EngineContents
             fileName = _fileName;
         }
 
-        public void PlaySound() // Plays sound from start
+        /// <summary>
+        /// Plays sound from start
+        /// </summary>
+        public void PlaySound()
         {
             if (fileName.EndsWith(".mp3"))
             {
@@ -39,18 +42,28 @@ namespace Consyl_Engine.EngineContents
             output.Play();
         }
 
-        public void StopSound() // Stops the sound
+        /// <summary>
+        /// Stops the sound
+        /// </summary>
+        public void StopSound()
         {
             if (output != null)
                 output.Stop();
         }
 
-        public void PauseSound() // Pauses the sound
+        /// <summary>
+        /// Pauses the sound
+        /// </summary>
+        public void PauseSound()
         {
             if (output != null)
                 output.Pause();
         }
-        public void UnpauseSound() // Un-pauses the sound
+
+        /// <summary>
+        /// Un-pauses the sound
+        /// </summary>
+        public void UnpauseSound()
         {
             if (output != null)
                 output.Play();
