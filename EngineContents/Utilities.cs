@@ -199,6 +199,18 @@ namespace Consyl_Engine.EngineContents
             {
                 return (radian * 180.0f) / MathF.PI;
             }
+
+            /// <summary>
+            /// Fixes the value number between the minimum and maximum
+            /// </summary>
+            /// <param name="val"></param>
+            /// <param name="min"></param>
+            /// <param name="max"></param>
+            /// <returns></returns>
+            public static float ClampN(float val, float min, float max)
+            {
+                return val > max ? max : val < min ? min : val;
+            }
         }
     }
 }
