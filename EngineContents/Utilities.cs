@@ -40,10 +40,7 @@ namespace Consyl_Engine.EngineContents
             /// <returns></returns>
             public static bool RandBool()
             {
-                if (rng.Next(0, 2) == 1)
-                    return true;
-
-                return false;
+                return rng.Next(0, 2) == 1;
             }
 
             /// <summary>
