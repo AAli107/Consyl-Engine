@@ -369,6 +369,17 @@ namespace Consyl_Engine
         {
             return FgColor;
         }
+
+        /// <summary>
+        /// Returns whether two GameObjects are in the same location
+        /// </summary>
+        /// <param name="gameObjID1"></param>
+        /// <param name="gameObjID2"></param>
+        /// <returns></returns>
+        static public bool GameObjectEqualsLocation(int gameObjID1, int gameObjID2)
+        {
+            return GetGameObjectByID(gameObjID1).location == GetGameObjectByID(gameObjID2).location;
+        }
         #endregion
     }
 }
