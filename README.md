@@ -28,7 +28,7 @@ This is an ASCII Console Game Engine! Go to [Releases](https://github.com/AAli10
 
 ### Recommended Software Requirements
 
-1. Windows 10 Operating System
+1. Windows 10 Operating System or above.
 
 2. Microsoft Visual Studio that can run C# .NET Core 3.1 [(You can download it here)](https://visualstudio.microsoft.com/vs/community/)
 
