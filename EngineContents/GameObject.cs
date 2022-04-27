@@ -62,7 +62,7 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
-        /// Updates the GameObject
+        /// Updates the GameObject.
         /// </summary>
         public void Update()
         {
@@ -120,7 +120,7 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
-        /// A method that will allow adding velocity into the speed
+        /// A method that will allow adding velocity into the speed.
         /// </summary>
         /// <param name="addedVelocity"></param>
         public void AddVelocity(Vector2 addedVelocity)
@@ -129,7 +129,7 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
-        /// A method that will allow adding the coordinates into the location which will make it move
+        /// A method that will allow adding the coordinates into the location which will make it move.
         /// </summary>
         /// <param name="addedLoc"></param>
         public void AddLocation(Vector2 addedLoc)
@@ -138,7 +138,7 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
-        /// A method for teleporting the GameObject
+        /// A method for teleporting the GameObject.
         /// </summary>
         /// <param name="newLoc"></param>
         /// <param name="resetSpeed"></param>
@@ -151,7 +151,7 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
-        /// A method that will return true if isOverlapping is true and vice versa
+        /// A method that will return true if isOverlapping is true and vice versa.
         /// </summary>
         /// <returns></returns>
         public bool IsObjectOverlapping()
@@ -160,7 +160,7 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
-        /// Returns the center of the collision box
+        /// Returns the center of the collision box.
         /// </summary>
         /// <returns></returns>
         public Vector2 GetObjectCollisionCenter()
@@ -169,12 +169,22 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
-        /// Returns the Area of the collision box
+        /// Returns the Area of the collision box.
         /// </summary>
         /// <returns></returns>
         public int GetCollisionArea()
         {
             return width * height;
+        }
+
+        /// <summary>
+        /// Gets Distance between this GameObject and other GameObject by ID.
+        /// </summary>
+        /// <param name="otherObjID"></param>
+        /// <returns></returns>
+        public float GetDistanceToGameObject(int otherObjID)
+        {
+            return Utilities.Vec2D.Distance2D(location, Engine.GetGameObjectByID(otherObjID).location);
         }
     }
 }
