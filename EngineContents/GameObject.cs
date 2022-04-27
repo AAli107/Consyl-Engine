@@ -167,5 +167,14 @@ namespace Consyl_Engine.EngineContents
         {
             return Utilities.Vec2D.Midpoint2D(location + collisionOffset, location + new Vector2(width, height));
         }
+
+        /// <summary>
+        /// Returns the Area of the collision box
+        /// </summary>
+        /// <returns></returns>
+        public int GetCollisionArea()
+        {
+            return width * height;
+        }
     }
 }
