@@ -112,7 +112,7 @@ namespace Consyl_Engine.EngineContents
         /// <param name="x1"></param>
         /// <param name="y1"></param>
         /// <param name="pixelLook"></param>
-        public static void DrawLine(int x0, int y0, int x1, int y1, char pixelLook)
+        public static void DrawLine(int x0, int y0, int x1, int y1, char pixelLook, bool isStatic = false)
         {
             int dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
             int dy = Math.Abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
@@ -120,7 +120,7 @@ namespace Consyl_Engine.EngineContents
 
             for (; ; )
             {
-                DrawPixel(x0, y0, pixelLook);
+                DrawPixel(x0, y0, pixelLook, isStatic);
 
                 if (x0 == x1 && y0 == y1)
                     break;
