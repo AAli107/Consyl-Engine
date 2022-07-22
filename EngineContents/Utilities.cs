@@ -210,11 +210,11 @@ namespace Consyl_Engine.EngineContents
             }
 
             /// <summary>
-            /// Gets the largest number in an array of floats
+            /// Returns the largest number in an array of floats
             /// </summary>
             /// <param name="floatArray"></param>
             /// <returns></returns>
-            public static float MaximumVal(float[] floatArray)
+            public static float MaxVal(float[] floatArray)
             {
                 float max = 0;
                 for (int i = 0; i < floatArray.Length; i++)
@@ -224,6 +224,23 @@ namespace Consyl_Engine.EngineContents
                     }
 
                 return max;
+            }
+
+            /// <summary>
+            /// Returns the smallest number in an array of floats
+            /// </summary>
+            /// <param name="floatArray"></param>
+            /// <returns></returns>
+            public static float MinVal(float[] floatArray)
+            {
+                float min = floatArray[0];
+                for (int i = 0; i < floatArray.Length; i++)
+                    if (floatArray[i] < min)
+                    {
+                        min = floatArray[i];
+                    }
+
+                return min;
             }
         }
     }
