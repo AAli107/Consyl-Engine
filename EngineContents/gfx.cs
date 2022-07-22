@@ -216,13 +216,13 @@ namespace Consyl_Engine.EngineContents
         /// <param name="p3"></param>
         /// <param name="pixelLook"></param>
         /// <param name="outline"></param>
-        public static void DrawPolygon(Vector2 p1, Vector2 p2, Vector2 p3, char pixelLook, bool outline = false)
+        public static void DrawPolygon(Vector2 p1, Vector2 p2, Vector2 p3, char pixelLook, bool outline = false, bool isStatic = false)
         {
             if (outline)
             {   // Draws the polygon as outline
-                DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook);
-                DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook);
-                DrawLine((int)p3.X, (int)p3.Y, (int)p1.X, (int)p1.Y, pixelLook);
+                DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook, isStatic);
+                DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook, isStatic);
+                DrawLine((int)p3.X, (int)p3.Y, (int)p1.X, (int)p1.Y, pixelLook, isStatic);
             }
             else
             {   // Draws the polygon with fillings (tasty)
@@ -245,7 +245,7 @@ namespace Consyl_Engine.EngineContents
                             c ^= p[i].Y > y ^ p[j].Y > y && x < (p[j].X - p[i].X) * (y - p[i].Y) / (p[j].Y - p[i].Y) + p[i].X;
 
                         if (c)
-                            DrawPixel(x, y, pixelLook); // Will draw pixel only if the coordinates given from the xy for loop is inside the polygon bounds
+                            DrawPixel(x, y, pixelLook, isStatic); // Will draw pixel only if the coordinates given from the xy for loop is inside the polygon bounds
                     }
                 }
             }
@@ -260,14 +260,14 @@ namespace Consyl_Engine.EngineContents
         /// <param name="p4"></param>
         /// <param name="pixelLook"></param>
         /// <param name="outline"></param>
-        public static void DrawQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, char pixelLook, bool outline = false)
+        public static void DrawQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, char pixelLook, bool outline = false, bool isStatic = false)
         {
             if (outline)
             {   // Draws the Quadrilateral as outline
-                DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook);
-                DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook);
-                DrawLine((int)p3.X, (int)p3.Y, (int)p4.X, (int)p4.Y, pixelLook);
-                DrawLine((int)p4.X, (int)p4.Y, (int)p1.X, (int)p1.Y, pixelLook);
+                DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook, isStatic);
+                DrawLine((int)p2.X, (int)p2.Y, (int)p3.X, (int)p3.Y, pixelLook, isStatic);
+                DrawLine((int)p3.X, (int)p3.Y, (int)p4.X, (int)p4.Y, pixelLook, isStatic);
+                DrawLine((int)p4.X, (int)p4.Y, (int)p1.X, (int)p1.Y, pixelLook, isStatic);
             }
             else
             {
@@ -292,7 +292,7 @@ namespace Consyl_Engine.EngineContents
                             c ^= p[i].Y > y ^ p[j].Y > y && x < (p[j].X - p[i].X) * (y - p[i].Y) / (p[j].Y - p[i].Y) + p[i].X;
 
                         if (c)
-                            DrawPixel(x, y, pixelLook); // Will draw pixel only if the coordinates given from the xy for loop is inside the Quadrilateral bounds
+                            DrawPixel(x, y, pixelLook, isStatic); // Will draw pixel only if the coordinates given from the xy for loop is inside the Quadrilateral bounds
                     }
                 }
             }
