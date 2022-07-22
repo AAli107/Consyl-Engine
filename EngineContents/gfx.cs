@@ -57,7 +57,7 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
-        /// Give a pixel coordinate and it will return the pixel's char it has on screen
+        /// Give a pixel coordinate and it will return the pixel's char that's within screen boundary
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -73,12 +73,24 @@ namespace Consyl_Engine.EngineContents
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="pixelLook"></param>
-        public static void DrawPixel(int x, int y, char pixelLook)
+        public static void DrawPixel(int x, int y, char pixelLook, bool isStatic = false)
         {
-            if (x >= 0 && x < drawWidth && y >= 0 && y < drawHeight)
+            if (isStatic)
             {
-                textImage[drawWidth * y + x] = pixelLook;
+                if (x >= 0 && x < drawWidth && y >= 0 && y < drawHeight)
+                    textImage[drawWidth * y + x] = pixelLook;
             }
+            else if (Engine.mainCamera != null)
+            {
+                int xComplete = x - (int)Engine.mainCamera.camPos.X;
+                int yComplete = y - (int)Engine.mainCamera.camPos.Y;
+
+                if (xComplete >= 0 && xComplete < drawWidth && yComplete >= 0 && yComplete < drawHeight)
+                {
+                    textImage[drawWidth * yComplete + xComplete] = pixelLook;
+                }
+            }
+            
         }
 
         /// <summary>
@@ -127,20 +139,21 @@ namespace Consyl_Engine.EngineContents
         /// <param name="height"></param>
         /// <param name="pixelLook"></param>
         /// <param name="outline"></param>
-        public static void DrawRectangle(int x, int y, int width, int height, char pixelLook, bool outline = false)
+        /// <param name="isStatic"></param>
+        public static void DrawRectangle(int x, int y, int width, int height, char pixelLook, bool outline = false, bool isStatic = false)
         {
             if (outline)
             {   // Draws the outline of the rectangle
                 for (int y0 = y; y0 < height + y; y0++)
                     for (int x0 = x; x0 < width + x; x0++)
                         if (y0 == y || y0 == height + (y - 1) || x0 == x || x0 == width + (x - 1))
-                            DrawPixel(x0, y0, pixelLook);
+                            DrawPixel(x0, y0, pixelLook, isStatic);
             }
             else
             {   // Draws the Filled version of the rectangle
                 for (int y0 = y; y0 < height + y; y0++)
                     for (int x0 = x; x0 < width + x; x0++)
-                        DrawPixel(x0, y0, pixelLook);
+                        DrawPixel(x0, y0, pixelLook, isStatic);
             }
         }
 
@@ -152,28 +165,23 @@ namespace Consyl_Engine.EngineContents
         /// <param name="radius"></param>
         /// <param name="pixelLook"></param>
         /// <param name="outline"></param>
-        public static void DrawCircle(int centerX, int centerY, float radius, char pixelLook, bool outline = false)
+        /// <param name="isStatic"></param>
+        public static void DrawCircle(int centerX, int centerY, float radius, char pixelLook, bool outline = false, bool isStatic = false)
         {
             if (outline)
             {   // Draws the outline version of the circle
-                for (double i = 0.0; i < 360; i += 0.1)
-                {
-                    double angle = i * Math.PI / 180;
-
-                    DrawPixel((int)(radius * Math.Cos(angle)) + centerX, (int)(radius * Math.Sin(angle)) + centerY, pixelLook);
-                }
+                for (int y = (int)-radius; y <= radius; y++)
+                    for (int x = (int)-radius; x <= radius; x++)
+                        if (Utilities.Vec2D.Distance2D(new Vector2(centerX, centerY), new Vector2(x + centerX, y + centerY)) <= radius
+                            && Utilities.Vec2D.Distance2D(new Vector2(centerX, centerY), new Vector2(x + centerX, y + centerY)) >= radius-1)
+                            DrawPixel(x + centerX, y + centerY, pixelLook, isStatic);
             }
             else
-            {   // Draws the filled version of the circle
-                for (double i = 0.0; i < 360; i += 0.1)
-                {
-                    for (int r = 0; r < radius + 1; r++)
-                    {
-                        double angle = i * Math.PI / 180;
-
-                        DrawPixel((int)(r * Math.Cos(angle)) + centerX, (int)(r * Math.Sin(angle)) + centerY, pixelLook);
-                    }
-                }
+            {    //Draws the filled version of the circle
+                for (int y = (int)-radius; y <= radius; y++)
+                    for (int x = (int)-radius; x <= radius; x++)
+                        if (Utilities.Vec2D.Distance2D(new Vector2(centerX, centerY), new Vector2(x + centerX, y + centerY)) <= radius)
+                            DrawPixel(x + centerX, y + centerY, pixelLook, isStatic);
             }
         }
 
@@ -200,9 +208,13 @@ namespace Consyl_Engine.EngineContents
                 p.Add(p2);
                 p.Add(p3);
 
-                for (int y = 0; y < drawHeight; y++)
+                // Creates arrays of 3 points of x and y to get the smallest and largest values
+                float[] yArr = { p1.Y, p2.Y, p3.Y };
+                float[] xArr = { p1.X, p2.X, p3.X };
+
+                for (int y = (int)Utilities.Numbers.MinVal(yArr); y < (int)Utilities.Numbers.MaxVal(yArr); y++)
                 {
-                    for (int x = 0; x < drawWidth; x++)
+                    for (int x = (int)Utilities.Numbers.MinVal(xArr); x < (int)Utilities.Numbers.MaxVal(xArr); x++)
                     {
                         int j = p.Count - 1;
                         bool c = false;
@@ -243,9 +255,13 @@ namespace Consyl_Engine.EngineContents
                 p.Add(p3);
                 p.Add(p4);
 
-                for (int y = 0; y < drawHeight; y++)
+                // Creates arrays of 3 points of x and y to get the smallest and largest values
+                float[] yArr = { p1.Y, p2.Y, p3.Y, p4.Y};
+                float[] xArr = { p1.X, p2.X, p3.X, p4.X};
+
+                for (int y = (int)Utilities.Numbers.MinVal(yArr); y < (int)Utilities.Numbers.MaxVal(yArr); y++)
                 {
-                    for (int x = 0; x < drawWidth; x++)
+                    for (int x = (int)Utilities.Numbers.MinVal(xArr); x < (int)Utilities.Numbers.MaxVal(xArr); x++)
                     {
                         int j = p.Count - 1;
                         bool c = false;
@@ -267,10 +283,11 @@ namespace Consyl_Engine.EngineContents
             /// <param name="x"></param>
             /// <param name="y"></param>
             /// <param name="text"></param>
-            public static void DrawText(int x, int y, string text)
+            /// <param name="isStatic"></param>
+            public static void DrawText(int x, int y, string text, bool isStatic = true)
             {
                 for (int i = 0; i < text.Length; i++)
-                    DrawPixel(x + i, y, text[i]);
+                    DrawPixel(x + i, y, text[i], isStatic);
             }
 
             /// <summary>
@@ -286,18 +303,15 @@ namespace Consyl_Engine.EngineContents
             /// <param name="horizontal"></param>
             public static void DrawProgressBar(int x, int y, int width, int height, char fillLook, char emptyLook, float percent, bool horizontal = true)
             {
-                DrawRectangle(x, y, width, height, emptyLook); // Draws the Progress bar background
+                DrawRectangle(x, y, width, height, emptyLook, true); // Draws the Progress bar background
 
                 // Limits the percentage fill between 0 to 1 so that the filled part of the progress bar doesn't get bigger than the background
-                if (percent > 1.0f)
-                    percent = 1.0f;
-                if (percent < 0.0f)
-                    percent = 0.0f;
+                percent = Utilities.Numbers.ClampN(percent, 0, 1);
 
                 if (horizontal) // Draws the fill background based on if the user wants vertical or horizontal bars
-                    DrawRectangle(x, y, (int)(width * percent), height, fillLook);
+                    DrawRectangle(x, y, (int)(width * percent), height, fillLook, true);
                 else
-                    DrawRectangle(x, y - (int)(height * percent) + height, width, (int)(height * percent), fillLook);
+                    DrawRectangle(x, y - (int)(height * percent) + height, width, (int)(height * percent), fillLook, true);
             }
 
             /// <summary>
@@ -311,13 +325,10 @@ namespace Consyl_Engine.EngineContents
             /// <param name="percent"></param>
             public static void DrawCircularProgressBar(int centerX, int centerY, float radius, char fillLook, char emptyLook, float percent)
             {
-                DrawCircle(centerX, centerY, radius, emptyLook); // Draws the Progress bar background
+                DrawCircle(centerX, centerY, radius, emptyLook, true); // Draws the Progress bar background
 
                 // Limits the percentage fill between 0 to 1 so that the filled part of the progress bar doesn't get bigger than the background
-                if (percent > 1.0f)
-                    percent = 1.0f;
-                if (percent < 0.0f)
-                    percent = 0.0f;
+                percent = Utilities.Numbers.ClampN(percent, 0, 1);
 
                 // Draws the fill background
                 for (double i = 0.0; i > (int)(-360 * percent); i -= 0.1)
@@ -326,7 +337,7 @@ namespace Consyl_Engine.EngineContents
                     {
                         double angle = (i * Math.PI / 180);
 
-                        DrawPixel((int)(r * Math.Cos(angle - 1.5708)) + centerX, (int)(r * Math.Sin(angle - 1.5708)) + centerY, fillLook);
+                        DrawPixel((int)(r * Math.Cos(angle - 1.5708)) + centerX, (int)(r * Math.Sin(angle - 1.5708)) + centerY, fillLook, true);
                     }
                 }
             }

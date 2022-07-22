@@ -28,7 +28,8 @@ namespace Consyl_Engine.EngineContents
         /// <param name="y"></param>
         /// <param name="blackTransparent"></param>
         /// <param name="scale"></param>
-        public void DrawImage(int x, int y, bool blackTransparent = false, float scale = 1)
+        /// <param name="isStatic"></param>
+        public void DrawImage(int x, int y, bool blackTransparent = false, float scale = 1, bool isStatic = false)
         {
             // Loops between pixels
             for (int i = 0; i < img.Width; i++)
@@ -46,7 +47,7 @@ namespace Consyl_Engine.EngineContents
                         shade = gfx.shadeCharArray.Length - 1;
 
                     if (!(blackTransparent && shade == 0))
-                        gfx.DrawRectangle((int)(i * scale) + x, (int)(j * scale) + y, (int)MathF.Ceiling(scale), (int)MathF.Ceiling(scale), gfx.shadeCharArray[shade]); // Draws the image
+                        gfx.DrawRectangle((int)(i * scale) + x, (int)(j * scale) + y, (int)MathF.Ceiling(scale), (int)MathF.Ceiling(scale), gfx.shadeCharArray[shade], false, isStatic); // Draws the image
                 }
                 
             }
@@ -60,7 +61,8 @@ namespace Consyl_Engine.EngineContents
         /// <param name="size"></param>
         /// <param name="blackTransparent"></param>
         /// <param name="scale"></param>
-        public void DrawCroppedImage(Vector2 imageLoc, Vector2 offset, Vector2 size, bool blackTransparent = false, float scale = 1)
+        /// <param name="isStatic"></param>
+        public void DrawCroppedImage(Vector2 imageLoc, Vector2 offset, Vector2 size, bool blackTransparent = false, float scale = 1, bool isStatic = false)
         {
             // Loops between pixels
             for (int i = 0; i < img.Width; i++)
@@ -78,7 +80,7 @@ namespace Consyl_Engine.EngineContents
                         shade = gfx.shadeCharArray.Length - 1;
 
                     if (!(blackTransparent && shade == 0) && (i > offset.X && i < size.X + offset.X) && (j > offset.Y && j < size.Y + offset.Y))
-                        gfx.DrawRectangle(((int)(i * scale) - (int)offset.X) + (int)imageLoc.X, ((int)(j * scale) - (int)offset.Y) + (int)imageLoc.Y, (int)MathF.Ceiling(scale), (int)MathF.Ceiling(scale), gfx.shadeCharArray[shade]); // Draws the image
+                        gfx.DrawRectangle(((int)(i * scale) - (int)offset.X) + (int)imageLoc.X, ((int)(j * scale) - (int)offset.Y) + (int)imageLoc.Y, (int)MathF.Ceiling(scale), (int)MathF.Ceiling(scale), gfx.shadeCharArray[shade], false, isStatic); // Draws the image
                 }
             }
         }

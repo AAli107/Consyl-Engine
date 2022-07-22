@@ -32,6 +32,8 @@ namespace Consyl_Engine
         public static bool drawASCIIRender = true; // If True, the game draws in ASCII
         public static Vector2 resolution = new Vector2(115, 60); // Drawing Resolution in ASCII
         public static float maxFramerate = 60.0f; // ASCII Rendering max framerate
+        public static Vector2 worldSize = new Vector2(115, 60); // Size of the 2D world
+        public static Camera mainCamera = new Camera(new Vector2(0,0)); // The main camera the player will see through
 
         // Variables that controls the Initial Colors of the Background and text
         private static readonly ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
@@ -75,6 +77,9 @@ namespace Consyl_Engine
                 }
                 if (drawASCIIRender) // Also it updates the ASCII graphics if drawASCIIRender is equal to true
                 {
+                    if (mainCamera == null) // If the mainCamera has been set to null, then it recreates it again before drawing
+                        mainCamera = new Camera(new Vector2(0, 0));
+                    
                     Console.CursorVisible = false; // Hides cursor, I place it on every frame because refreshing the screen makes it visible again
 
                     foreach (var gameObject in gameObjects) // Renders the graphics of all the existing Game Objects
@@ -170,11 +175,11 @@ namespace Consyl_Engine
                 }
                 if (obj != null)
                 {
-                    if (obj.collideWithBounds) // Checks if the object is colliding with screen bounds
+                    if (obj.collideWithBounds) // Checks if the object is colliding with edge of the world and prevent the object from leaving the world bounds
                     {
-                        if (obj.location.X + obj.collisionOffset.X + obj.width >= gfx.drawWidth)
+                        if (obj.location.X + obj.collisionOffset.X + obj.width >= worldSize.X)
                         {
-                            obj.location.X = gfx.drawWidth - (obj.collisionOffset.X + obj.width);
+                            obj.location.X = worldSize.X - (obj.collisionOffset.X + obj.width);
                             if (obj.speed.X > 0.0f)
                                 obj.speed.X = 0.0f;
                         }
@@ -185,9 +190,9 @@ namespace Consyl_Engine
                                 obj.speed.X = 0.0f;
                         }
 
-                        if (obj.location.Y + obj.collisionOffset.Y + obj.height >= gfx.drawHeight)
+                        if (obj.location.Y + obj.collisionOffset.Y + obj.height >= worldSize.Y)
                         {
-                            obj.location.Y = gfx.drawHeight - (obj.collisionOffset.Y + obj.height);
+                            obj.location.Y = worldSize.Y - (obj.collisionOffset.Y + obj.height);
                             if (obj.speed.Y > 0.0f)
                                 obj.speed.Y = 0.0f;
                         }
