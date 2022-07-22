@@ -142,6 +142,18 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
+        /// Draw lines between two points
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <param name="pixelLook"></param>
+        /// <param name="isStatic"></param>
+        public static void DrawLine(Vector2 p1, Vector2 p2, char pixelLook, bool isStatic = false)
+        {
+            DrawLine((int)p1.X, (int)p1.Y, (int)p2.X, (int)p2.Y, pixelLook, isStatic);
+        }
+
+        /// <summary>
         /// Draws a rectangle on screen
         /// </summary>
         /// <param name="x"></param>
