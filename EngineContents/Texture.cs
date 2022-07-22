@@ -61,6 +61,7 @@ namespace Consyl_Engine.EngineContents
                 {
                     int shade = pixelShadeValues[i][j];
 
+                    // Draws the cropped image
                     if (!(blackTransparent && shade == 0))
                         gfx.DrawRectangle((int)(i * scale) + x, (int)(j * scale) + y, (int)MathF.Ceiling(scale), (int)MathF.Ceiling(scale), gfx.shadeCharArray[shade], false, isStatic); // Draws the image
                 }
@@ -86,6 +87,7 @@ namespace Consyl_Engine.EngineContents
                 {
                     int shade = pixelShadeValues[i][j];
 
+                    // Draws the cropped Image only within the offset and size
                     if (!(blackTransparent && shade == 0) && (i > offset.X && i < size.X + offset.X) && (j > offset.Y && j < size.Y + offset.Y))
                         gfx.DrawRectangle(((int)(i * scale) - (int)offset.X) + (int)imageLoc.X, ((int)(j * scale) - (int)offset.Y) + (int)imageLoc.Y, (int)MathF.Ceiling(scale), (int)MathF.Ceiling(scale), gfx.shadeCharArray[shade], false, isStatic); // Draws the image
                 }
