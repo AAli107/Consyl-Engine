@@ -12,13 +12,36 @@ namespace Consyl_Engine.EngineContents
         private readonly string fileName; // Stores the Texture's file name
         private readonly Bitmap img; // loads the image in a variable
         public readonly Vector2 imageResolution;
+        private readonly int[][] pixelShadeValues;
 
         public Texture(string _fileName) // constructor for initializing the Texture class
         {
             fileName = _fileName; // Sets the file's name/path
 
             img = new Bitmap(fileName); // Assigning the Bitmap class into a variable with the fileName
-            imageResolution = new Vector2(img.Width, img.Height); // Saves the Resolution of the 
+            imageResolution = new Vector2(img.Width, img.Height); // Saves the Resolution of the image
+
+            // Reads all the pixels and store them before-hand so that it won't have to do it every frame
+            pixelShadeValues = new int[img.Width][];
+            for (int i = 0; i < img.Width; i++)
+            {
+                int[] line = new int[img.Height];
+                for (int j = 0; j < img.Height; j++)
+                {
+                    Color pixel = img.GetPixel(i, j); // saves the color value of the current pixel in a variable
+
+                    int shade = (int)(((pixel.R + pixel.G + pixel.B) / 3) / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
+
+                    // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
+                    if (shade < 0)
+                        shade = 0;
+                    else if (shade > gfx.shadeCharArray.Length - 1)
+                        shade = gfx.shadeCharArray.Length - 1;
+
+                    line[j] = shade;
+                }
+                pixelShadeValues[i] = line;
+            }
         }
 
         /// <summary>
@@ -36,15 +59,7 @@ namespace Consyl_Engine.EngineContents
             {
                 for (int j = 0; j < img.Height; j++)
                 {
-                    Color pixel = img.GetPixel(i, j); // saves the color value of the current pixel in a variable
-
-                    int shade = (int)(((pixel.R + pixel.G + pixel.B) / 3) / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
-
-                    // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
-                    if (shade < 0)
-                        shade = 0;
-                    else if (shade > gfx.shadeCharArray.Length - 1)
-                        shade = gfx.shadeCharArray.Length - 1;
+                    int shade = pixelShadeValues[i][j];
 
                     if (!(blackTransparent && shade == 0))
                         gfx.DrawRectangle((int)(i * scale) + x, (int)(j * scale) + y, (int)MathF.Ceiling(scale), (int)MathF.Ceiling(scale), gfx.shadeCharArray[shade], false, isStatic); // Draws the image
@@ -69,15 +84,7 @@ namespace Consyl_Engine.EngineContents
             {
                 for (int j = 0; j < img.Height; j++)
                 {
-                    Color pixel = img.GetPixel(i, j); // saves the color value of the current pixel in a variable
-
-                    int shade = (int)(((pixel.R + pixel.G + pixel.B) / 3) / (255.0f / (float)gfx.shadeCharArray.Length)); // converts the average color into a number inside the range of the gfx.shadeCharArray
-
-                    // Locks the shade value to be exactly between 0 and the shadeCharArray's length - 1
-                    if (shade < 0)
-                        shade = 0;
-                    else if (shade > gfx.shadeCharArray.Length - 1)
-                        shade = gfx.shadeCharArray.Length - 1;
+                    int shade = pixelShadeValues[i][j];
 
                     if (!(blackTransparent && shade == 0) && (i > offset.X && i < size.X + offset.X) && (j > offset.Y && j < size.Y + offset.Y))
                         gfx.DrawRectangle(((int)(i * scale) - (int)offset.X) + (int)imageLoc.X, ((int)(j * scale) - (int)offset.Y) + (int)imageLoc.Y, (int)MathF.Ceiling(scale), (int)MathF.Ceiling(scale), gfx.shadeCharArray[shade], false, isStatic); // Draws the image
