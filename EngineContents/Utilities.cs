@@ -208,6 +208,23 @@ namespace Consyl_Engine.EngineContents
             {
                 return val > max ? max : val < min ? min : val;
             }
+
+            /// <summary>
+            /// Gets the largest number in an array of floats
+            /// </summary>
+            /// <param name="floatArray"></param>
+            /// <returns></returns>
+            public static float MaximumVal(float[] floatArray)
+            {
+                float max = 0;
+                for (int i = 0; i < floatArray.Length; i++)
+                    if (floatArray[i] > max)
+                    {
+                        max = floatArray[i];
+                    }
+
+                return max;
+            }
         }
     }
 }
