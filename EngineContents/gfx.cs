@@ -94,6 +94,17 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
+        /// Draws ASCII pixel on screen
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <param name="pixelLook"></param>
+        /// <param name="isStatic"></param>
+        public static void DrawPixel(Vector2 loc, char pixelLook, bool isStatic = false)
+        {
+            DrawPixel((int)loc.X, (int)loc.Y, pixelLook, isStatic);
+        }
+
+        /// <summary>
         /// Draw lines between two points
         /// </summary>
         /// <param name="x0"></param>
