@@ -44,8 +44,7 @@ This is an ASCII Console Game Engine! Go to [Releases](https://github.com/AAli10
 
 
 
-**Note:** You shouldn’t worry too much on the requirements since most of the requirements like hardware and software you already achieved.
-
+**Note:** You shouldn’t worry too much about the requirements since most of the requirements like hardware and software you probably have already met.
 
 
 
