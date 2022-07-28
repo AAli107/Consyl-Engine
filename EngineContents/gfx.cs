@@ -282,9 +282,9 @@ namespace Consyl_Engine.EngineContents
                 float[] yArr = { p1.Y, p2.Y, p3.Y, p4.Y};
                 float[] xArr = { p1.X, p2.X, p3.X, p4.X};
 
-                for (int y = (int)Utilities.Numbers.MinVal(yArr); y < (int)Utilities.Numbers.MaxVal(yArr); y++)
+                for (int y = (int)Utilities.Numbers.MinVal(yArr); y <= (int)Utilities.Numbers.MaxVal(yArr); y++)
                 {
-                    for (int x = (int)Utilities.Numbers.MinVal(xArr); x < (int)Utilities.Numbers.MaxVal(xArr); x++)
+                    for (int x = (int)Utilities.Numbers.MinVal(xArr); x <= (int)Utilities.Numbers.MaxVal(xArr); x++)
                     {
                         int j = p.Count - 1;
                         bool c = false;
