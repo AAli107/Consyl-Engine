@@ -56,6 +56,10 @@ namespace Consyl_Engine.EngineContents
             loc = newLoc;
         }
 
+        /// <summary>
+        /// Sets the camera's position to whatever newPos is at
+        /// </summary>
+        /// <param name="newPos"></param>
         public void SetCameraPosition(Vector2 newPos)
         {
             loc = new Vector2(Utilities.Numbers.ClampN(newPos.X, 0, Engine.worldSize.X - gfx.drawWidth),

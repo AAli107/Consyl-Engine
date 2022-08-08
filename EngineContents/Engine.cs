@@ -136,13 +136,16 @@ namespace Consyl_Engine
                                 int obj2RightLoc = (int)(obj2.location.X + obj2.collisionOffset.X + obj2.width);
 
                                 // Finds out the center point of obj's hitbox
-                                Vector2 objCenter = Utilities.Vec2D.Midpoint2D(obj.location + obj.collisionOffset, obj.location + obj.collisionOffset + new Vector2(obj.width, obj.height));
+                                Vector2 objCenter = obj.GetObjectCollisionCenter();
 
                                 // Finds out the center point of obj2's hitbox
-                                Vector2 obj2Center = Utilities.Vec2D.Midpoint2D(obj2.location + obj2.collisionOffset, obj2.location + obj2.collisionOffset + new Vector2(obj2.width, obj2.height));
+                                Vector2 obj2Center = obj2.GetObjectCollisionCenter();
 
                                 // Calculates the normal between the two GameObjects
                                 Vector2 normal = Vector2.Normalize(obj2Center - objCenter);
+
+                                float sx = objCenter.X < obj2Center.X ? 1.0f : -1.0f;
+                                float sy = objCenter.Y < obj2Center.Y ? 1.0f : -1.0f;
 
                                 // Rounds the normal so that collision works properly
                                 normal.X = MathF.Round(normal.X);
