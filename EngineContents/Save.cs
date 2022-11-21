@@ -21,15 +21,12 @@ namespace Consyl_Engine.EngineContents
         /// <param name="overwriteData"></param>
         public void SaveToFile(string[] vars, bool overwriteData)
         {
-            try
-            {
-                if (overwriteData) File.WriteAllText(saveFileName, "");
+            if (overwriteData) File.WriteAllText(saveFileName, "");
 
-                for (int i = 0; i < vars.Length; i++)
-                {
-                    File.WriteAllText(saveFileName, File.ReadAllText(saveFileName) + "[" + File.ReadAllLines(saveFileName).Length + "]=" + vars[i].ToString() + "\n");
-                }
-            } catch { }
+            for (int i = 0; i < vars.Length; i++)
+            {
+                File.WriteAllText(saveFileName, File.ReadAllText(saveFileName) + "[" + File.ReadAllLines(saveFileName).Length + "]=" + vars[i].ToString() + "\n");
+            }
         }
 
         /// <summary>
@@ -38,25 +35,41 @@ namespace Consyl_Engine.EngineContents
         /// <returns></returns>
         public string[] ReadFileContents()
         {
-            string[] lines = File.ReadAllLines(saveFileName);
-
-            for (int i = 0; i < lines.Length; i++)
+            if (File.Exists(saveFileName))
             {
-                lines[i] = lines[i].Substring(lines[i].IndexOf('=')+1);
-            }
+                string[] lines = File.ReadAllLines(saveFileName);
 
-            return lines;
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    lines[i] = lines[i].Substring(lines[i].IndexOf('=') + 1);
+                }
+
+                return lines;
+            }
+            return null;
         }
 
         /// <summary>
-        /// Returns a single saved value based on id
+        /// Returns a single saved value based on id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public string GetSavedValuebyID(uint id)
         {
-            string[] lines = File.ReadAllLines(saveFileName);
-            return lines[id].Substring(lines[id].IndexOf('=') + 1);
+            if (File.Exists(saveFileName))
+            {
+                string[] lines = File.ReadAllLines(saveFileName);
+                return lines[id].Substring(lines[id].IndexOf('=') + 1);
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Deletes the Save file
+        /// </summary>
+        public void DeleteSaveFile()
+        {
+            if (File.Exists(saveFileName)) File.Delete(saveFileName);
         }
     }
 }
