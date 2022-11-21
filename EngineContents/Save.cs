@@ -7,14 +7,19 @@ namespace Consyl_Engine.EngineContents
 {
     class Save
     {
-        public string saveFileName;
+        public string saveFileName; // Stores the file name
 
-        public Save(string fileName)
+        public Save(string fileName) // Initializes the Save object
         {
             saveFileName = fileName;
         }
 
-        public void SaveToFile(object[] vars, bool overwriteData)
+        /// <summary>
+        /// Saves whatever is in vars into the save file.
+        /// </summary>
+        /// <param name="vars"></param>
+        /// <param name="overwriteData"></param>
+        public void SaveToFile(string[] vars, bool overwriteData)
         {
             try
             {
@@ -27,6 +32,10 @@ namespace Consyl_Engine.EngineContents
             } catch { }
         }
 
+        /// <summary>
+        /// Returns all the contents of the save file.
+        /// </summary>
+        /// <returns></returns>
         public string[] ReadFileContents()
         {
             string[] lines = File.ReadAllLines(saveFileName);
