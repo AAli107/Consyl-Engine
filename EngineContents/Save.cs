@@ -59,7 +59,8 @@ namespace Consyl_Engine.EngineContents
             if (File.Exists(saveFileName))
             {
                 string[] lines = File.ReadAllLines(saveFileName);
-                return lines[id].Substring(lines[id].IndexOf('=') + 1);
+                if (id < lines.Length)
+                    return lines[id].Substring(lines[id].IndexOf('=') + 1);
             }
             return null;
         }
