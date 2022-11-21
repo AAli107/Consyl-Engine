@@ -47,5 +47,16 @@ namespace Consyl_Engine.EngineContents
 
             return lines;
         }
+
+        /// <summary>
+        /// Returns a single saved value based on id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public string GetSavedValuebyID(uint id)
+        {
+            string[] lines = File.ReadAllLines(saveFileName);
+            return lines[id].Substring(lines[id].IndexOf('=') + 1);
+        }
     }
 }
