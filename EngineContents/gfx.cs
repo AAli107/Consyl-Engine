@@ -309,9 +309,8 @@ namespace Consyl_Engine.EngineContents
             /// <param name="isStatic"></param>
             public static void DrawText(int x, int y, string text, bool isStatic = true)
             {
-                if (text != null)
-                    for (int i = 0; i < text.Length; i++)
-                        DrawPixel(x + i, y, text[i], isStatic);
+                for (int i = 0; i < text.Length; i++)
+                    DrawPixel(x + i, y, text[i], isStatic);
             }
 
             /// <summary>
