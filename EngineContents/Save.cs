@@ -1,10 +1,7 @@
-﻿
-/*
-    Currently does not support saving objects yet.
-    It can only store basic variable like string, int, bool, vectors, etc...
-*/
-
+﻿using System;
 using System.IO;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Consyl_Engine.EngineContents
 {
@@ -22,7 +19,7 @@ namespace Consyl_Engine.EngineContents
         /// </summary>
         /// <param name="vars"></param>
         /// <param name="overwriteData"></param>
-        public void SaveToFile(object[] vars, bool overwriteData)
+        public void SaveToFile(string[] vars, bool overwriteData)
         {
             if (overwriteData) File.WriteAllText(saveFileName, "");
 
@@ -36,19 +33,18 @@ namespace Consyl_Engine.EngineContents
         /// Returns all the contents of the save file.
         /// </summary>
         /// <returns></returns>
-        public object[] ReadFileContents()
+        public string[] ReadFileContents()
         {
             if (File.Exists(saveFileName))
             {
                 string[] lines = File.ReadAllLines(saveFileName);
-                object[] obj = new object[lines.Length];
 
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    obj[i] = lines[i].Substring(lines[i].IndexOf('=') + 1);
+                    lines[i] = lines[i].Substring(lines[i].IndexOf('=') + 1);
                 }
 
-                return obj;
+                return lines;
             }
             return null;
         }
@@ -58,7 +54,7 @@ namespace Consyl_Engine.EngineContents
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public object GetSavedValuebyID(uint id)
+        public string GetSavedValuebyID(uint id)
         {
             if (File.Exists(saveFileName))
             {
