@@ -342,6 +342,33 @@ namespace Consyl_Engine
         }
 
         /// <summary>
+        /// A simplified method to create a GameObject
+        /// </summary>
+        /// <param name="_loc"></param>
+        /// <param name="_collisionWidth"></param>
+        /// <param name="_collisionEnabled"></param>
+        /// <param name="_isPushable"></param>
+        /// <param name="_image"></param>
+        /// <returns></returns>
+        static public int CreateGameObject(Vector2 _loc, Vector2 _collisionWidth, bool _collisionEnabled, bool _isPushable, Texture _image)
+        {
+            return CreateGameObject(new GameObject(_loc, _collisionEnabled, (int)_collisionWidth.X, (int)_collisionWidth.Y, true, _image, _isPushable));
+        }
+
+        /// <summary>
+        /// A simplified method to create a GameObject without a texture
+        /// </summary>
+        /// <param name="_loc"></param>
+        /// <param name="_collisionWidth"></param>
+        /// <param name="_collisionEnabled"></param>
+        /// <param name="_isPushable"></param>
+        /// <returns></returns>
+        static public int CreateGameObject(Vector2 _loc, Vector2 _collisionWidth, bool _collisionEnabled, bool _isPushable)
+        {
+            return CreateGameObject(new GameObject(_loc, _collisionEnabled, (int)_collisionWidth.X, (int)_collisionWidth.Y, true, _isPushable));
+        }
+
+        /// <summary>
         /// [DEPRECATED] A method to create a GameObject without texture
         /// </summary>
         /// <param name="_x"></param>
