@@ -271,7 +271,7 @@ namespace Consyl_Engine
         }
 
         /// <summary>
-        /// A method to create a GameObject into game
+        /// A method to create a GameObject into game which requires GameObject as parameter
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -319,7 +319,7 @@ namespace Consyl_Engine
         }
 
         /// <summary>
-        /// A method to create a GameObject without applying the textures
+        /// A method to create a GameObject without texture
         /// </summary>
         /// <param name="_x"></param>
         /// <param name="_y"></param>
@@ -333,7 +333,7 @@ namespace Consyl_Engine
         /// <param name="_collideWithBounds"></param>
         /// <param name="_drawDebugCollision"></param>
         /// <returns></returns>
-        static public int CreateGameObjectNoTex(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
             int newObjID = -1;
 
