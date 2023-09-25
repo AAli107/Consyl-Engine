@@ -124,6 +124,20 @@ namespace Consyl_Engine.EngineContents
             this.objID = objID;
         }
 
+        /// <summary>
+        /// Constructor that initializes a GameObject without a texture.
+        /// </summary>
+        /// <param name="_loc"></param>
+        /// <param name="_CollisionEnabled"></param>
+        /// <param name="_collisionWidth"></param>
+        /// <param name="_collisionHeight"></param>
+        /// <param name="_detectOverlap"></param>
+        /// <param name="_isPushable"></param>
+        /// <param name="_colOffsetX"></param>
+        /// <param name="_colOffsetY"></param>
+        /// <param name="_collideWithBounds"></param>
+        /// <param name="_drawDebugCollision"></param>
+        /// <param name="objID"></param>
         public GameObject(Vector2 _loc, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap,
             bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false, int objID = -1)
         {
