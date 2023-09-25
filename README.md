@@ -14,11 +14,11 @@ This is an ASCII Console Game Engine! Go to [Releases](https://github.com/AAli10
 
 ### Recommended Hardware Requirements
 
-1. CPU: Processor with 2 GHz dual core
+1. CPU: Processor with 2 GHz dual-core
 
 2. Memory: 2 GB of DDR3 RAM
 
-3. GPU: Not needed (pc at least needs graphics display on screen)
+3. GPU: Not needed (PC at least needs graphics display on screen)
 
 4. Storage: Consyl takes up around 5 MB of storage, so you don’t need to worry about it
 
@@ -55,7 +55,7 @@ This is an ASCII Console Game Engine! Go to [Releases](https://github.com/AAli10
 
 ### Navigating to the Main Scripting File
 
-To code your first game, you need to open “Consyl Engine.sln” and from the Solution Explorer, choose “GameCode.cs” which is the part where you put all of your code in for your game. (“Image A” shows how the code is supposed to look like)
+To code your first game, you need to open “Consyl Engine.sln” and from the Solution Explorer, choose “GameCode.cs” which is the part where you put all of your code in for your game. (“Image A” shows how the code is supposed to look)
 
 <img src="images/picture_001.png">
 
@@ -65,7 +65,7 @@ To code your first game, you need to open “Consyl Engine.sln” and from the S
 
 ### A Look Around Inside the File
 
-“GameCode.cs” contains the basics of what you need in making your games. It has two important sections, one where you put your variables and data, and the other is where your code gets executed.
+“GameCode.cs” contains the basics of what you need in making your games. It has two important sections, one is where you put your variables and data, and the other is where your code gets executed.
 
 The Section where your code is executed has three main parts, “OnGameStart”, “OnGameUpdate”, and “OnGameEnd”.
 
@@ -91,19 +91,19 @@ Is a place where the code you inserted there gets executed when the game closes 
 
 ### **What are Variables?**
 
-Variables are pieces of information gets created when the program runs, it is stored inside your computer until you decide to close your program/game. Variables can be manipulated and read by the code to do many fancy instructions.
+Variables are pieces of information that get created when the program runs, they are stored inside your computer until you decide to close your program/game. Variables can be manipulated and read by the code to do many fancy instructions.
 
 #### The Main Relevant Types of Variables
 
-**Boolean:** A variable coded in as “bool” that can store either a true or false value.
+**Boolean:** A variable coded in as `bool` that can store either a `true` or `false` value.
 
-**Integer:** A variable coded in as “int” that can store non-decimal numbers.
+**Integer:** A variable coded in as `int` that can store non-decimal numbers.
 
-**Floating-point number:** A variable coded in as “float” that store numbers with decimals.
+**Floating-point number:** A variable coded in as `float` that stores numbers with decimals.
 
-**String:** A variable coded as “string” that can store text.
+**String:** A variable coded as a `string` that can store text.
 
-**Character:** A variable coded as “char” which stores a single letter/symbol
+**Character:** A variable coded as `char` which stores a single letter/symbol
 
 #### How to Code in Variables?
 
@@ -117,7 +117,7 @@ To add in your variable, you need to type in “static” then you type in the v
 
 #### Important notes about variables
 
-It is important to make your variable names easy to read and understand, so you format them like by making the first letter to be lower case and if the name has multiple words, the beginning of every word other than the first one will be upper case. Do not add space between the variable name as it would cause errors. Also, you don’t need to add a value/data inside the variable when you make it, you can just make it without values.
+It is important to make your variable names easy to read and understand, so you format them like by making the first letter lowercase and if the name has multiple words, the beginning of every word other than the first one will be uppercase. Do not add space between the variable name as it would cause errors. Also, you don’t need to add a value/data inside the variable when you make it, you can just make it without values.
 
 
 
@@ -125,11 +125,11 @@ It is important to make your variable names easy to read and understand, so you 
 
 ### **An ASCII Pixel**
 
-When you press “F5” key you’ll start to load the game, and it’ll open a window on screen with nothing but black screen in it. We’ll start from the very basic level of drawing an image on screen by drawing a single “ASCII” pixel. “ASCII” is a format of displaying letters/symbols on a computer, but in Consyl Engine we don’t have true pixels, but we do have something named an “ASCII Pixel” which is a pixel made of an ASCII Symbol, which is not a real pixel but will resemble one. 
+When you press the “F5” key you’ll start to load the game, and it’ll open a window on the screen with nothing but a black window. We’ll start from the very basic level of drawing an image on the screen by drawing a single “ASCII” pixel. “ASCII” is a format of displaying letters/symbols on a computer, but in Consyl Engine we don’t have true pixels, we do have something named an “ASCII Pixel” which is a pixel made of an ASCII Symbol, which is not a real pixel but will resemble one. 
 
 #### **Drawing an ASCII Pixel on screen**
 
-To Draw an ASCII Pixel, you’ll need to write down in between the curly brackets below “OnGraphicsUpdate” function “gfx.DrawPixel();”. Right now, it will not draw anything, and it will display an error, because you need to tell it where on the screen you want the pixel to appear and how it looks like. For example, you want your pixel to be placed at a coordinate of x = 1 and y = 5 and the ASCII pixel you want to draw looks like this “O”. So, you want instead to type `gfx.DrawPixel(1, 5, ‘O’);`, and when you run your code, you’ll see the output as shown in Image C. You can add more pixels by creating a new line with the same code with different coordinates and ASCII symbol. (Make sure when running your game, you maximize your window to show your result properly)
+To Draw an ASCII Pixel, you’ll need to write down in between the curly brackets below “OnGraphicsUpdate” function “gfx.DrawPixel();”. Right now, it will not draw anything, and it will display an error because you need to tell it where on the screen you want the pixel to appear and what it looks like. For example, you want your pixel to be placed at a coordinate of x = 1 and y = 5, and the ASCII pixel you want to draw looks like this “O”. So, you want instead to type `gfx.DrawPixel(1, 5, ‘O’);`, and when you run your code, you’ll see the output as shown in Image C. You can add more pixels by creating a new line with the same code with different coordinates and ASCII symbols. (Make sure when running your game, you maximize your window to show your result properly)
 
 <img src="images/picture_003.png" style="zoom:300%;" >
 
@@ -147,7 +147,7 @@ To Draw an ASCII Pixel, you’ll need to write down in between the curly bracket
 
 **Before adding player Input**
 
-All the way at the top of the “GameCode.cs” script, you’ll see `using` codes which gives access to more code for the developer to use. “Image D” shows how section displaying `using EZInput;` looks like. If you don’t have that for whatever reason, type it down since you will need this to allow for user input.
+All the way at the top of the “GameCode.cs” script, you’ll see `using` codes which gives access to more code for the developer to use. “Image D” shows what the section displaying `using EZInput;` looks like. If you don’t have that for whatever reason, type it down since you will need this to allow for user input.
 
 <img align="left" src="images/picture_004.png">
 
@@ -185,9 +185,9 @@ This will check if you have pressed the A key. if you did the code will execute.
 
 #### **Creating a Controllable Player**
 
-Before, we drew a pixel on the screen and made it only show when you press “A” key. Now remove all of that and let’s make a way to make a controllable player as a pixel.
+Before, we drew a pixel on the screen and made it only show when you press the “A” key. Now remove all of that and let’s make a way to make a controllable player as a pixel.
 
-First, you need to create 3 variables, one that stores the x coordinate, one that stores the y coordinate and one that stores the speed of the player. Image E will show you how this is done.
+First, you need to create 3 variables, one that stores the x coordinate, one that stores the y coordinate, and one that stores the speed of the player. Image E will show you how this is done.
 
 <img align="left" src="images\picture_005.png" alt="picture_005" style="zoom: 150%;" />
 
@@ -201,7 +201,7 @@ Note that `(int)` is a way to convert from float to integer. This piece of code 
 
 <img src="images\picture_006.png" alt="picture_006" style="zoom:150%;" /> <br>
 
-**Image F:** Shows the how code looks like. (`gfx.DrawPixel()` function is in OnGameUpdate() so that the image would fit)
+**Image F:** Shows what the code looks like. (`gfx.DrawPixel()` function is in OnGameUpdate() so that the image would fit)
 
 
 
@@ -211,7 +211,7 @@ Note that `(int)` is a way to convert from float to integer. This piece of code 
 
 ## Graphics.cs
 
-As you saw previously, you can draw images using the DrawPixel() code. But there are shortcuts to draw many shapes like circles, rectangles, lines and more.
+As you saw previously, you can draw images using the DrawPixel() code. But there are shortcuts to draw many shapes like circles, rectangles, lines, and more.
 
 Drawing Lines can be done by using gfx.DrawLine() function. You add the first point’s x and y coordinates and the second point’s x and y coordinates, then choose the character you want the line’s pixels to look like. For example, we type in this code inside the OnGraphicsUpdate() Function:            `gfx.DrawLine(10, 24, 80, 30, 'X');`
 
@@ -223,13 +223,13 @@ This will draw a line from point (10, 24) and point (80, 30) as exactly shown in
 
 
 
-Every other shape requires coordinates and only this one which requires more than one coordinates. So, just give the proper values that the drawing function and it will draw what it’s supposed to draw on the screen based on the values given.
+Every other shape requires coordinates and only this one which requires more than one coordinate. So, just give the proper values that the drawing function and it will draw what it’s supposed to draw on the screen based on the values given.
 
 
 
 #### Drawing a Circle
 
-The function for drawing a circle requires the x and y coordinates, the radius and how the ASCII pixels should look like. It should be easy to understand this once you messed around with the functions, also you can choose whether you want the circle to be an outline or a solid circle.
+The function for drawing a circle requires the x and y coordinates, the radius, and how the ASCII pixels should look like. It should be easy to understand this once you messed around with the functions, also you can choose whether you want the circle to be an outline or a solid circle.
 
 
 
@@ -239,13 +239,13 @@ The function for drawing a circle requires the x and y coordinates, the radius a
 
 ## Textures.cs
 
-Textures are essential to make better looking games and it saves the time of drawing every ASCII pixel one-by-one through placing `gfx.DrawPixel()`. But that’s not what you’re going to do. So, textures are basically the images that gets loaded and placed in your game’s window.
+Textures are essential to make better-looking games and it saves the time of drawing every ASCII pixel one by one by placing `gfx.DrawPixel()`. But that’s not what you’re going to do. So, textures are basically the images that get loaded and placed in your game’s window.
 
  
 
 #### How to draw a texture?
 
-First you need to create a special class variable, this variable will need the image file name with its format for example “guy.png”. To import an image, go to the folder where the exe of your game is stored and paste your image there. Image H shows how the variable looks like.
+First, you need to create a special class variable, this variable will need the image file name with its format for example “guy.png”. To import an image, go to the folder where the exe of your game is stored and paste your image there. Image H shows what the variable looks like.
 
 <img align="left" src="images\picture_008.png" alt="picture_008" style="zoom:150%;" />
 
@@ -275,7 +275,7 @@ Consyl Engine currently supports the following file formats: **BMP**, **GIF**, *
 
 ## Audio.cs
 
-Games would seem silent and filled with void without Audio. So, sound is essential to give players feedback. You’re not going to use `Console.Beep()` which comes with the .NET Core 3.1. There is an object like the texture object which would load the audio file and plays it whenever the play function is called.
+Games would seem silent and filled with a void without Audio. So, sound is essential to give players feedback. You’re not going to use `Console.Beep()` which comes with the .NET Core 3.1. There is an object like the texture object which would load the audio file and play it whenever the play function is called.
 
  
 
@@ -289,7 +289,7 @@ First, we need to create an audio class, which contains the sound effect file na
 
 
 
-Then, create an if statement that contains the play where you press any letter you like, for example “S”. The game would crash immediately, since it was playing the sound many times each second. So, you need to create a bool variable that will make it play only once. Add the variable to the if statement and set it to false once the audio plays. Image K will show how the code will look like.
+Then, create an if statement that contains the play where you press any letter you like, for example, “S”. The game would crash immediately since it was playing the sound many times each second. So, you need to create a bool variable that will make it play only once. Add the variable to the if statement and set it to false once the audio plays. Image K will show what the code will look like.
 
 <img align="left" src="images\picture_011.png" alt="picture_011" style="zoom:80%;" />
 
@@ -297,7 +297,7 @@ Then, create an if statement that contains the play where you press any letter y
 
 
 
-Note that the Audio system only supports **MP3** and **WAV** file types only. The Audio System also supports Stopping, Pausing and unpausing of the audio. All are found in the Audio Class Variable that you created as functions.
+Note that the Audio system only supports **MP3** and **WAV** file types only. The Audio System also supports Stopping, Pausing, and unpausing of the audio. All are found in the Audio Class Variable that you created as functions.
 
 
 
@@ -313,11 +313,11 @@ So far, you’ve been programming all in a single file, the “GameCode.cs” fi
 
 #### Inside the Engine’s code
 
-Open “Engine.cs”, then you’ll see only 63 lines of code, most of them you would ignore and not mess with, unless if you know what you’re doing. There is a section inside the Engine script file which stores a lot of important variables. The variables are organized into the 3 sections as seen in Image L.
+Open “Engine.cs”, then you’ll see many lines of code, most of which you would ignore and not mess with unless you know what you’re doing. There is a section inside the Engine script file that stores a lot of important variables. The variables are organized into the 3 sections as seen in Image L.
 
 <img align="left" src="images\picture_012.png" alt="picture_012"  />
 
-**Image L:** Shows all the user modifiable variables inside “Engine.cs”.
+**Image L:** Shows all the user-modifiable variables inside “Engine.cs”.
 
 
 
@@ -326,13 +326,13 @@ Here is a list of all the variables and what they do:
 1. **gameTitle:** Allows the modification of the Game’s title.
 2. **gameRunning:** Can be set to false in “GameCode.cs” to close the game.
 3. **gamePaused:** If true, it will pause the execution of `OnGameUpdate()`.
-4. **deltaTime:** Read only variable that stores the amount of time it took to render the last frame.
-5. **currentFPS:** Read only variable that store the Frames per Second the game is running at.
+4. **deltaTime:** Read-only variable that stores the amount of time it took to render the last frame.
+5. **currentFPS:** Read-only variable that stores the Frames per Second the game is running at.
 6. **drawASCIIRender:** Enables and Disables the ASCII graphics. (If you don’t want to use it)
 7. **resolution:** Drawing Resolution for the ASCII Graphics.
 8. **framerate:** The maximum framerate the game can run at.
-9. **BgColor:** The Background Color of the game. (can only be set through code)
-10. **FgColor:** The Color of the texts and characters. (can only be set through code)
+9. **BgColor:** The Background Color of the game.
+10. **FgColor:** The Color of the texts and characters.
 
 
 
@@ -340,7 +340,7 @@ These variables can be used to make your games better and most can be controlled
 
 `Engine.gameRunning = false;` This will cause the game to quit.
 
-`Engine.gamePaused = true;` This will cause the game to pause by blocking the execution of OnGameUpdate() function.
+`Engine.gamePaused = true;` This will cause the game to pause by blocking the execution of the OnGameUpdate() function.
 
 
 
@@ -350,35 +350,35 @@ These variables can be used to make your games better and most can be controlled
 
 ## Utilities.cs
 
-Utilities.cs contains many useful functions which you would probably use for your Consyl-based Video Games.
+Utilities.cs contains many useful functions that you would probably use for your Consyl-based Video Games.
 
  
 
 #### Rand
 
-Rand is a class inside the Utilities class which contain many functions that helps with generating random numbers and values, it contains functions that can randomize floats in between a range of inputted values, same goes with integers. Also, it has a function that randomizes between true or false for code that requires Boolean statements like if statements.
+Rand is a class inside the Utilities class that contains many functions that help with generating random numbers and values, it contains functions that can randomize floats in between a range of inputted values, same goes with integers. Also, it has a function that randomizes between true or false for code that requires Boolean statements like if statements.
 
  
 
 #### Vec2D
 
-Vec2D is another class inside the Utilities class which contains some useful functions for 2D vectors.
+Vec2D is another class inside the Utilities class that contains some useful functions for 2D vectors.
 
 So far there are three functions, one calculates the distance between two vector2s.
 
-The 2nd function will get two 2D vector points and calculates the midpoint of those two points.
+The 2nd function will get two 2D vector points and calculate the midpoint of those two points.
 
-The last function will rotate your Vector2 around a specified place on screen with the specified angles in degrees.
+The last function will rotate your Vector2 around a specified place on the screen with the specified angles in degrees.
 
 
 
 #### Vec3D
 
-Vec3D is a class inside the Utilities class which contains some useful functions for 3D vectors.
+Vec3D is a class inside the Utilities class that contains some useful functions for 3D vectors.
 
 So far there are three functions, one calculates the distance between two vector3s.
 
-The 2nd function will get two 3D vector points and calculates the midpoint of those two points.
+The 2nd function will get two 3D vector points and calculate the midpoint of those two points.
 
  The 3rd function will convert 3D Vectors into 2D vectors, which is useful for rendering 3D graphics.
 
@@ -386,15 +386,15 @@ The 2nd function will get two 3D vector points and calculates the midpoint of th
 
 #### Numbers
 
-Numbers is a class under the Utilities class which contains some useful functions for anything related to numbers like floats and integers.
+Numbers is a class under the Utilities class that contains some useful functions for anything related to numbers like floats and integers.
 
 Right now, there are four functions, one that calculates the average number from a float array you input in.
 
-The 2nd function calculates the distance between two numbers in 1D space. You can use it for calculating how far an object is from another object or ground.
+The 2nd function calculates the distance between two numbers in 1D space. You can use it to calculate how far an object is from another object or ground.
 
 The 3rd function converts Degrees to Radian values.
 
-The 4th function does converts backward of the 3rd function which converts Radian into Degrees.
+The 4th function converts backward of the 3rd function which converts Radian into Degrees.
 
 
 
@@ -445,16 +445,16 @@ There are more variables you can change, like enabling gravity by doing this: `E
 Note that the ID 2314145 in the examples is different based on which GameObject you want to change. Meaning that if you want to do something like changing friction strength with another GameObject you created, you need to get it's ID, when creating it, let's assume its ID is 1340487, you need to do this: `Engine.GetGameObjectByID(1340487).friction = 0.5f;` or you could do this when creating your object, so that things are easier:
 
 ```c#
-	 // Insert Variables here! \\
-        // \/\/\/\/\/\/\/\/\/\/\/\/ \\
-		int objID;
-        // /\/\/\/\/\/\/\/\/\/\/\/\ \\
+ // Insert Variables here! \\
+// \/\/\/\/\/\/\/\/\/\/\/\/ \\
+int objID;
+// /\/\/\/\/\/\/\/\/\/\/\/\ \\
 
-        public static void OnGameStart() // Gets Executed when game starts running/when the game begins
-        {
-		objID = Engine.CreateGameObject(); // Be sure to fill in the parameters
-		Engine.GetGameObjectByID(objID).friction = 0.5f; 
-        }
+public static void OnGameStart() // Gets Executed when game starts running/when the game begins
+{
+	objID = Engine.CreateGameObject(); // Be sure to fill in the parameters
+	Engine.GetGameObjectByID(objID).friction = 0.5f; 
+}
 ```
 
 
