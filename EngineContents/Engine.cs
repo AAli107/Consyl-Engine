@@ -36,8 +36,8 @@ namespace Consyl_Engine
         public static Camera mainCamera = new Camera(new Vector2(0,0)); // The main camera the player will see through
 
         // Variables that controls the Initial Colors of the Background and text
-        private static readonly ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
-        private static readonly ConsoleColor FgColor = ConsoleColor.White; // Initial Text Color
+        private static ConsoleColor BgColor = ConsoleColor.Black; // Initial Background Color
+        private static ConsoleColor FgColor = ConsoleColor.White; // Initial Text Color
 
         // Variables that you shouldn't modify or change directly
         public static List<GameObject> gameObjects = new List<GameObject>();
@@ -52,10 +52,7 @@ namespace Consyl_Engine
         {
             Console.Title = gameTitle; // Set the Game's title
 
-            // Sets the Colors of the background and refreshes the screen
-            Console.BackgroundColor = BgColor;
-            Console.ForegroundColor = FgColor;
-            Console.Clear();
+            RefreshScreen(); // Refreshes the screen while also updating its color
 
             GameCode.OnGameStart(); // Calls OnGameStart() from GameCode when the game runs
 
@@ -383,7 +380,7 @@ namespace Consyl_Engine
         /// <param name="_collideWithBounds"></param>
         /// <param name="_drawDebugCollision"></param>
         /// <returns></returns>
-        [Obsolete("CreateGameObjectNoTex is deprecated, please use CreateGameObject instead.")]
+        [Obsolete("CreateGameObjectNoTex() is deprecated, please use CreateGameObject() instead.")]
         static public int CreateGameObjectNoTex(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
             return CreateGameObject(new GameObject(_x, _y, _CollisionEnabled,_collisionWidth,_collisionHeight,_detectOverlap, _isPushable,_colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
@@ -439,6 +436,17 @@ namespace Consyl_Engine
         static public ConsoleColor GetFgColor()
         {
             return FgColor;
+        }
+
+        /// <summary>
+        /// Refreshes the screen while also updating the colors
+        /// </summary>
+        static public void RefreshScreen()
+        {
+            // Sets the Colors of the background and refreshes the screen
+            Console.BackgroundColor = BgColor;
+            Console.ForegroundColor = FgColor;
+            Console.Clear();
         }
 
         /// <summary>
