@@ -3,12 +3,12 @@ using System.Numerics;
 
 namespace Consyl_Engine.EngineContents
 {
-    class Utilities
+    static class Utilities
     {
         /// <summary>
         /// class that stores functions that returns rng-related values
         /// </summary>
-        public class Rand
+        public static class Rand
         {
             static readonly Random rng = new Random(); // Variable that stores the Random Class
 
@@ -67,7 +67,7 @@ namespace Consyl_Engine.EngineContents
         /// <summary>
         /// class that stores functions that are related to Vector2
         /// </summary>
-        public class Vec2D
+        public static class Vec2D
         {
             /// <summary>
             /// Calculates the 2D distance between two points/vectors
@@ -111,7 +111,7 @@ namespace Consyl_Engine.EngineContents
         /// <summary>
         /// class that stores functions that are related to Vector3
         /// </summary>
-        public class Vec3D
+        public static class Vec3D
         {
             /// <summary>
             /// Calculates the 3D distance between two points/vectors
@@ -150,7 +150,7 @@ namespace Consyl_Engine.EngineContents
         /// <summary>
         /// class that stores functions that are related to numbers
         /// </summary>
-        public class Numbers
+        public static class Numbers
         {
             /// <summary>
             /// calculates the distance between two single numbers
