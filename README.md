@@ -404,7 +404,7 @@ The 4th function does converts backward of the 3rd function which converts Radia
 
 ## GameObject.cs
 
-GameObject is an advanced tool that will help you make game quicker and easier. It will allow you to create objects like walls, players, enemies, props and more with ease. In order to make an Object, you need to type in OnGameStart() the following code:
+GameObject is an advanced tool that will help you make games quicker and easier. It will allow you to create objects like walls, players, enemies, props, and more with ease. In order to make an Object, you need to type in OnGameStart() the following code:
 
 ```csharp
 public static void OnGameStart() // Gets Executed when game starts running/when the game begins
@@ -445,15 +445,15 @@ There are more variables you can change, like enabling gravity by doing this: `E
 Note that the ID 2314145 in the examples is different based on which GameObject you want to change. Meaning that if you want to do something like changing friction strength with another GameObject you created, you need to get it's ID, when creating it, let's assume its ID is 1340487, you need to do this: `Engine.GetGameObjectByID(1340487).friction = 0.5f;` or you could do this when creating your object, so that things are easier:
 
 ```c#
-		 // Insert Variables here! \\
+	 // Insert Variables here! \\
         // \/\/\/\/\/\/\/\/\/\/\/\/ \\
 		int objID;
         // /\/\/\/\/\/\/\/\/\/\/\/\ \\
 
         public static void OnGameStart() // Gets Executed when game starts running/when the game begins
         {
-			objID = Engine.CreateGameObject(); // Be sure to fill in the parameters
-            Engine.GetGameObjectByID(objID).friction = 0.5f; 
+		objID = Engine.CreateGameObject(); // Be sure to fill in the parameters
+		Engine.GetGameObjectByID(objID).friction = 0.5f; 
         }
 ```
 
