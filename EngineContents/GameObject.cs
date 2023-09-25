@@ -124,6 +124,21 @@ namespace Consyl_Engine.EngineContents
             this.objID = objID;
         }
 
+        public GameObject(Vector2 _loc, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap,
+            bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false, int objID = -1)
+        {
+            location = _loc;
+            collisionEnabled = _CollisionEnabled;
+            width = _collisionWidth;
+            height = _collisionHeight;
+            detectOverlap = _detectOverlap;
+            isPushable = _isPushable;
+            collisionOffset = new Vector2(_colOffsetX, _colOffsetY);
+            collideWithBounds = _collideWithBounds;
+            drawDebugCollision = _drawDebugCollision;
+            this.objID = objID;
+        }
+
         /// <summary>
         /// Updates the GameObject.
         /// </summary>
