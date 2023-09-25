@@ -213,64 +213,6 @@ namespace Consyl_Engine
 
         #region EngineMethods
         /// <summary>
-        /// A method to create a GameObject into game
-        /// </summary>
-        /// <param name="_x"></param>
-        /// <param name="_y"></param>
-        /// <param name="_CollisionEnabled"></param>
-        /// <param name="_collisionWidth"></param>
-        /// <param name="_collisionHeight"></param>
-        /// <param name="_detectOverlap"></param>
-        /// <param name="_image"></param>
-        /// <param name="_isPushable"></param>
-        /// <param name="_colOffsetX"></param>
-        /// <param name="_colOffsetY"></param>
-        /// <param name="_collideWithBounds"></param>
-        /// <param name="_drawDebugCollision"></param>
-        /// <returns></returns>
-        static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
-        {
-            int newObjID = -1;
-
-            bool set = false;
-            bool stillEqual = false;
-
-            while (!set)
-            {
-                int num = Utilities.Rand.RandInt(2000000000);
-                if (gameObjects.Count > 0)
-                {
-                    for (int i = 0; i < gameObjects.Count; i++)
-                        if (gameObjects[i].objID != num)
-                            set = true;
-                }
-                else
-                    set = true;
-
-                newObjID = num;
-            }
-
-            for (int i = 0; i < gameObjects.Count; i++)
-            {
-                if (gameObjects[i].objID == newObjID)
-                {
-                    stillEqual = true;
-                    break;
-                }
-                else
-                    stillEqual = false;
-            }
-            if (!stillEqual)
-            {
-                GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision, newObjID);
-                gameObjects.Add(gameObject);
-
-                return newObjID;
-            }
-            return -1;
-        }
-
-        /// <summary>
         /// A method to create a GameObject into game which requires GameObject as parameter
         /// </summary>
         /// <param name="obj"></param>
@@ -319,6 +261,47 @@ namespace Consyl_Engine
         }
 
         /// <summary>
+        /// A method to create a GameObject into game
+        /// </summary>
+        /// <param name="_loc"></param>
+        /// <param name="_CollisionEnabled"></param>
+        /// <param name="_collisionWidth"></param>
+        /// <param name="_collisionHeight"></param>
+        /// <param name="_detectOverlap"></param>
+        /// <param name="_image"></param>
+        /// <param name="_isPushable"></param>
+        /// <param name="_colOffsetX"></param>
+        /// <param name="_colOffsetY"></param>
+        /// <param name="_collideWithBounds"></param>
+        /// <param name="_drawDebugCollision"></param>
+        /// <returns></returns>
+        static public int CreateGameObject(Vector2 _loc, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        {
+            return CreateGameObject(new GameObject(_loc, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
+        }
+
+        /// <summary>
+        /// A method to create a GameObject into game
+        /// </summary>
+        /// <param name="_x"></param>
+        /// <param name="_y"></param>
+        /// <param name="_CollisionEnabled"></param>
+        /// <param name="_collisionWidth"></param>
+        /// <param name="_collisionHeight"></param>
+        /// <param name="_detectOverlap"></param>
+        /// <param name="_image"></param>
+        /// <param name="_isPushable"></param>
+        /// <param name="_colOffsetX"></param>
+        /// <param name="_colOffsetY"></param>
+        /// <param name="_collideWithBounds"></param>
+        /// <param name="_drawDebugCollision"></param>
+        /// <returns></returns>
+        static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        {
+            return CreateGameObject(new GameObject(new Vector2(_x, _y), _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
+        }
+
+        /// <summary>
         /// A method to create a GameObject without texture
         /// </summary>
         /// <param name="_x"></param>
@@ -335,43 +318,7 @@ namespace Consyl_Engine
         /// <returns></returns>
         static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
-            int newObjID = -1;
-
-            bool set = false;
-            bool stillEqual = false;
-
-            while (!set)
-            {
-                int num = Utilities.Rand.RandInt(2000000000);
-                if (gameObjects.Count > 0)
-                {
-                    for (int i = 0; i < gameObjects.Count; i++)
-                        if (gameObjects[i].objID != num)
-                            set = true;
-                }
-                else
-                    set = true;
-
-                newObjID = num;
-            }
-
-            for (int i = 0; i < gameObjects.Count; i++)
-                if (gameObjects[i].objID == newObjID)
-                {
-                    stillEqual = true;
-                    break;
-                }
-                else
-                    stillEqual = false;
-
-            if (!stillEqual)
-            {
-                GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision, newObjID);
-                gameObjects.Add(gameObject);
-
-                return newObjID;
-            }
-            return -1;
+            return CreateGameObject(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
         }
 
         /// <summary>
@@ -389,9 +336,10 @@ namespace Consyl_Engine
         /// <param name="_collideWithBounds"></param>
         /// <param name="_drawDebugCollision"></param>
         /// <returns></returns>
+        [Obsolete("CreateGameObjectNoTex is deprecated, please use CreateGameObject instead.")]
         static public int CreateGameObjectNoTex(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
-            return CreateGameObject(_x, _y, _CollisionEnabled,_collisionWidth,_collisionHeight,_detectOverlap, _isPushable,_colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision);
+            return CreateGameObject(new GameObject(_x, _y, _CollisionEnabled,_collisionWidth,_collisionHeight,_detectOverlap, _isPushable,_colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
         }
 
         /// <summary>
