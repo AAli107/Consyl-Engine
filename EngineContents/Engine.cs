@@ -439,6 +439,28 @@ namespace Consyl_Engine
         }
 
         /// <summary>
+        /// Sets Background color of console window
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="refreshScreen"></param>
+        static public void SetBgColor(ConsoleColor c, bool refreshScreen = true)
+        {
+            BgColor = c;
+            if (refreshScreen) RefreshScreen();
+        }
+
+        /// <summary>
+        /// Sets Foreground color of console window
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="refreshScreen"></param>
+        static public void SetFgColor(ConsoleColor c, bool refreshScreen = true)
+        {
+            FgColor = c;
+            if (refreshScreen) RefreshScreen();
+        }
+
+        /// <summary>
         /// Refreshes the screen while also updating the colors
         /// </summary>
         static public void RefreshScreen()
