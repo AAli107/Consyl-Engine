@@ -213,7 +213,7 @@ namespace Consyl_Engine
 
         #region EngineMethods
         /// <summary>
-        /// A method to create a GameObject
+        /// A method to create a GameObject into game
         /// </summary>
         /// <param name="_x"></param>
         /// <param name="_y"></param>
@@ -263,6 +263,54 @@ namespace Consyl_Engine
             if (!stillEqual)
             {
                 GameObject gameObject = new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision, newObjID);
+                gameObjects.Add(gameObject);
+
+                return newObjID;
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// A method to create a GameObject into game
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        static public int CreateGameObject(GameObject obj)
+        {
+            int newObjID = -1;
+
+            bool set = false;
+            bool stillEqual = false;
+
+            while (!set)
+            {
+                int num = Utilities.Rand.RandInt(2000000000);
+                if (gameObjects.Count > 0)
+                {
+                    for (int i = 0; i < gameObjects.Count; i++)
+                        if (gameObjects[i].objID != num)
+                            set = true;
+                }
+                else
+                    set = true;
+
+                newObjID = num;
+            }
+
+            for (int i = 0; i < gameObjects.Count; i++)
+            {
+                if (gameObjects[i].objID == newObjID)
+                {
+                    stillEqual = true;
+                    break;
+                }
+                else
+                    stillEqual = false;
+            }
+            if (!stillEqual)
+            {
+                GameObject gameObject = obj;
+                gameObject.objID = newObjID;
                 gameObjects.Add(gameObject);
 
                 return newObjID;
