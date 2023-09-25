@@ -415,9 +415,9 @@ public static void OnGameStart() // Gets Executed when game starts running/when 
 
 There is also `Engine.CreateGameObjectNoTex()` which is the same thing, but is added so that if you don't want to add any texture into your object.
 
-Here's an important method under Engine class, which is `Engine.DestroyGameObject()`, it destroys a gameObject by inputting it's unique ID.
+Here's an important method under the Engine class, which is `Engine.DestroyGameObject()`, which destroys a gameObject by inputting its unique ID.
 
-Creating GameObjects with the methods used above, will return it's unique ID which is selected at random. You need to store it in a int variable so you can reference the GameObject later.
+Creating GameObjects with the methods used above will return it's unique ID which is selected at random. You need to store it in an int variable so you can reference the GameObject later.
 
 
 
@@ -445,10 +445,10 @@ There are more variables you can change, like enabling gravity by doing this: `E
 Note that the ID 2314145 in the examples is different based on which GameObject you want to change. Meaning that if you want to do something like changing friction strength with another GameObject you created, you need to get it's ID, when creating it, let's assume its ID is 1340487, you need to do this: `Engine.GetGameObjectByID(1340487).friction = 0.5f;` or you could do this when creating your object, so that things are easier:
 
 ```c#
- // Insert Variables here! \\
-// \/\/\/\/\/\/\/\/\/\/\/\/ \\
-int objID;
-// /\/\/\/\/\/\/\/\/\/\/\/\ \\
+ // Insert static Variables here \\
+// \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ \\
+static int objID;
+// /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ \\
 
 public static void OnGameStart() // Gets Executed when game starts running/when the game begins
 {
@@ -459,19 +459,19 @@ public static void OnGameStart() // Gets Executed when game starts running/when 
 
 
 
-Here are the list of variables that is not placed when creating your GameObject:
+Here is the list of variables that are not placed when creating your GameObject:
 
-1. **friction** - It will slow down the Object from it's velocity. The higher the number, the faster the GameObject would decelerate.
-2. **gravityStrength** - It will determine how strong is the gravity for the GameObject.
+1. **friction** - It will slow down the Object from its velocity. The higher the number, the faster the GameObject would decelerate.
+2. **gravityStrength** - It will determine how strong the gravity of the GameObject.
 3. **speed** - This is the velocity of the GameObject which is stored as a Vector2 variable.
-4. **isOverlapping** - A variable you shouldn't change or set it to anything, because that will become true if the GameObject overlaps with other GameObject's collision box. It will only work if detectOverlap variable is true.
+4. **isOverlapping** - A variable you shouldn't change or set to anything, because that will become true if the GameObject overlaps with another GameObject's collision box. It will only work if the detectOverlap variable is true.
 5. **isVisible** - This variable allows you to change whether the player can see your Game Object texture or not.
 
 
 
 There are some methods inside GameObjects you use to control them which are listed below:
 
-1. **AddVelocity(Vector2 addedVelocity)** - Will add more speed to the GameObject's velocity.
+1. **AddVelocity(Vector2 addedVelocity)** - This will add more speed to the GameObject's velocity.
 2. **AddLocation(Vector2 addedLocation)** - Will add values to the coordinates of the GameObject.
 3. **Teleport(Vector2 newLoc, bool resetSpeed)** - Will move the GameObject to a desired location, while asking you if you want to reset the velocity or not.
 4. **IsObjectOverlapping()** - It will return the `isOverlapping` variable.
@@ -484,13 +484,13 @@ There are some methods inside GameObjects you use to control them which are list
 
 ## Raycast2D.cs
 
-It's a small but useful tool that is used in a lot of game which fires an invisible line from a location and returns true if it hits a Game Object.
+It's a small but useful tool that is used in a lot of games which fires an invisible line from a location and returns true if it hits a Game Object.
 
-When creating a Raycast2D object, you need to type the parameters for it's constructor (it has two constructors):
+When creating a Raycast2D object, you need to type the parameters for its constructor (it has two constructors):
 
 1. **start** - The start location of the Raycast.
 2. **end** - The end location of the Raycast.
-3. **ignoredObjects [Only in one of the constructors]** - It's the Array of Game Objects that the Raycast would ignore and not hit it.
+3. **ignoredObjects [Only in one of the constructors]** - It's the Array of Game Objects that the Raycast would ignore and not hit.
 4. **drawDebug [OPTIONAL]** - Whether you want the Raycast to be visible or not.
 
 
@@ -504,5 +504,5 @@ When it hits an object it stores information in these variables stored inside:
 
 
 
-In order to create 2D Raycasts, you must first to create a Raycast2D variable like this, `Raycast2D ray = new Raycast2D();`  make sure to fill in all the parameters. Then if you want to cast the ray you must type this, `ray.CastLine();` which would cast the ray and the method will return the "hit" variable. If you set drawDebug variable to true, you can visualize the Line on screen.
+In order to create 2D Raycasts, you must first create a Raycast2D variable like this, `Raycast2D ray = new Raycast2D();`  make sure to fill in all the parameters. Then if you want to cast the ray you must type this, `ray.CastLine();` which would cast the ray and the method will return the "hit" variable. If you set the drawDebug variable to true, you can visualize the Line on the screen.
 
