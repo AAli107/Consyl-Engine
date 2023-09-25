@@ -8,9 +8,9 @@ namespace Consyl_Engine
 {
     class GameCode // Here is where you make most of your game's code!
     {
-        // Insert static Variables here \\
+         // Insert static Variables here \\
         // \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ \\
-        public static Texture img = new Texture("img.ng");
+
         // /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ \\
 
         public static void OnGameStart() // Gets Executed when game starts running/when the game begins
@@ -25,7 +25,7 @@ namespace Consyl_Engine
 
         public static void OnGraphicsUpdate() // Will be used to draw graphics related items per frame
         {
-            img.DrawImage(10, 10, true);
+
         }
 
         public static void OnGameEnd() // Gets Executed when Engine.gameRunning = false which is basically when the game ends
