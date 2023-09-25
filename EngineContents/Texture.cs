@@ -44,7 +44,7 @@ namespace Consyl_Engine.EngineContents
                     pixelShadeValues[i] = line;
                 }
             }
-            catch (ArgumentException ae)
+            catch (ArgumentException)
             {
                 img = null;
                 // Will make an empty texture
@@ -87,6 +87,10 @@ namespace Consyl_Engine.EngineContents
 
                 }
             }
+            else
+            {
+                gfx.GameUI.DrawText(x, y, "incorrect texture path.");
+            }
         }
 
         /// <summary>
@@ -114,6 +118,10 @@ namespace Consyl_Engine.EngineContents
                             gfx.DrawRectangle(((int)(i * scale) - (int)offset.X) + (int)imageLoc.X, ((int)(j * scale) - (int)offset.Y) + (int)imageLoc.Y, (int)MathF.Ceiling(scale), (int)MathF.Ceiling(scale), gfx.shadeCharArray[shade], false, isStatic); // Draws the image
                     }
                 }
+            }
+            else
+            {
+                gfx.GameUI.DrawText((int)imageLoc.X, (int)imageLoc.Y, "incorrect texture path.");
             }
         }
 
