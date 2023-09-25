@@ -298,7 +298,7 @@ namespace Consyl_Engine
         /// <returns></returns>
         static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
-            return CreateGameObject(new GameObject(new Vector2(_x, _y), _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
+            return CreateGameObject(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _image, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
         }
 
         /// <summary>
@@ -319,6 +319,26 @@ namespace Consyl_Engine
         static public int CreateGameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
         {
             return CreateGameObject(new GameObject(_x, _y, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
+        }
+
+        /// <summary>
+        /// A method to create a GameObject without texture
+        /// </summary>
+        /// <param name="_x"></param>
+        /// <param name="_y"></param>
+        /// <param name="_CollisionEnabled"></param>
+        /// <param name="_collisionWidth"></param>
+        /// <param name="_collisionHeight"></param>
+        /// <param name="_detectOverlap"></param>
+        /// <param name="_isPushable"></param>
+        /// <param name="_colOffsetX"></param>
+        /// <param name="_colOffsetY"></param>
+        /// <param name="_collideWithBounds"></param>
+        /// <param name="_drawDebugCollision"></param>
+        /// <returns></returns>
+        static public int CreateGameObject(Vector2 _loc, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        {
+            return CreateGameObject(new GameObject(_loc, _CollisionEnabled, _collisionWidth, _collisionHeight, _detectOverlap, _isPushable, _colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision));
         }
 
         /// <summary>
