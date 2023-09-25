@@ -375,6 +375,26 @@ namespace Consyl_Engine
         }
 
         /// <summary>
+        /// [DEPRECATED] A method to create a GameObject without texture
+        /// </summary>
+        /// <param name="_x"></param>
+        /// <param name="_y"></param>
+        /// <param name="_CollisionEnabled"></param>
+        /// <param name="_collisionWidth"></param>
+        /// <param name="_collisionHeight"></param>
+        /// <param name="_detectOverlap"></param>
+        /// <param name="_isPushable"></param>
+        /// <param name="_colOffsetX"></param>
+        /// <param name="_colOffsetY"></param>
+        /// <param name="_collideWithBounds"></param>
+        /// <param name="_drawDebugCollision"></param>
+        /// <returns></returns>
+        static public int CreateGameObjectNoTex(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false)
+        {
+            return CreateGameObject(_x, _y, _CollisionEnabled,_collisionWidth,_collisionHeight,_detectOverlap, _isPushable,_colOffsetX, _colOffsetY, _collideWithBounds, _drawDebugCollision);
+        }
+
+        /// <summary>
         /// A method that returns the GameObject when you input it's ID
         /// </summary>
         /// <param name="objectID"></param>
