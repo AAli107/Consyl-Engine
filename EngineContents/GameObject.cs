@@ -47,9 +47,41 @@ namespace Consyl_Engine.EngineContents
         /// <param name="_collideWithBounds"></param>
         /// <param name="_drawDebugCollision"></param>
         /// <param name="objID"></param>
-        public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false, int objID = -1)
+        public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap,
+            Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false, int objID = -1)
         {
             location = new Vector2(_x, _y);
+            collisionEnabled = _CollisionEnabled;
+            width = _collisionWidth;
+            height = _collisionHeight;
+            detectOverlap = _detectOverlap;
+            objectSprite = _image;
+            isPushable = _isPushable;
+            collisionOffset = new Vector2(_colOffsetX, _colOffsetY);
+            collideWithBounds = _collideWithBounds;
+            drawDebugCollision = _drawDebugCollision;
+            this.objID = objID;
+        }
+
+        /// <summary>
+        /// Constructor that initializes a GameObject.
+        /// </summary>
+        /// <param name="_loc"></param>
+        /// <param name="_CollisionEnabled"></param>
+        /// <param name="_collisionWidth"></param>
+        /// <param name="_collisionHeight"></param>
+        /// <param name="_detectOverlap"></param>
+        /// <param name="_image"></param>
+        /// <param name="_isPushable"></param>
+        /// <param name="_colOffsetX"></param>
+        /// <param name="_colOffsetY"></param>
+        /// <param name="_collideWithBounds"></param>
+        /// <param name="_drawDebugCollision"></param>
+        /// <param name="objID"></param>
+        public GameObject(Vector2 _loc, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap,
+            Texture _image, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false, int objID = -1)
+        {
+            location = _loc;
             collisionEnabled = _CollisionEnabled;
             width = _collisionWidth;
             height = _collisionHeight;
@@ -77,7 +109,8 @@ namespace Consyl_Engine.EngineContents
         /// <param name="_collideWithBounds"></param>
         /// <param name="_drawDebugCollision"></param>
         /// <param name="objID"></param>
-        public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap, bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false, int objID = -1)
+        public GameObject(int _x, int _y, bool _CollisionEnabled, int _collisionWidth, int _collisionHeight, bool _detectOverlap,
+            bool _isPushable, int _colOffsetX = 0, int _colOffsetY = 0, bool _collideWithBounds = false, bool _drawDebugCollision = false, int objID = -1)
         {
             location = new Vector2(_x, _y);
             collisionEnabled = _CollisionEnabled;
