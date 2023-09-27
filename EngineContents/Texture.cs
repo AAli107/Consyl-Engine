@@ -9,17 +9,33 @@ namespace Consyl_Engine.EngineContents
 {
     class Texture
     {
-        private readonly string fileName; // Stores the Texture's file name
-        private readonly Bitmap img; // loads the image in a variable
-        public readonly Vector2 imageResolution;
-        private readonly int[][] pixelShadeValues;
+        private string filename; // Stores the Texture's file name
+        private Bitmap img; // Bitmap class that would store information about the texture
+        private Vector2 imageResolution;
+        private int[][] pixelShadeValues;
 
-        public Texture(string _fileName) // constructor for initializing the Texture class
+        /// <summary>
+        /// Constructor for initializing the Texture class
+        /// </summary>
+        /// <param name="_filename"></param>
+        public Texture(string _filename)
         {
-            fileName = _fileName; // Sets the file's name/path
+            SetTextureFile(_filename);
+        }
+
+
+        /// <summary>
+        /// Changes Texture path
+        /// </summary>
+        /// <param name="_filename"></param>
+        public void SetTextureFile(string _filename)
+        {
+            if (_filename == filename) return; // If set to the same file, it would stop executing this method
+
+            filename = _filename; // Sets the file name/path
             try
             {
-                img = new Bitmap(fileName); // Assigning the Bitmap class into a variable with the fileName
+                img = new Bitmap(filename); // Assigning the Bitmap class into a variable with the fileName
                 imageResolution = new Vector2(img.Width, img.Height); // Saves the Resolution of the image
 
                 // Reads all the pixels and store them before-hand so that it won't have to do it every frame
