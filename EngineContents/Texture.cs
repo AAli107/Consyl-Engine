@@ -15,7 +15,7 @@ namespace Consyl_Engine.EngineContents
         private int[][] pixelShadeValues;
 
         /// <summary>
-        /// Constructor for initializing the Texture class
+        /// Constructor for initializing the Texture class with a file name/path
         /// </summary>
         /// <param name="_filename"></param>
         public Texture(string _filename)
@@ -23,6 +23,13 @@ namespace Consyl_Engine.EngineContents
             SetTextureFile(_filename);
         }
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public Texture()
+        {
+            SetTextureFile("");
+        }
 
         /// <summary>
         /// Changes Texture path
