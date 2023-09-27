@@ -238,5 +238,10 @@ namespace Consyl_Engine.EngineContents
             }
             return new Color();
         }
+
+        public Vector2 GetResolution()
+        {
+            return imageResolution;
+        }
     }
 }
