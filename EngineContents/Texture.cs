@@ -239,6 +239,10 @@ namespace Consyl_Engine.EngineContents
             return new Color();
         }
 
+        /// <summary>
+        /// Returns Texture's resolution in Vector2
+        /// </summary>
+        /// <returns></returns>
         public Vector2 GetResolution()
         {
             return imageResolution;
