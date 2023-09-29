@@ -254,6 +254,7 @@ namespace Consyl_Engine.EngineContents
             /// </summary>
             public enum DamageType
             {
+                None,
                 Generic,
                 Piercing,
                 Falling,
@@ -274,8 +275,7 @@ namespace Consyl_Engine.EngineContents
                 Shooting,
                 Curse,
                 Acid,
-                Rotting,
-                Misc
+                Rotting
             }
         }
     }
