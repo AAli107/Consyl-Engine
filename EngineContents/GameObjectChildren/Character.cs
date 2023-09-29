@@ -1,4 +1,9 @@
-﻿using System.Numerics;
+﻿/*
+ * This Character class is a child class of the GameObject class.
+ * If you want to instantiate it you can do it like this: Engine.CreateGameObject(new Character( ... ));
+*/
+
+using System.Numerics;
 
 namespace Consyl_Engine.EngineContents.GameObjectChildren
 {
@@ -42,7 +47,6 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
             hitpoints = this.maxHitpoints;
             spawnpoint = location;
         }
-
 
         /// <summary>
         /// Respawns Character with full HP back to its spawnpoint
