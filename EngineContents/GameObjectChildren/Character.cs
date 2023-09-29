@@ -70,5 +70,14 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         {
             if (!isDead) hitpoints = Utilities.Numbers.ClampN(hitpoints + heal, 0, maxHitpoints);
         }
+
+        /// <summary>
+        /// Returns the character's hitpoints
+        /// </summary>
+        /// <returns></returns>
+        public float GetHP()
+        {
+            return hitpoints;
+        }
     }
 }
