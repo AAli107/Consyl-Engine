@@ -10,7 +10,7 @@ namespace Consyl_Engine.EngineContents
 {
     class Save
     {
-        public string saveFileName; // Stores the file name
+        private string saveFileName; // Stores the file name
         public Save(string fileName) // Initializes the Save object
         {
             saveFileName = fileName;
@@ -70,6 +70,16 @@ namespace Consyl_Engine.EngineContents
         public void DeleteSaveFile()
         {
             if (File.Exists(saveFileName)) File.Delete(saveFileName);
+        }
+
+        public void SetSaveFileName(string newFileName)
+        {
+            saveFileName = newFileName;
+        }
+
+        public string GetSaveFileName()
+        {
+            return saveFileName;
         }
     }
 }
