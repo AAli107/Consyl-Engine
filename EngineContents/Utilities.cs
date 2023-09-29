@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace Consyl_Engine.EngineContents
 {
-    static class Utilities
+    namespace Utilities
     {
         /// <summary>
         /// class that stores functions that returns rng-related values
@@ -245,9 +245,9 @@ namespace Consyl_Engine.EngineContents
         }
 
         /// <summary>
-        /// class that contain miscellaneous enumerations for general use
+        /// namespace that contain miscellaneous enumerations for general use
         /// </summary>
-        public static class Enums
+        namespace Enums
         {
             /// <summary>
             /// Enumeration for most common damage types
