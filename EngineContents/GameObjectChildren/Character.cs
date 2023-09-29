@@ -15,6 +15,9 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         private float walkSpeed; // stores the character's walking speed
         private bool isInvincible; // HP will not deplete if invincible
 
+        // Stores the type of damage last time the character was damaged
+        private Utilities.Enums.DamageType damageType = Utilities.Enums.DamageType.None;
+
         /// <summary>
         /// returns whether the character's hitpoints is completely depleted or not
         /// </summary>
@@ -61,9 +64,13 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         /// Damages Character by reducing its hitpoints
         /// </summary>
         /// <param name="dmg"></param>
-        public void Damage(float dmg)
+        public void Damage(float dmg, Utilities.Enums.DamageType damageType = Utilities.Enums.DamageType.Generic)
         {
-            if (!isInvincible && !isDead) hitpoints = Utilities.Numbers.ClampN(hitpoints - dmg, 0, maxHitpoints);
+            if (!isInvincible && !isDead)
+            {
+                hitpoints = Utilities.Numbers.ClampN(hitpoints - dmg, 0, maxHitpoints);
+                this.damageType = damageType;
+            }
         }
 
         /// <summary>
