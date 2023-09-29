@@ -4,6 +4,7 @@
 */
 
 using System.Numerics;
+using Consyl_Engine.EngineContents.Utilities.Enums;
 
 namespace Consyl_Engine.EngineContents.GameObjectChildren
 {
@@ -16,7 +17,7 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         private bool isInvincible; // HP will not deplete if invincible
 
         // Stores the type of damage last time the character was damaged
-        private Utilities.Enums.DamageType damageType = Utilities.Enums.DamageType.None;
+        private DamageType damageType = DamageType.None;
 
         /// <summary>
         /// returns whether the character's hitpoints is completely depleted or not
@@ -64,7 +65,7 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         /// Damages Character by reducing its hitpoints
         /// </summary>
         /// <param name="dmg"></param>
-        public void Damage(float dmg, Utilities.Enums.DamageType damageType = Utilities.Enums.DamageType.Generic)
+        public void Damage(float dmg, DamageType damageType = DamageType.Generic)
         {
             if (!isInvincible && !isDead)
             {
@@ -169,7 +170,7 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         /// Returns the type of damage the character was last hit by
         /// </summary>
         /// <returns></returns>
-        public Utilities.Enums.DamageType GetDamageType()
+        public DamageType GetDamageType()
         {
             return damageType;
         }
