@@ -7,7 +7,7 @@ using EZInput;
 
 namespace Consyl_Engine
 {
-    class GameCode // Here is where you make most of your game's code!
+    static class GameCode // Here is where you make most of your game's code!
     {
          // Insert static Variables here \\
         // \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/ \\
