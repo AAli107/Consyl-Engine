@@ -57,7 +57,7 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         /// Damages Character by reducing its hitpoints
         /// </summary>
         /// <param name="dmg"></param>
-        public void DamageCharacter(float dmg)
+        public void Damage(float dmg)
         {
             if (!isInvincible && !isDead) hitpoints = Utilities.Numbers.ClampN(hitpoints - dmg, 0, maxHitpoints);
         }
@@ -66,7 +66,7 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         /// Heals Character by increasing its hitpoints
         /// </summary>
         /// <param name="heal"></param>
-        public void HealCharacter(float heal)
+        public void Heal(float heal)
         {
             if (!isDead) hitpoints = Utilities.Numbers.ClampN(hitpoints + heal, 0, maxHitpoints);
         }
