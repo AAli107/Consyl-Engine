@@ -243,5 +243,40 @@ namespace Consyl_Engine.EngineContents
                 return min;
             }
         }
+
+        /// <summary>
+        /// class that contain miscellaneous enumerations for general use
+        /// </summary>
+        public static class Enums
+        {
+            /// <summary>
+            /// Enumeration for most common damage types
+            /// </summary>
+            public enum DamageType
+            {
+                Generic,
+                Piercing,
+                Falling,
+                Burning,
+                Magic,
+                Drowning,
+                Suffocation,
+                Freezing,
+                Bleeding,
+                Explosion,
+                Projectile,
+                Lightning,
+                Poisoning,
+                Arrow,
+                Prickling,
+                Stabbing,
+                Kinetic,
+                Shooting,
+                Curse,
+                Acid,
+                Rotting,
+                Misc
+            }
+        }
     }
 }
