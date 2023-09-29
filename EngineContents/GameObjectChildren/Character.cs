@@ -105,6 +105,15 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         }
 
         /// <summary>
+        /// Sets the character's walk speed
+        /// </summary>
+        /// <param name="newWalkSpeed"></param>
+        public void SetWalkSpeed(float newWalkSpeed)
+        {
+            walkSpeed = newWalkSpeed;
+        }
+
+        /// <summary>
         /// Returns the character's hitpoints
         /// </summary>
         /// <returns></returns>
