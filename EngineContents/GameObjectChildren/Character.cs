@@ -98,5 +98,14 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         {
             return hitpoints;
         }
+
+        /// <summary>
+        /// Returns the character's maximum hitpoints
+        /// </summary>
+        /// <returns></returns>
+        public float GetMaxHP()
+        {
+            return maxHitpoints;
+        }
     }
 }
