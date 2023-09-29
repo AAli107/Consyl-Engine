@@ -113,6 +113,11 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
             walkSpeed = newWalkSpeed;
         }
 
+        public void SetIsInvincible(bool isInvincible)
+        {
+            this.isInvincible = isInvincible;
+        }
+
         /// <summary>
         /// Returns the character's hitpoints
         /// </summary>
