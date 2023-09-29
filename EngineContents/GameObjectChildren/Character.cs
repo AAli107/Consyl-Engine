@@ -164,5 +164,14 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         {
             return isInvincible;
         }
+
+        /// <summary>
+        /// Returns the type of damage the character was last hit by
+        /// </summary>
+        /// <returns></returns>
+        public Utilities.Enums.DamageType GetDamageType()
+        {
+            return damageType;
+        }
     }
 }
