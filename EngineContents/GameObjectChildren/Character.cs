@@ -76,6 +76,16 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         }
 
         /// <summary>
+        /// Will move the character in a specific direction based on its walkSpeed variable
+        /// </summary>
+        /// <param name="dir"></param>
+        public void WalkTowardsDirection(Vector2 dir, bool useVelocity = true)
+        {
+            if (useVelocity) AddVelocity(dir * walkSpeed);
+            else AddLocation(dir * walkSpeed); 
+        }
+
+        /// <summary>
         /// Sets the character's hitpoints
         /// </summary>
         /// <param name="newHP"></param>
