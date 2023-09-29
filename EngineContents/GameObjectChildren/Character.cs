@@ -4,7 +4,7 @@
 */
 
 using System.Numerics;
-using Consyl_Engine.EngineContents.Utilities.Enums;
+using static Consyl_Engine.EngineContents.Utilities.Enums;
 
 namespace Consyl_Engine.EngineContents.GameObjectChildren
 {
