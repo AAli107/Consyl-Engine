@@ -61,5 +61,14 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         {
             if (!isInvincible && !isDead) hitpoints = Utilities.Numbers.ClampN(hitpoints - dmg, 0, maxHitpoints);
         }
+
+        /// <summary>
+        /// Heals Character by increasing its hitpoints
+        /// </summary>
+        /// <param name="heal"></param>
+        public void HealCharacter(float heal)
+        {
+            if (!isDead) hitpoints = Utilities.Numbers.ClampN(hitpoints + heal, 0, maxHitpoints);
+        }
     }
 }
