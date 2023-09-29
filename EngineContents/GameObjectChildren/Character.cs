@@ -72,6 +72,15 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         }
 
         /// <summary>
+        /// Sets the character's hitpoints
+        /// </summary>
+        /// <param name="newHP"></param>
+        public void SetHP(float newHP)
+        {
+            hitpoints = Utilities.Numbers.ClampN(newHP, 0, maxHitpoints);
+        }
+
+        /// <summary>
         /// Returns the character's hitpoints
         /// </summary>
         /// <returns></returns>
