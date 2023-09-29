@@ -327,15 +327,15 @@ namespace Consyl_Engine.EngineContents
             /// <param name="horizontal"></param>
             public static void DrawProgressBar(int x, int y, int width, int height, char fillLook, char emptyLook, float percent, bool horizontal = true)
             {
-                DrawRectangle(x, y, width, height, emptyLook, true); // Draws the Progress bar background
+                DrawRectangle(x, y, width, height, emptyLook, false, true); // Draws the Progress bar background
 
                 // Limits the percentage fill between 0 to 1 so that the filled part of the progress bar doesn't get bigger than the background
                 percent = Utilities.Numbers.ClampN(percent, 0, 1);
 
                 if (horizontal) // Draws the fill background based on if the user wants vertical or horizontal bars
-                    DrawRectangle(x, y, (int)(width * percent), height, fillLook, true);
+                    DrawRectangle(x, y, (int)(width * percent), height, fillLook, false, true);
                 else
-                    DrawRectangle(x, y - (int)(height * percent) + height, width, (int)(height * percent), fillLook, true);
+                    DrawRectangle(x, y - (int)(height * percent) + height, width, (int)(height * percent), fillLook, false, true);
             }
 
             /// <summary>
