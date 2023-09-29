@@ -121,5 +121,14 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         {
             return maxHitpoints;
         }
+
+        /// <summary>
+        /// Returns the character's walkSpeed
+        /// </summary>
+        /// <returns></returns>
+        public float GetWalkSpeed()
+        {
+            return walkSpeed;
+        }
     }
 }
