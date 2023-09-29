@@ -81,6 +81,16 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         }
 
         /// <summary>
+        /// Sets the character's maximum hitpoints
+        /// </summary>
+        /// <param name="newMaxHP"></param>
+        public void SetMaxHP(float newMaxHP)
+        {
+            maxHitpoints = newMaxHP;
+            hitpoints = Utilities.Numbers.ClampN(hitpoints, 0, maxHitpoints);
+        }
+
+        /// <summary>
         /// Returns the character's hitpoints
         /// </summary>
         /// <returns></returns>
