@@ -139,5 +139,14 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         {
             return walkSpeed;
         }
+
+        /// <summary>
+        /// Returns whether the character is invincible or not
+        /// </summary>
+        /// <returns></returns>
+        public bool IsInvincible()
+        {
+            return isInvincible;
+        }
     }
 }
