@@ -113,6 +113,10 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
             walkSpeed = newWalkSpeed;
         }
 
+        /// <summary>
+        /// Sets the character to be either invincible or not
+        /// </summary>
+        /// <param name="isInvincible"></param>
         public void SetIsInvincible(bool isInvincible)
         {
             this.isInvincible = isInvincible;
