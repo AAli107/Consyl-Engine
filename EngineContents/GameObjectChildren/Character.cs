@@ -66,7 +66,7 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         /// <summary>
         /// Respawns Character with full HP back to its spawnpoint
         /// </summary>
-        public void RespawnCharacter()
+        public void Respawn()
         {
             hitpoints = maxHitpoints;
             Teleport(spawnpoint, true);
