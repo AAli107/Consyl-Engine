@@ -210,7 +210,7 @@ namespace Consyl_Engine
 
         #region EngineMethods
         /// <summary>
-        /// A method to create a GameObject into game which requires GameObject as parameter
+        /// A method to creates a GameObject into game which requires GameObject as parameter
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -363,6 +363,16 @@ namespace Consyl_Engine
         static public int CreateGameObject(Vector2 _loc, Vector2 _collisionWidth, bool _collisionEnabled, bool _isPushable)
         {
             return CreateGameObject(new GameObject(_loc, _collisionEnabled, (int)_collisionWidth.X, (int)_collisionWidth.Y, true, _isPushable));
+        }
+
+        /// <summary>
+        /// A method to creates a GameObject into game which requires GameObject as parameter and returns the GameObject as a reference
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        static public GameObject CreateGameObject_Ref(GameObject obj)
+        {
+            return GetGameObjectByID(CreateGameObject(obj));
         }
 
         /// <summary>
