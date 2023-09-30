@@ -133,6 +133,15 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         }
 
         /// <summary>
+        /// Sets the character's health regeneration speed
+        /// </summary>
+        /// <param name="newRegenSpeed"></param>
+        public void SetHPRegen(float newRegenSpeed)
+        {
+            regenerationSpeed = newRegenSpeed;
+        }
+
+        /// <summary>
         /// Sets the character's walk speed
         /// </summary>
         /// <param name="newWalkSpeed"></param>
