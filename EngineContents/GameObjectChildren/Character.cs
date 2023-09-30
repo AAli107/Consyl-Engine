@@ -187,6 +187,15 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         }
 
         /// <summary>
+        /// Returns the character's health regeneration speed
+        /// </summary>
+        /// <returns></returns>
+        public float GetHPRegen()
+        {
+            return regenerationSpeed;
+        }
+
+        /// <summary>
         /// Returns the character's walkSpeed
         /// </summary>
         /// <returns></returns>
