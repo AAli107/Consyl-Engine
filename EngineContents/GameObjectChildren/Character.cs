@@ -42,7 +42,7 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
             Vector2 _loc, Vector2 _colWidth, Vector2 _colOffset, bool _CollisionEnabled,
             bool _collideWithBounds = false, bool _drawDebugCollision = false)
             : base(_loc, _CollisionEnabled, (int)_colWidth.X, (int)_colWidth.Y, true,
-            true, (int)_colOffset.X, (int)_colOffset.Y, _collideWithBounds, _drawDebugCollision, -1)
+            true, (int)_colOffset.X, (int)_colOffset.Y, _collideWithBounds, _drawDebugCollision)
         {
             this.maxHitpoints = maxHitpoints;
             this.walkSpeed = walkSpeed;
