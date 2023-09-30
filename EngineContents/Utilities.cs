@@ -277,6 +277,14 @@ namespace Consyl_Engine.EngineContents
                 Acid,
                 Rotting
             }
+
+            /// <summary>
+            /// Enumeration for the directions in 2D space
+            /// </summary>
+            public enum Direction2D
+            {
+                Up, Down, Left, Right
+            }
         }
     }
 }
