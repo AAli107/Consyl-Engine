@@ -13,7 +13,7 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         private Vector2 spawnpoint; // Stores the initial spawn point of the character
         private float hitpoints; // The character's HP
         private float maxHitpoints; // The character's max HP
-        private float regenerationSpeed; // How much HP the character regenerates per update
+        private float regenerationSpeed; // How much HP the character regenerates per second
         private float walkSpeed; // stores the character's walking speed
         private bool isInvincible; // HP will not deplete if invincible
 
