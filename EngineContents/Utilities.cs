@@ -281,12 +281,16 @@ namespace Consyl_Engine.EngineContents
             /// <summary>
             /// Enumeration for the directions in 2D space
             /// </summary>
-            public enum Direction2D
+            public enum CardinalDirection
             {
-                Up,
-                Down,
-                Left,
-                Right
+                North,
+                NorthEast,
+                East,
+                SouthEast,
+                South,
+                SouthWest,
+                West,
+                NorthWest
             }
         }
     }
