@@ -13,6 +13,7 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         private Vector2 spawnpoint; // Stores the initial spawn point of the character
         private float hitpoints; // The character's HP
         private float maxHitpoints; // The character's max HP
+        private float regenerationSpeed; // How much HP the character regenerates per update
         private float walkSpeed; // stores the character's walking speed
         private bool isInvincible; // HP will not deplete if invincible
 
@@ -50,6 +51,16 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
 
             hitpoints = this.maxHitpoints;
             spawnpoint = location;
+            regenerationSpeed = 0;
+        }
+
+        /// <summary>
+        /// Updates the Character
+        /// </summary>
+        public override void Update()
+        {
+            base.Update();
+            if (regenerationSpeed > 0) Heal(regenerationSpeed * Engine.deltaTime);
         }
 
         /// <summary>
