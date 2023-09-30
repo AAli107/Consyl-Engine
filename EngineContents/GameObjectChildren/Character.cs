@@ -67,7 +67,7 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         /// <param name="dmg"></param>
         public void Damage(float dmg, DamageType damageType = DamageType.Generic)
         {
-            if (!isInvincible && !isDead)
+            if (!isInvincible && !isDead && damageType != DamageType.None)
             {
                 hitpoints = Utilities.Numbers.ClampN(hitpoints - dmg, 0, maxHitpoints);
                 this.damageType = damageType;
