@@ -283,7 +283,10 @@ namespace Consyl_Engine.EngineContents
             /// </summary>
             public enum Direction2D
             {
-                Up, Down, Left, Right
+                Up,
+                Down,
+                Left,
+                Right
             }
         }
     }
