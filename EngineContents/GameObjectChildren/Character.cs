@@ -140,6 +140,15 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         }
 
         /// <summary>
+        /// Returns the character's spawnpoint
+        /// </summary>
+        /// <returns></returns>
+        public Vector2 GetSpawnpoint()
+        {
+            return spawnpoint;
+        }
+
+        /// <summary>
         /// Returns the character's hitpoints
         /// </summary>
         /// <returns></returns>
