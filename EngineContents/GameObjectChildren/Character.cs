@@ -94,6 +94,15 @@ namespace Consyl_Engine.EngineContents.GameObjectChildren
         }
 
         /// <summary>
+        /// Sets the character's spawnpoint
+        /// </summary>
+        /// <param name="newSpawnpoint"></param>
+        public void SetSpawnpoint(Vector2 newSpawnpoint)
+        {
+            spawnpoint = newSpawnpoint;
+        }
+
+        /// <summary>
         /// Sets the character's hitpoints
         /// </summary>
         /// <param name="newHP"></param>
