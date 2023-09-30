@@ -161,7 +161,7 @@ namespace Consyl_Engine.EngineContents
         /// <summary>
         /// Updates the GameObject.
         /// </summary>
-        public void Update()
+        public virtual void Update()
         {
             location += speed; // Moves Object based on speed
 
@@ -205,7 +205,7 @@ namespace Consyl_Engine.EngineContents
         /// Draws the GameObject
         /// </summary>
         /// <param name="areBlackPixelsTransparent"></param>
-        public void DrawUpdate(bool areBlackPixelsTransparent = true)
+        public virtual void DrawUpdate(bool areBlackPixelsTransparent = true)
         {
             if (objectSprite != null)
                 if (isVisible) // Will only render the texture sprite if isVisible is true
