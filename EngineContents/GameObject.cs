@@ -31,6 +31,11 @@ namespace Consyl_Engine.EngineContents
         public Vector2 location; // The location of the GameObject
         public Vector2 speed = new Vector2(0.0f, 0.0f); // The Velocity of the GameObject
 
+        // returns the 4 corners of the GameObject's collision box
+        public Vector2[] colCorners  { get { return new Vector2[4] { location + collisionOffset, location + collisionOffset + new Vector2(width, 0),
+            location + collisionOffset + new Vector2(0, height), location + collisionOffset + new Vector2(width, height) }; } }
+
+
         /// <summary>
         /// Constructor that initializes a GameObject. 
         /// </summary>
