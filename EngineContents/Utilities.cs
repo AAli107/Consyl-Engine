@@ -106,6 +106,35 @@ namespace Consyl_Engine.EngineContents
 
                 return new Vector2((cosTheta * (pointToRotate.X - centerPoint.X) - sinTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.X), (sinTheta * (pointToRotate.X - centerPoint.X) + cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y));
             }
+
+            /// <summary>
+            /// Converts the Cardinal Directions into a normalized vector 2D
+            /// </summary>
+            /// <param name="cardinalDirection"></param>
+            /// <returns></returns>
+            public static Vector2 DirectionToVec2D(Enums.CardinalDirection cardinalDirection)
+            {
+                switch (cardinalDirection)
+                {
+                    case Enums.CardinalDirection.North:
+                        return new Vector2(0, -1);
+                    case Enums.CardinalDirection.NorthEast:
+                        return new Vector2(1, -1);
+                    case Enums.CardinalDirection.East:
+                        return new Vector2(1, 0);
+                    case Enums.CardinalDirection.SouthEast:
+                        return new Vector2(1, 1);
+                    case Enums.CardinalDirection.South:
+                        return new Vector2(0, 1);
+                    case Enums.CardinalDirection.SouthWest:
+                        return new Vector2(-1, 1);
+                    case Enums.CardinalDirection.West:
+                        return new Vector2(-1, 0);
+                    case Enums.CardinalDirection.NorthWest:
+                        return new Vector2(-1, -1);
+                }
+                return new Vector2(0, 0);
+            }
         }
 
         /// <summary>
