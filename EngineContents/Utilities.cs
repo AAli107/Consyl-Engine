@@ -252,7 +252,7 @@ namespace Consyl_Engine.EngineContents
             /// <summary>
             /// Enumeration for most common damage types
             /// </summary>
-            public enum DamageType // You could modify and change the DamageType of you like
+            public enum DamageType // You could add or remove damage types if necessary
             {
                 None,
                 Generic,
